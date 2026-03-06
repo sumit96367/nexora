@@ -2,7 +2,7 @@
 
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { bulkReviewMentorApplications } from "@/components/ui/bulkreviewmentorapplications";
+import { bulkReviewMentorApplications } from "@/actions/mentor";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Check, X } from "lucide-react";

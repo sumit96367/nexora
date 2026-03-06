@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { cn } from "@/components/ui/cn";
+import { cn } from "@/lib/utils";
 
 export default function MentorConversationList({
   conversations,

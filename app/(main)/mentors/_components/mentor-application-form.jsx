@@ -3,7 +3,7 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { applyForMentorRole } from "@/components/ui/applyformentorrole";
+import { applyForMentorRole } from "@/actions/mentor";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
