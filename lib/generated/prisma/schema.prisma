@@ -14,6 +14,41 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum MentorStatus {
+  NONE
+  PENDING
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+enum MentorDocumentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum MentorSessionStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum RecommendationVisibility {
+  PRIVATE
+  DASHBOARD
+  PROFILE
+}
+
+enum NotificationType {
+  MENTOR_STATUS
+  SESSION_REQUEST
+  SESSION_STATUS
+  MESSAGE
+  RECOMMENDATION
+}
+
 model User {
   id              String           @id @default(uuid())
   clerkUserId     String           @unique // clerk user id
@@ -34,6 +69,17 @@ model User {
   assessments Assessment[]
   resume      Resume?
   coverLetter CoverLetter[]
+
+  // Mentor fields
+  mentorStatus          MentorStatus           @default(NONE)
+  mentorStatusReason    String?
+  mentorStatusUpdatedAt DateTime?
+  mentorProfile         MentorProfile?
+  mentorSessions        MentorSession[]        @relation("MenteeSessions")
+  conversations         MentorConversation[]   @relation("MenteeConversations")
+  messages              MentorMessage[]
+  recommendations       MentorRecommendation[] @relation("MenteeRecommendations")
+  notifications         Notification[]
 }
 
 model Assessment {
@@ -103,4 +149,152 @@ model IndustryInsight {
   nextUpdate  DateTime // Scheduled update time
 
   @@index([industry])
+}
+
+model MentorProfile {
+  id              String       @id @default(uuid())
+  userId          String       @unique
+  user            User         @relation(fields: [userId], references: [id])
+  status          MentorStatus @default(PENDING)
+  headline        String?
+  bio             String?
+  yearsExperience Int?
+  industries      String[]
+  skills          String[]
+  hourlyRate      Decimal?     @db.Decimal(10, 2)
+  currency        String?      @default("USD")
+  availability    Json?
+  ratingAverage   Float?
+  submittedAt     DateTime     @default(now())
+  approvedAt      DateTime?
+  rejectedAt      DateTime?
+  rejectionReason String?
+  lastEventAt     DateTime     @default(now())
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  proofDocuments  MentorDocument[]
+  sessions        MentorSession[]
+  conversations   MentorConversation[]
+  recommendations MentorRecommendation[]
+  realtimeEvents  RealtimeEvent[]
+}
+
+model MentorDocument {
+  id          String               @id @default(uuid())
+  mentorId    String
+  mentor      MentorProfile        @relation(fields: [mentorId], references: [id])
+  type        String
+  url         String
+  status      MentorDocumentStatus @default(PENDING)
+  description String?
+  verifiedBy  String?
+  verifiedAt  DateTime?
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+
+  @@index([mentorId])
+}
+
+model MentorSession {
+  id                 String              @id @default(uuid())
+  mentorId           String
+  mentor             MentorProfile       @relation(fields: [mentorId], references: [id])
+  menteeId           String
+  mentee             User                @relation("MenteeSessions", fields: [menteeId], references: [id])
+  status             MentorSessionStatus @default(PENDING)
+  scheduledAt        DateTime
+  durationMinutes    Int
+  price              Decimal?            @db.Decimal(10, 2)
+  currency           String?             @default("USD")
+  notes              String?
+  meetingUrl         String?
+  cancelledAt        DateTime?
+  cancellationReason String?
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+
+  recommendations MentorRecommendation[]
+
+  @@index([mentorId])
+  @@index([menteeId])
+  @@index([mentorId, scheduledAt])
+}
+
+model MentorConversation {
+  id            String        @id @default(uuid())
+  mentorId      String
+  mentor        MentorProfile @relation(fields: [mentorId], references: [id])
+  menteeId      String
+  mentee        User          @relation("MenteeConversations", fields: [menteeId], references: [id])
+  lastMessageAt DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  messages MentorMessage[]
+
+  @@unique([mentorId, menteeId])
+  @@index([lastMessageAt])
+}
+
+model MentorMessage {
+  id             String             @id @default(uuid())
+  conversationId String
+  conversation   MentorConversation @relation(fields: [conversationId], references: [id])
+  senderId       String
+  sender         User               @relation(fields: [senderId], references: [id])
+  body           String
+  attachments    Json?
+  readAt         DateTime?
+  createdAt      DateTime           @default(now())
+
+  @@index([conversationId])
+  @@index([senderId])
+  @@index([createdAt])
+}
+
+model MentorRecommendation {
+  id          String                   @id @default(uuid())
+  mentorId    String
+  mentor      MentorProfile            @relation(fields: [mentorId], references: [id])
+  menteeId    String
+  mentee      User                     @relation("MenteeRecommendations", fields: [menteeId], references: [id])
+  sessionId   String?
+  session     MentorSession?           @relation(fields: [sessionId], references: [id])
+  title       String
+  body        String
+  visibility  RecommendationVisibility @default(DASHBOARD)
+  publishedAt DateTime?
+  createdAt   DateTime                 @default(now())
+  updatedAt   DateTime                 @updatedAt
+
+  @@index([mentorId])
+  @@index([menteeId])
+  @@index([sessionId])
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  user      User             @relation(fields: [userId], references: [id])
+  type      NotificationType
+  title     String
+  body      String?
+  metadata  Json?
+  readAt    DateTime?
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  @@index([userId, readAt])
+}
+
+model RealtimeEvent {
+  id        String         @id @default(uuid())
+  type      String
+  payload   Json?
+  mentorId  String?
+  mentor    MentorProfile? @relation(fields: [mentorId], references: [id])
+  createdAt DateTime       @default(now())
+
+  @@index([type, createdAt])
 }

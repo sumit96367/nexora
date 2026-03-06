@@ -1,4 +1,4 @@
-import {Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { Accordion } from "@/components/ui/accordion";
@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata = {
   title: "nexora - AI Career Coach",
   icons: {
-    icon: "/logo3.ico",
+    icon: "/logo3.png",
     shortcut: "/favicon.ico",
     apple: "/logo3.png",
   },
@@ -22,33 +22,33 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider
       appearance={{
-      baseTheme:"dark",
-    }}>
-      
-    
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.className}`}
-      >
-        <ThemeProvider
+        baseTheme: "dark",
+      }}>
+
+
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${inter.className}`}
+        >
+          <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
-        >
-          {/*header */}
-          <Header/>
+          >
+            {/*header */}
+            <Header />
             <main className="min-h-screen"> {children} </main>
             <Toaster richColors />
-          {/*footer */}
-          <footer className="bg-muted/50 py-12">
-            <div className="container mx-auto px-4 text-center text-gray-200">
-              <p>Made by Sumit</p>
-            </div>
-          </footer>
-        </ThemeProvider>
-      </body>
+            {/*footer */}
+            <footer className="bg-muted/50 py-12">
+              <div className="container mx-auto px-4 text-center text-gray-200">
+                <p>Made by Sumit</p>
+              </div>
+            </footer>
+          </ThemeProvider>
+        </body>
       </html>
-      </ClerkProvider>
+    </ClerkProvider>
   );
 }

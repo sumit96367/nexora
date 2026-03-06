@@ -12,6 +12,8 @@ import {
   FileText,
   PenBox,
   GraduationCap,
+  Users,
+  UserCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button"; // Adjust the path based on your project structure
 import Image from "next/image";
@@ -19,7 +21,8 @@ import Link from "next/link";
 import { checkUser } from "@/lib/checkUser";
 
 const Header = async () => {
-  await checkUser(); // Ensure the user is checked when the header is rendered
+  const user = await checkUser();
+  const isMentor = user?.mentorStatus === "APPROVED";
   return (
     <header className="fixed top-0 w-full border-b bg-background/80 backdrop-blur-md z-50 supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -78,6 +81,23 @@ const Header = async () => {
                     Interview Prep
                   </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href={"/mentors"} className="flex items-center gap-2">
+                    <Users className="h-4 w-4" />
+                    Find Mentors
+                  </Link>
+                </DropdownMenuItem>
+                {isMentor && (
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href={"/mentors/dashboard"}
+                      className="flex items-center gap-2"
+                    >
+                      <UserCheck className="h-4 w-4" />
+                      Mentor Dashboard
+                    </Link>
+                  </DropdownMenuItem>
+                )}
               </DropdownMenuContent>
             </DropdownMenu>
           </SignedIn>
@@ -94,7 +114,7 @@ const Header = async () => {
                 elements: {
                   avatarBox: "w-15 h-15",
                   userButtonPopoverCard: "shadow-xl",
-                  userPreviewMainIdentifier:"font-semibold",
+                  userPreviewMainIdentifier: "font-semibold",
                 },
               }}
               afterSignOutUrl=""

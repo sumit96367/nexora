@@ -1,0 +1,39 @@
+
+> snesai@0.1.0 build
+> next build
+
+   ▲ Next.js 15.3.0
+   - Environments: .env
+
+   Creating an optimized production build ...
+glob error [Error: EPERM: operation not permitted, scandir 'C:\Users\Lenovo\Application Data'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'scandir',
+  path: 'C:\\Users\\Lenovo\\Application Data'
+}
+Failed to compile.
+
+Error: EPERM: operation not permitted, scandir 'C:\Users\Lenovo\Application Data'
+
+HookWebpackError: Cannot read properties of undefined (reading 'server')
+    at makeWebpackError (E:\snesai\node_modules\next\dist\compiled\webpack\bundle5.js:29:315788)
+    at E:\snesai\node_modules\next\dist\compiled\webpack\bundle5.js:29:106487
+    at eval (eval at create (E:\snesai\node_modules\next\dist\compiled\webpack\bundle5.js:14:9224), <anonymous>:20:1)
+-- inner error --
+TypeError: Cannot read properties of undefined (reading 'server')
+    at FlightClientEntryPlugin.createActionAssets (E:\snesai\node_modules\next\dist\build\webpack\plugins\flight-client-entry-plugin.js:665:68)
+    at E:\snesai\node_modules\next\dist\build\webpack\plugins\flight-client-entry-plugin.js:170:25
+    at fn (E:\snesai\node_modules\next\dist\compiled\webpack\bundle5.js:29:70201)
+    at _next7 (eval at create (E:\snesai\node_modules\next\dist\compiled\webpack\bundle5.js:14:9224), <anonymous>:12:17)
+    at eval (eval at create (E:\snesai\node_modules\next\dist\compiled\webpack\bundle5.js:14:9224), <anonymous>:31:1)
+caused by plugins in Compilation.hooks.processAssets
+TypeError: Cannot read properties of undefined (reading 'server')
+    at FlightClientEntryPlugin.createActionAssets (E:\snesai\node_modules\next\dist\build\webpack\plugins\flight-client-entry-plugin.js:665:68)
+    at E:\snesai\node_modules\next\dist\build\webpack\plugins\flight-client-entry-plugin.js:170:25
+    at fn (E:\snesai\node_modules\next\dist\compiled\webpack\bundle5.js:29:70201)
+    at _next7 (eval at create (E:\snesai\node_modules\next\dist\compiled\webpack\bundle5.js:14:9224), <anonymous>:12:17)
+    at eval (eval at create (E:\snesai\node_modules\next\dist\compiled\webpack\bundle5.js:14:9224), <anonymous>:31:1)
+
+
+> Build failed because of webpack errors

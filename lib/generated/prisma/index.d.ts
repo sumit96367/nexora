@@ -38,6 +38,121 @@ export type CoverLetter = $Result.DefaultSelection<Prisma.$CoverLetterPayload>
  * 
  */
 export type IndustryInsight = $Result.DefaultSelection<Prisma.$IndustryInsightPayload>
+/**
+ * Model MentorProfile
+ * 
+ */
+export type MentorProfile = $Result.DefaultSelection<Prisma.$MentorProfilePayload>
+/**
+ * Model MentorDocument
+ * 
+ */
+export type MentorDocument = $Result.DefaultSelection<Prisma.$MentorDocumentPayload>
+/**
+ * Model MentorSession
+ * 
+ */
+export type MentorSession = $Result.DefaultSelection<Prisma.$MentorSessionPayload>
+/**
+ * Model MentorConversation
+ * 
+ */
+export type MentorConversation = $Result.DefaultSelection<Prisma.$MentorConversationPayload>
+/**
+ * Model MentorMessage
+ * 
+ */
+export type MentorMessage = $Result.DefaultSelection<Prisma.$MentorMessagePayload>
+/**
+ * Model MentorRecommendation
+ * 
+ */
+export type MentorRecommendation = $Result.DefaultSelection<Prisma.$MentorRecommendationPayload>
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = $Result.DefaultSelection<Prisma.$NotificationPayload>
+/**
+ * Model RealtimeEvent
+ * 
+ */
+export type RealtimeEvent = $Result.DefaultSelection<Prisma.$RealtimeEventPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const MentorStatus: {
+  NONE: 'NONE',
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  SUSPENDED: 'SUSPENDED'
+};
+
+export type MentorStatus = (typeof MentorStatus)[keyof typeof MentorStatus]
+
+
+export const MentorDocumentStatus: {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
+export type MentorDocumentStatus = (typeof MentorDocumentStatus)[keyof typeof MentorDocumentStatus]
+
+
+export const MentorSessionStatus: {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
+
+export type MentorSessionStatus = (typeof MentorSessionStatus)[keyof typeof MentorSessionStatus]
+
+
+export const RecommendationVisibility: {
+  PRIVATE: 'PRIVATE',
+  DASHBOARD: 'DASHBOARD',
+  PROFILE: 'PROFILE'
+};
+
+export type RecommendationVisibility = (typeof RecommendationVisibility)[keyof typeof RecommendationVisibility]
+
+
+export const NotificationType: {
+  MENTOR_STATUS: 'MENTOR_STATUS',
+  SESSION_REQUEST: 'SESSION_REQUEST',
+  SESSION_STATUS: 'SESSION_STATUS',
+  MESSAGE: 'MESSAGE',
+  RECOMMENDATION: 'RECOMMENDATION'
+};
+
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
+
+}
+
+export type MentorStatus = $Enums.MentorStatus
+
+export const MentorStatus: typeof $Enums.MentorStatus
+
+export type MentorDocumentStatus = $Enums.MentorDocumentStatus
+
+export const MentorDocumentStatus: typeof $Enums.MentorDocumentStatus
+
+export type MentorSessionStatus = $Enums.MentorSessionStatus
+
+export const MentorSessionStatus: typeof $Enums.MentorSessionStatus
+
+export type RecommendationVisibility = $Enums.RecommendationVisibility
+
+export const RecommendationVisibility: typeof $Enums.RecommendationVisibility
+
+export type NotificationType = $Enums.NotificationType
+
+export const NotificationType: typeof $Enums.NotificationType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -55,7 +170,7 @@ export type IndustryInsight = $Result.DefaultSelection<Prisma.$IndustryInsightPa
  */
 export class PrismaClient<
   ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
-  U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
+  const U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
   ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
@@ -87,13 +202,6 @@ export class PrismaClient<
    * Disconnect from the database
    */
   $disconnect(): $Utils.JsPromise<void>;
-
-  /**
-   * Add a middleware
-   * @deprecated since 4.16.0. For new code, prefer client extensions instead.
-   * @see https://pris.ly/d/extensions
-   */
-  $use(cb: Prisma.Middleware): void
 
 /**
    * Executes a prepared raw query and returns the number of affected rows.
@@ -213,6 +321,86 @@ export class PrismaClient<
     * ```
     */
   get industryInsight(): Prisma.IndustryInsightDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.mentorProfile`: Exposes CRUD operations for the **MentorProfile** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MentorProfiles
+    * const mentorProfiles = await prisma.mentorProfile.findMany()
+    * ```
+    */
+  get mentorProfile(): Prisma.MentorProfileDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.mentorDocument`: Exposes CRUD operations for the **MentorDocument** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MentorDocuments
+    * const mentorDocuments = await prisma.mentorDocument.findMany()
+    * ```
+    */
+  get mentorDocument(): Prisma.MentorDocumentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.mentorSession`: Exposes CRUD operations for the **MentorSession** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MentorSessions
+    * const mentorSessions = await prisma.mentorSession.findMany()
+    * ```
+    */
+  get mentorSession(): Prisma.MentorSessionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.mentorConversation`: Exposes CRUD operations for the **MentorConversation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MentorConversations
+    * const mentorConversations = await prisma.mentorConversation.findMany()
+    * ```
+    */
+  get mentorConversation(): Prisma.MentorConversationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.mentorMessage`: Exposes CRUD operations for the **MentorMessage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MentorMessages
+    * const mentorMessages = await prisma.mentorMessage.findMany()
+    * ```
+    */
+  get mentorMessage(): Prisma.MentorMessageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.mentorRecommendation`: Exposes CRUD operations for the **MentorRecommendation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MentorRecommendations
+    * const mentorRecommendations = await prisma.mentorRecommendation.findMany()
+    * ```
+    */
+  get mentorRecommendation(): Prisma.MentorRecommendationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.notification`: Exposes CRUD operations for the **Notification** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Notifications
+    * const notifications = await prisma.notification.findMany()
+    * ```
+    */
+  get notification(): Prisma.NotificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.realtimeEvent`: Exposes CRUD operations for the **RealtimeEvent** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RealtimeEvents
+    * const realtimeEvents = await prisma.realtimeEvent.findMany()
+    * ```
+    */
+  get realtimeEvent(): Prisma.RealtimeEventDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -271,8 +459,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.19.0
+   * Query Engine version: 2ba551f319ab1df4bc874a89965d8b3641056773
    */
   export type PrismaVersion = {
     client: string
@@ -285,6 +473,7 @@ export namespace Prisma {
    */
 
 
+  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -657,7 +846,15 @@ export namespace Prisma {
     Assessment: 'Assessment',
     Resume: 'Resume',
     CoverLetter: 'CoverLetter',
-    IndustryInsight: 'IndustryInsight'
+    IndustryInsight: 'IndustryInsight',
+    MentorProfile: 'MentorProfile',
+    MentorDocument: 'MentorDocument',
+    MentorSession: 'MentorSession',
+    MentorConversation: 'MentorConversation',
+    MentorMessage: 'MentorMessage',
+    MentorRecommendation: 'MentorRecommendation',
+    Notification: 'Notification',
+    RealtimeEvent: 'RealtimeEvent'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -676,7 +873,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "assessment" | "resume" | "coverLetter" | "industryInsight"
+      modelProps: "user" | "assessment" | "resume" | "coverLetter" | "industryInsight" | "mentorProfile" | "mentorDocument" | "mentorSession" | "mentorConversation" | "mentorMessage" | "mentorRecommendation" | "notification" | "realtimeEvent"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1050,6 +1247,598 @@ export namespace Prisma {
           }
         }
       }
+      MentorProfile: {
+        payload: Prisma.$MentorProfilePayload<ExtArgs>
+        fields: Prisma.MentorProfileFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MentorProfileFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorProfilePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MentorProfileFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorProfilePayload>
+          }
+          findFirst: {
+            args: Prisma.MentorProfileFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorProfilePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MentorProfileFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorProfilePayload>
+          }
+          findMany: {
+            args: Prisma.MentorProfileFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorProfilePayload>[]
+          }
+          create: {
+            args: Prisma.MentorProfileCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorProfilePayload>
+          }
+          createMany: {
+            args: Prisma.MentorProfileCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MentorProfileCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorProfilePayload>[]
+          }
+          delete: {
+            args: Prisma.MentorProfileDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorProfilePayload>
+          }
+          update: {
+            args: Prisma.MentorProfileUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorProfilePayload>
+          }
+          deleteMany: {
+            args: Prisma.MentorProfileDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MentorProfileUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MentorProfileUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorProfilePayload>[]
+          }
+          upsert: {
+            args: Prisma.MentorProfileUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorProfilePayload>
+          }
+          aggregate: {
+            args: Prisma.MentorProfileAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMentorProfile>
+          }
+          groupBy: {
+            args: Prisma.MentorProfileGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MentorProfileGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MentorProfileCountArgs<ExtArgs>
+            result: $Utils.Optional<MentorProfileCountAggregateOutputType> | number
+          }
+        }
+      }
+      MentorDocument: {
+        payload: Prisma.$MentorDocumentPayload<ExtArgs>
+        fields: Prisma.MentorDocumentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MentorDocumentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorDocumentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MentorDocumentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorDocumentPayload>
+          }
+          findFirst: {
+            args: Prisma.MentorDocumentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorDocumentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MentorDocumentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorDocumentPayload>
+          }
+          findMany: {
+            args: Prisma.MentorDocumentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorDocumentPayload>[]
+          }
+          create: {
+            args: Prisma.MentorDocumentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorDocumentPayload>
+          }
+          createMany: {
+            args: Prisma.MentorDocumentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MentorDocumentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorDocumentPayload>[]
+          }
+          delete: {
+            args: Prisma.MentorDocumentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorDocumentPayload>
+          }
+          update: {
+            args: Prisma.MentorDocumentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorDocumentPayload>
+          }
+          deleteMany: {
+            args: Prisma.MentorDocumentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MentorDocumentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MentorDocumentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorDocumentPayload>[]
+          }
+          upsert: {
+            args: Prisma.MentorDocumentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorDocumentPayload>
+          }
+          aggregate: {
+            args: Prisma.MentorDocumentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMentorDocument>
+          }
+          groupBy: {
+            args: Prisma.MentorDocumentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MentorDocumentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MentorDocumentCountArgs<ExtArgs>
+            result: $Utils.Optional<MentorDocumentCountAggregateOutputType> | number
+          }
+        }
+      }
+      MentorSession: {
+        payload: Prisma.$MentorSessionPayload<ExtArgs>
+        fields: Prisma.MentorSessionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MentorSessionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorSessionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MentorSessionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorSessionPayload>
+          }
+          findFirst: {
+            args: Prisma.MentorSessionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorSessionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MentorSessionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorSessionPayload>
+          }
+          findMany: {
+            args: Prisma.MentorSessionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorSessionPayload>[]
+          }
+          create: {
+            args: Prisma.MentorSessionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorSessionPayload>
+          }
+          createMany: {
+            args: Prisma.MentorSessionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MentorSessionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorSessionPayload>[]
+          }
+          delete: {
+            args: Prisma.MentorSessionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorSessionPayload>
+          }
+          update: {
+            args: Prisma.MentorSessionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorSessionPayload>
+          }
+          deleteMany: {
+            args: Prisma.MentorSessionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MentorSessionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MentorSessionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorSessionPayload>[]
+          }
+          upsert: {
+            args: Prisma.MentorSessionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorSessionPayload>
+          }
+          aggregate: {
+            args: Prisma.MentorSessionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMentorSession>
+          }
+          groupBy: {
+            args: Prisma.MentorSessionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MentorSessionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MentorSessionCountArgs<ExtArgs>
+            result: $Utils.Optional<MentorSessionCountAggregateOutputType> | number
+          }
+        }
+      }
+      MentorConversation: {
+        payload: Prisma.$MentorConversationPayload<ExtArgs>
+        fields: Prisma.MentorConversationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MentorConversationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorConversationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MentorConversationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorConversationPayload>
+          }
+          findFirst: {
+            args: Prisma.MentorConversationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorConversationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MentorConversationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorConversationPayload>
+          }
+          findMany: {
+            args: Prisma.MentorConversationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorConversationPayload>[]
+          }
+          create: {
+            args: Prisma.MentorConversationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorConversationPayload>
+          }
+          createMany: {
+            args: Prisma.MentorConversationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MentorConversationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorConversationPayload>[]
+          }
+          delete: {
+            args: Prisma.MentorConversationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorConversationPayload>
+          }
+          update: {
+            args: Prisma.MentorConversationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorConversationPayload>
+          }
+          deleteMany: {
+            args: Prisma.MentorConversationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MentorConversationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MentorConversationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorConversationPayload>[]
+          }
+          upsert: {
+            args: Prisma.MentorConversationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorConversationPayload>
+          }
+          aggregate: {
+            args: Prisma.MentorConversationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMentorConversation>
+          }
+          groupBy: {
+            args: Prisma.MentorConversationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MentorConversationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MentorConversationCountArgs<ExtArgs>
+            result: $Utils.Optional<MentorConversationCountAggregateOutputType> | number
+          }
+        }
+      }
+      MentorMessage: {
+        payload: Prisma.$MentorMessagePayload<ExtArgs>
+        fields: Prisma.MentorMessageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MentorMessageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorMessagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MentorMessageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorMessagePayload>
+          }
+          findFirst: {
+            args: Prisma.MentorMessageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorMessagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MentorMessageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorMessagePayload>
+          }
+          findMany: {
+            args: Prisma.MentorMessageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorMessagePayload>[]
+          }
+          create: {
+            args: Prisma.MentorMessageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorMessagePayload>
+          }
+          createMany: {
+            args: Prisma.MentorMessageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MentorMessageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorMessagePayload>[]
+          }
+          delete: {
+            args: Prisma.MentorMessageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorMessagePayload>
+          }
+          update: {
+            args: Prisma.MentorMessageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorMessagePayload>
+          }
+          deleteMany: {
+            args: Prisma.MentorMessageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MentorMessageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MentorMessageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorMessagePayload>[]
+          }
+          upsert: {
+            args: Prisma.MentorMessageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorMessagePayload>
+          }
+          aggregate: {
+            args: Prisma.MentorMessageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMentorMessage>
+          }
+          groupBy: {
+            args: Prisma.MentorMessageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MentorMessageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MentorMessageCountArgs<ExtArgs>
+            result: $Utils.Optional<MentorMessageCountAggregateOutputType> | number
+          }
+        }
+      }
+      MentorRecommendation: {
+        payload: Prisma.$MentorRecommendationPayload<ExtArgs>
+        fields: Prisma.MentorRecommendationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MentorRecommendationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorRecommendationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MentorRecommendationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorRecommendationPayload>
+          }
+          findFirst: {
+            args: Prisma.MentorRecommendationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorRecommendationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MentorRecommendationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorRecommendationPayload>
+          }
+          findMany: {
+            args: Prisma.MentorRecommendationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorRecommendationPayload>[]
+          }
+          create: {
+            args: Prisma.MentorRecommendationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorRecommendationPayload>
+          }
+          createMany: {
+            args: Prisma.MentorRecommendationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MentorRecommendationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorRecommendationPayload>[]
+          }
+          delete: {
+            args: Prisma.MentorRecommendationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorRecommendationPayload>
+          }
+          update: {
+            args: Prisma.MentorRecommendationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorRecommendationPayload>
+          }
+          deleteMany: {
+            args: Prisma.MentorRecommendationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MentorRecommendationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MentorRecommendationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorRecommendationPayload>[]
+          }
+          upsert: {
+            args: Prisma.MentorRecommendationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorRecommendationPayload>
+          }
+          aggregate: {
+            args: Prisma.MentorRecommendationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMentorRecommendation>
+          }
+          groupBy: {
+            args: Prisma.MentorRecommendationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MentorRecommendationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MentorRecommendationCountArgs<ExtArgs>
+            result: $Utils.Optional<MentorRecommendationCountAggregateOutputType> | number
+          }
+        }
+      }
+      Notification: {
+        payload: Prisma.$NotificationPayload<ExtArgs>
+        fields: Prisma.NotificationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NotificationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NotificationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          findFirst: {
+            args: Prisma.NotificationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NotificationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          findMany: {
+            args: Prisma.NotificationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+          }
+          create: {
+            args: Prisma.NotificationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          createMany: {
+            args: Prisma.NotificationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NotificationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+          }
+          delete: {
+            args: Prisma.NotificationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          update: {
+            args: Prisma.NotificationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          deleteMany: {
+            args: Prisma.NotificationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NotificationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NotificationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+          }
+          upsert: {
+            args: Prisma.NotificationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          aggregate: {
+            args: Prisma.NotificationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNotification>
+          }
+          groupBy: {
+            args: Prisma.NotificationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NotificationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NotificationCountArgs<ExtArgs>
+            result: $Utils.Optional<NotificationCountAggregateOutputType> | number
+          }
+        }
+      }
+      RealtimeEvent: {
+        payload: Prisma.$RealtimeEventPayload<ExtArgs>
+        fields: Prisma.RealtimeEventFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RealtimeEventFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealtimeEventPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RealtimeEventFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealtimeEventPayload>
+          }
+          findFirst: {
+            args: Prisma.RealtimeEventFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealtimeEventPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RealtimeEventFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealtimeEventPayload>
+          }
+          findMany: {
+            args: Prisma.RealtimeEventFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealtimeEventPayload>[]
+          }
+          create: {
+            args: Prisma.RealtimeEventCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealtimeEventPayload>
+          }
+          createMany: {
+            args: Prisma.RealtimeEventCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RealtimeEventCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealtimeEventPayload>[]
+          }
+          delete: {
+            args: Prisma.RealtimeEventDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealtimeEventPayload>
+          }
+          update: {
+            args: Prisma.RealtimeEventUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealtimeEventPayload>
+          }
+          deleteMany: {
+            args: Prisma.RealtimeEventDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RealtimeEventUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RealtimeEventUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealtimeEventPayload>[]
+          }
+          upsert: {
+            args: Prisma.RealtimeEventUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealtimeEventPayload>
+          }
+          aggregate: {
+            args: Prisma.RealtimeEventAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRealtimeEvent>
+          }
+          groupBy: {
+            args: Prisma.RealtimeEventGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RealtimeEventGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RealtimeEventCountArgs<ExtArgs>
+            result: $Utils.Optional<RealtimeEventCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1093,16 +1882,24 @@ export namespace Prisma {
     /**
      * @example
      * ```
-     * // Defaults to stdout
+     * // Shorthand for `emit: 'stdout'`
      * log: ['query', 'info', 'warn', 'error']
      * 
-     * // Emit as events
+     * // Emit as events only
      * log: [
-     *   { emit: 'stdout', level: 'query' },
-     *   { emit: 'stdout', level: 'info' },
-     *   { emit: 'stdout', level: 'warn' }
-     *   { emit: 'stdout', level: 'error' }
+     *   { emit: 'event', level: 'query' },
+     *   { emit: 'event', level: 'info' },
+     *   { emit: 'event', level: 'warn' }
+     *   { emit: 'event', level: 'error' }
      * ]
+     * 
+     * / Emit as events and log to stdout
+     * og: [
+     *  { emit: 'stdout', level: 'query' },
+     *  { emit: 'stdout', level: 'info' },
+     *  { emit: 'stdout', level: 'warn' }
+     *  { emit: 'stdout', level: 'error' }
+     * 
      * ```
      * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
      */
@@ -1117,6 +1914,10 @@ export namespace Prisma {
       timeout?: number
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
+    /**
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.SqlDriverAdapterFactory | null
     /**
      * Global configuration for omitting model fields by default.
      * 
@@ -1139,6 +1940,14 @@ export namespace Prisma {
     resume?: ResumeOmit
     coverLetter?: CoverLetterOmit
     industryInsight?: IndustryInsightOmit
+    mentorProfile?: MentorProfileOmit
+    mentorDocument?: MentorDocumentOmit
+    mentorSession?: MentorSessionOmit
+    mentorConversation?: MentorConversationOmit
+    mentorMessage?: MentorMessageOmit
+    mentorRecommendation?: MentorRecommendationOmit
+    notification?: NotificationOmit
+    realtimeEvent?: RealtimeEventOmit
   }
 
   /* Types for Logging */
@@ -1148,10 +1957,15 @@ export namespace Prisma {
     emit: 'stdout' | 'event'
   }
 
-  export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
-  export type GetEvents<T extends any> = T extends Array<LogLevel | LogDefinition> ?
-    GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
-    : never
+  export type CheckIsLogLevel<T> = T extends LogLevel ? T : never;
+
+  export type GetLogType<T> = CheckIsLogLevel<
+    T extends LogDefinition ? T['level'] : T
+  >;
+
+  export type GetEvents<T extends any[]> = T extends Array<LogLevel | LogDefinition>
+    ? GetLogType<T[number]>
+    : never;
 
   export type QueryEvent = {
     timestamp: Date
@@ -1192,25 +2006,6 @@ export namespace Prisma {
     | 'findRaw'
     | 'groupBy'
 
-  /**
-   * These options are being passed into the middleware as "params"
-   */
-  export type MiddlewareParams = {
-    model?: ModelName
-    action: PrismaAction
-    args: any
-    dataPath: string[]
-    runInTransaction: boolean
-  }
-
-  /**
-   * The `T` type makes sure, that the `return proceed` is not forgotten in the middleware implementation
-   */
-  export type Middleware<T = any> = (
-    params: MiddlewareParams,
-    next: (params: MiddlewareParams) => $Utils.JsPromise<T>,
-  ) => $Utils.JsPromise<T>
-
   // tested in getLogLevel.test.ts
   export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
 
@@ -1235,11 +2030,21 @@ export namespace Prisma {
   export type UserCountOutputType = {
     assessments: number
     coverLetter: number
+    mentorSessions: number
+    conversations: number
+    messages: number
+    recommendations: number
+    notifications: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     assessments?: boolean | UserCountOutputTypeCountAssessmentsArgs
     coverLetter?: boolean | UserCountOutputTypeCountCoverLetterArgs
+    mentorSessions?: boolean | UserCountOutputTypeCountMentorSessionsArgs
+    conversations?: boolean | UserCountOutputTypeCountConversationsArgs
+    messages?: boolean | UserCountOutputTypeCountMessagesArgs
+    recommendations?: boolean | UserCountOutputTypeCountRecommendationsArgs
+    notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
   }
 
   // Custom InputTypes
@@ -1265,6 +2070,41 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCoverLetterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CoverLetterWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountMentorSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorSessionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountConversationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorConversationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorMessageWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRecommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorRecommendationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NotificationWhereInput
   }
 
 
@@ -1296,6 +2136,135 @@ export namespace Prisma {
    */
   export type IndustryInsightCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserWhereInput
+  }
+
+
+  /**
+   * Count Type MentorProfileCountOutputType
+   */
+
+  export type MentorProfileCountOutputType = {
+    proofDocuments: number
+    sessions: number
+    conversations: number
+    recommendations: number
+    realtimeEvents: number
+  }
+
+  export type MentorProfileCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proofDocuments?: boolean | MentorProfileCountOutputTypeCountProofDocumentsArgs
+    sessions?: boolean | MentorProfileCountOutputTypeCountSessionsArgs
+    conversations?: boolean | MentorProfileCountOutputTypeCountConversationsArgs
+    recommendations?: boolean | MentorProfileCountOutputTypeCountRecommendationsArgs
+    realtimeEvents?: boolean | MentorProfileCountOutputTypeCountRealtimeEventsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MentorProfileCountOutputType without action
+   */
+  export type MentorProfileCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfileCountOutputType
+     */
+    select?: MentorProfileCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MentorProfileCountOutputType without action
+   */
+  export type MentorProfileCountOutputTypeCountProofDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorDocumentWhereInput
+  }
+
+  /**
+   * MentorProfileCountOutputType without action
+   */
+  export type MentorProfileCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorSessionWhereInput
+  }
+
+  /**
+   * MentorProfileCountOutputType without action
+   */
+  export type MentorProfileCountOutputTypeCountConversationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorConversationWhereInput
+  }
+
+  /**
+   * MentorProfileCountOutputType without action
+   */
+  export type MentorProfileCountOutputTypeCountRecommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorRecommendationWhereInput
+  }
+
+  /**
+   * MentorProfileCountOutputType without action
+   */
+  export type MentorProfileCountOutputTypeCountRealtimeEventsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RealtimeEventWhereInput
+  }
+
+
+  /**
+   * Count Type MentorSessionCountOutputType
+   */
+
+  export type MentorSessionCountOutputType = {
+    recommendations: number
+  }
+
+  export type MentorSessionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    recommendations?: boolean | MentorSessionCountOutputTypeCountRecommendationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MentorSessionCountOutputType without action
+   */
+  export type MentorSessionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSessionCountOutputType
+     */
+    select?: MentorSessionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MentorSessionCountOutputType without action
+   */
+  export type MentorSessionCountOutputTypeCountRecommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorRecommendationWhereInput
+  }
+
+
+  /**
+   * Count Type MentorConversationCountOutputType
+   */
+
+  export type MentorConversationCountOutputType = {
+    messages: number
+  }
+
+  export type MentorConversationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    messages?: boolean | MentorConversationCountOutputTypeCountMessagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MentorConversationCountOutputType without action
+   */
+  export type MentorConversationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversationCountOutputType
+     */
+    select?: MentorConversationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MentorConversationCountOutputType without action
+   */
+  export type MentorConversationCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorMessageWhereInput
   }
 
 
@@ -1334,6 +2303,9 @@ export namespace Prisma {
     updatedAt: Date | null
     bio: string | null
     experience: number | null
+    mentorStatus: $Enums.MentorStatus | null
+    mentorStatusReason: string | null
+    mentorStatusUpdatedAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1347,6 +2319,9 @@ export namespace Prisma {
     updatedAt: Date | null
     bio: string | null
     experience: number | null
+    mentorStatus: $Enums.MentorStatus | null
+    mentorStatusReason: string | null
+    mentorStatusUpdatedAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1361,6 +2336,9 @@ export namespace Prisma {
     bio: number
     experience: number
     skills: number
+    mentorStatus: number
+    mentorStatusReason: number
+    mentorStatusUpdatedAt: number
     _all: number
   }
 
@@ -1384,6 +2362,9 @@ export namespace Prisma {
     updatedAt?: true
     bio?: true
     experience?: true
+    mentorStatus?: true
+    mentorStatusReason?: true
+    mentorStatusUpdatedAt?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1397,6 +2378,9 @@ export namespace Prisma {
     updatedAt?: true
     bio?: true
     experience?: true
+    mentorStatus?: true
+    mentorStatusReason?: true
+    mentorStatusUpdatedAt?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1411,6 +2395,9 @@ export namespace Prisma {
     bio?: true
     experience?: true
     skills?: true
+    mentorStatus?: true
+    mentorStatusReason?: true
+    mentorStatusUpdatedAt?: true
     _all?: true
   }
 
@@ -1512,6 +2499,9 @@ export namespace Prisma {
     bio: string | null
     experience: number | null
     skills: string[]
+    mentorStatus: $Enums.MentorStatus
+    mentorStatusReason: string | null
+    mentorStatusUpdatedAt: Date | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1545,10 +2535,19 @@ export namespace Prisma {
     bio?: boolean
     experience?: boolean
     skills?: boolean
+    mentorStatus?: boolean
+    mentorStatusReason?: boolean
+    mentorStatusUpdatedAt?: boolean
     industryInsight?: boolean | User$industryInsightArgs<ExtArgs>
     assessments?: boolean | User$assessmentsArgs<ExtArgs>
     resume?: boolean | User$resumeArgs<ExtArgs>
     coverLetter?: boolean | User$coverLetterArgs<ExtArgs>
+    mentorProfile?: boolean | User$mentorProfileArgs<ExtArgs>
+    mentorSessions?: boolean | User$mentorSessionsArgs<ExtArgs>
+    conversations?: boolean | User$conversationsArgs<ExtArgs>
+    messages?: boolean | User$messagesArgs<ExtArgs>
+    recommendations?: boolean | User$recommendationsArgs<ExtArgs>
+    notifications?: boolean | User$notificationsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1564,6 +2563,9 @@ export namespace Prisma {
     bio?: boolean
     experience?: boolean
     skills?: boolean
+    mentorStatus?: boolean
+    mentorStatusReason?: boolean
+    mentorStatusUpdatedAt?: boolean
     industryInsight?: boolean | User$industryInsightArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1579,6 +2581,9 @@ export namespace Prisma {
     bio?: boolean
     experience?: boolean
     skills?: boolean
+    mentorStatus?: boolean
+    mentorStatusReason?: boolean
+    mentorStatusUpdatedAt?: boolean
     industryInsight?: boolean | User$industryInsightArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1594,14 +2599,23 @@ export namespace Prisma {
     bio?: boolean
     experience?: boolean
     skills?: boolean
+    mentorStatus?: boolean
+    mentorStatusReason?: boolean
+    mentorStatusUpdatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkUserId" | "email" | "name" | "imageUrl" | "industry" | "createdAt" | "updatedAt" | "bio" | "experience" | "skills", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkUserId" | "email" | "name" | "imageUrl" | "industry" | "createdAt" | "updatedAt" | "bio" | "experience" | "skills" | "mentorStatus" | "mentorStatusReason" | "mentorStatusUpdatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     industryInsight?: boolean | User$industryInsightArgs<ExtArgs>
     assessments?: boolean | User$assessmentsArgs<ExtArgs>
     resume?: boolean | User$resumeArgs<ExtArgs>
     coverLetter?: boolean | User$coverLetterArgs<ExtArgs>
+    mentorProfile?: boolean | User$mentorProfileArgs<ExtArgs>
+    mentorSessions?: boolean | User$mentorSessionsArgs<ExtArgs>
+    conversations?: boolean | User$conversationsArgs<ExtArgs>
+    messages?: boolean | User$messagesArgs<ExtArgs>
+    recommendations?: boolean | User$recommendationsArgs<ExtArgs>
+    notifications?: boolean | User$notificationsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1618,6 +2632,12 @@ export namespace Prisma {
       assessments: Prisma.$AssessmentPayload<ExtArgs>[]
       resume: Prisma.$ResumePayload<ExtArgs> | null
       coverLetter: Prisma.$CoverLetterPayload<ExtArgs>[]
+      mentorProfile: Prisma.$MentorProfilePayload<ExtArgs> | null
+      mentorSessions: Prisma.$MentorSessionPayload<ExtArgs>[]
+      conversations: Prisma.$MentorConversationPayload<ExtArgs>[]
+      messages: Prisma.$MentorMessagePayload<ExtArgs>[]
+      recommendations: Prisma.$MentorRecommendationPayload<ExtArgs>[]
+      notifications: Prisma.$NotificationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1631,6 +2651,9 @@ export namespace Prisma {
       bio: string | null
       experience: number | null
       skills: string[]
+      mentorStatus: $Enums.MentorStatus
+      mentorStatusReason: string | null
+      mentorStatusUpdatedAt: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2029,6 +3052,12 @@ export namespace Prisma {
     assessments<T extends User$assessmentsArgs<ExtArgs> = {}>(args?: Subset<T, User$assessmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     resume<T extends User$resumeArgs<ExtArgs> = {}>(args?: Subset<T, User$resumeArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     coverLetter<T extends User$coverLetterArgs<ExtArgs> = {}>(args?: Subset<T, User$coverLetterArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    mentorProfile<T extends User$mentorProfileArgs<ExtArgs> = {}>(args?: Subset<T, User$mentorProfileArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    mentorSessions<T extends User$mentorSessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$mentorSessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    conversations<T extends User$conversationsArgs<ExtArgs> = {}>(args?: Subset<T, User$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    messages<T extends User$messagesArgs<ExtArgs> = {}>(args?: Subset<T, User$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    recommendations<T extends User$recommendationsArgs<ExtArgs> = {}>(args?: Subset<T, User$recommendationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    notifications<T extends User$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2069,6 +3098,9 @@ export namespace Prisma {
     readonly bio: FieldRef<"User", 'String'>
     readonly experience: FieldRef<"User", 'Int'>
     readonly skills: FieldRef<"User", 'String[]'>
+    readonly mentorStatus: FieldRef<"User", 'MentorStatus'>
+    readonly mentorStatusReason: FieldRef<"User", 'String'>
+    readonly mentorStatusUpdatedAt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -2548,6 +3580,145 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CoverLetterScalarFieldEnum | CoverLetterScalarFieldEnum[]
+  }
+
+  /**
+   * User.mentorProfile
+   */
+  export type User$mentorProfileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+    where?: MentorProfileWhereInput
+  }
+
+  /**
+   * User.mentorSessions
+   */
+  export type User$mentorSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    where?: MentorSessionWhereInput
+    orderBy?: MentorSessionOrderByWithRelationInput | MentorSessionOrderByWithRelationInput[]
+    cursor?: MentorSessionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MentorSessionScalarFieldEnum | MentorSessionScalarFieldEnum[]
+  }
+
+  /**
+   * User.conversations
+   */
+  export type User$conversationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+    where?: MentorConversationWhereInput
+    orderBy?: MentorConversationOrderByWithRelationInput | MentorConversationOrderByWithRelationInput[]
+    cursor?: MentorConversationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MentorConversationScalarFieldEnum | MentorConversationScalarFieldEnum[]
+  }
+
+  /**
+   * User.messages
+   */
+  export type User$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+    where?: MentorMessageWhereInput
+    orderBy?: MentorMessageOrderByWithRelationInput | MentorMessageOrderByWithRelationInput[]
+    cursor?: MentorMessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MentorMessageScalarFieldEnum | MentorMessageScalarFieldEnum[]
+  }
+
+  /**
+   * User.recommendations
+   */
+  export type User$recommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    where?: MentorRecommendationWhereInput
+    orderBy?: MentorRecommendationOrderByWithRelationInput | MentorRecommendationOrderByWithRelationInput[]
+    cursor?: MentorRecommendationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MentorRecommendationScalarFieldEnum | MentorRecommendationScalarFieldEnum[]
+  }
+
+  /**
+   * User.notifications
+   */
+  export type User$notificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    where?: NotificationWhereInput
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    cursor?: NotificationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
   }
 
   /**
@@ -7091,6 +8262,9326 @@ export namespace Prisma {
 
 
   /**
+   * Model MentorProfile
+   */
+
+  export type AggregateMentorProfile = {
+    _count: MentorProfileCountAggregateOutputType | null
+    _avg: MentorProfileAvgAggregateOutputType | null
+    _sum: MentorProfileSumAggregateOutputType | null
+    _min: MentorProfileMinAggregateOutputType | null
+    _max: MentorProfileMaxAggregateOutputType | null
+  }
+
+  export type MentorProfileAvgAggregateOutputType = {
+    yearsExperience: number | null
+    hourlyRate: Decimal | null
+    ratingAverage: number | null
+  }
+
+  export type MentorProfileSumAggregateOutputType = {
+    yearsExperience: number | null
+    hourlyRate: Decimal | null
+    ratingAverage: number | null
+  }
+
+  export type MentorProfileMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    status: $Enums.MentorStatus | null
+    headline: string | null
+    bio: string | null
+    yearsExperience: number | null
+    hourlyRate: Decimal | null
+    currency: string | null
+    ratingAverage: number | null
+    submittedAt: Date | null
+    approvedAt: Date | null
+    rejectedAt: Date | null
+    rejectionReason: string | null
+    lastEventAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorProfileMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    status: $Enums.MentorStatus | null
+    headline: string | null
+    bio: string | null
+    yearsExperience: number | null
+    hourlyRate: Decimal | null
+    currency: string | null
+    ratingAverage: number | null
+    submittedAt: Date | null
+    approvedAt: Date | null
+    rejectedAt: Date | null
+    rejectionReason: string | null
+    lastEventAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorProfileCountAggregateOutputType = {
+    id: number
+    userId: number
+    status: number
+    headline: number
+    bio: number
+    yearsExperience: number
+    industries: number
+    skills: number
+    hourlyRate: number
+    currency: number
+    availability: number
+    ratingAverage: number
+    submittedAt: number
+    approvedAt: number
+    rejectedAt: number
+    rejectionReason: number
+    lastEventAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MentorProfileAvgAggregateInputType = {
+    yearsExperience?: true
+    hourlyRate?: true
+    ratingAverage?: true
+  }
+
+  export type MentorProfileSumAggregateInputType = {
+    yearsExperience?: true
+    hourlyRate?: true
+    ratingAverage?: true
+  }
+
+  export type MentorProfileMinAggregateInputType = {
+    id?: true
+    userId?: true
+    status?: true
+    headline?: true
+    bio?: true
+    yearsExperience?: true
+    hourlyRate?: true
+    currency?: true
+    ratingAverage?: true
+    submittedAt?: true
+    approvedAt?: true
+    rejectedAt?: true
+    rejectionReason?: true
+    lastEventAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorProfileMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    status?: true
+    headline?: true
+    bio?: true
+    yearsExperience?: true
+    hourlyRate?: true
+    currency?: true
+    ratingAverage?: true
+    submittedAt?: true
+    approvedAt?: true
+    rejectedAt?: true
+    rejectionReason?: true
+    lastEventAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorProfileCountAggregateInputType = {
+    id?: true
+    userId?: true
+    status?: true
+    headline?: true
+    bio?: true
+    yearsExperience?: true
+    industries?: true
+    skills?: true
+    hourlyRate?: true
+    currency?: true
+    availability?: true
+    ratingAverage?: true
+    submittedAt?: true
+    approvedAt?: true
+    rejectedAt?: true
+    rejectionReason?: true
+    lastEventAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MentorProfileAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorProfile to aggregate.
+     */
+    where?: MentorProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorProfiles to fetch.
+     */
+    orderBy?: MentorProfileOrderByWithRelationInput | MentorProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MentorProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorProfiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorProfiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MentorProfiles
+    **/
+    _count?: true | MentorProfileCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MentorProfileAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MentorProfileSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MentorProfileMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MentorProfileMaxAggregateInputType
+  }
+
+  export type GetMentorProfileAggregateType<T extends MentorProfileAggregateArgs> = {
+        [P in keyof T & keyof AggregateMentorProfile]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMentorProfile[P]>
+      : GetScalarType<T[P], AggregateMentorProfile[P]>
+  }
+
+
+
+
+  export type MentorProfileGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorProfileWhereInput
+    orderBy?: MentorProfileOrderByWithAggregationInput | MentorProfileOrderByWithAggregationInput[]
+    by: MentorProfileScalarFieldEnum[] | MentorProfileScalarFieldEnum
+    having?: MentorProfileScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MentorProfileCountAggregateInputType | true
+    _avg?: MentorProfileAvgAggregateInputType
+    _sum?: MentorProfileSumAggregateInputType
+    _min?: MentorProfileMinAggregateInputType
+    _max?: MentorProfileMaxAggregateInputType
+  }
+
+  export type MentorProfileGroupByOutputType = {
+    id: string
+    userId: string
+    status: $Enums.MentorStatus
+    headline: string | null
+    bio: string | null
+    yearsExperience: number | null
+    industries: string[]
+    skills: string[]
+    hourlyRate: Decimal | null
+    currency: string | null
+    availability: JsonValue | null
+    ratingAverage: number | null
+    submittedAt: Date
+    approvedAt: Date | null
+    rejectedAt: Date | null
+    rejectionReason: string | null
+    lastEventAt: Date
+    createdAt: Date
+    updatedAt: Date
+    _count: MentorProfileCountAggregateOutputType | null
+    _avg: MentorProfileAvgAggregateOutputType | null
+    _sum: MentorProfileSumAggregateOutputType | null
+    _min: MentorProfileMinAggregateOutputType | null
+    _max: MentorProfileMaxAggregateOutputType | null
+  }
+
+  type GetMentorProfileGroupByPayload<T extends MentorProfileGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MentorProfileGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MentorProfileGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MentorProfileGroupByOutputType[P]>
+            : GetScalarType<T[P], MentorProfileGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MentorProfileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    status?: boolean
+    headline?: boolean
+    bio?: boolean
+    yearsExperience?: boolean
+    industries?: boolean
+    skills?: boolean
+    hourlyRate?: boolean
+    currency?: boolean
+    availability?: boolean
+    ratingAverage?: boolean
+    submittedAt?: boolean
+    approvedAt?: boolean
+    rejectedAt?: boolean
+    rejectionReason?: boolean
+    lastEventAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    proofDocuments?: boolean | MentorProfile$proofDocumentsArgs<ExtArgs>
+    sessions?: boolean | MentorProfile$sessionsArgs<ExtArgs>
+    conversations?: boolean | MentorProfile$conversationsArgs<ExtArgs>
+    recommendations?: boolean | MentorProfile$recommendationsArgs<ExtArgs>
+    realtimeEvents?: boolean | MentorProfile$realtimeEventsArgs<ExtArgs>
+    _count?: boolean | MentorProfileCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorProfile"]>
+
+  export type MentorProfileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    status?: boolean
+    headline?: boolean
+    bio?: boolean
+    yearsExperience?: boolean
+    industries?: boolean
+    skills?: boolean
+    hourlyRate?: boolean
+    currency?: boolean
+    availability?: boolean
+    ratingAverage?: boolean
+    submittedAt?: boolean
+    approvedAt?: boolean
+    rejectedAt?: boolean
+    rejectionReason?: boolean
+    lastEventAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorProfile"]>
+
+  export type MentorProfileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    status?: boolean
+    headline?: boolean
+    bio?: boolean
+    yearsExperience?: boolean
+    industries?: boolean
+    skills?: boolean
+    hourlyRate?: boolean
+    currency?: boolean
+    availability?: boolean
+    ratingAverage?: boolean
+    submittedAt?: boolean
+    approvedAt?: boolean
+    rejectedAt?: boolean
+    rejectionReason?: boolean
+    lastEventAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorProfile"]>
+
+  export type MentorProfileSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    status?: boolean
+    headline?: boolean
+    bio?: boolean
+    yearsExperience?: boolean
+    industries?: boolean
+    skills?: boolean
+    hourlyRate?: boolean
+    currency?: boolean
+    availability?: boolean
+    ratingAverage?: boolean
+    submittedAt?: boolean
+    approvedAt?: boolean
+    rejectedAt?: boolean
+    rejectionReason?: boolean
+    lastEventAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MentorProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "status" | "headline" | "bio" | "yearsExperience" | "industries" | "skills" | "hourlyRate" | "currency" | "availability" | "ratingAverage" | "submittedAt" | "approvedAt" | "rejectedAt" | "rejectionReason" | "lastEventAt" | "createdAt" | "updatedAt", ExtArgs["result"]["mentorProfile"]>
+  export type MentorProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    proofDocuments?: boolean | MentorProfile$proofDocumentsArgs<ExtArgs>
+    sessions?: boolean | MentorProfile$sessionsArgs<ExtArgs>
+    conversations?: boolean | MentorProfile$conversationsArgs<ExtArgs>
+    recommendations?: boolean | MentorProfile$recommendationsArgs<ExtArgs>
+    realtimeEvents?: boolean | MentorProfile$realtimeEventsArgs<ExtArgs>
+    _count?: boolean | MentorProfileCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MentorProfileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MentorProfileIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $MentorProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MentorProfile"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      proofDocuments: Prisma.$MentorDocumentPayload<ExtArgs>[]
+      sessions: Prisma.$MentorSessionPayload<ExtArgs>[]
+      conversations: Prisma.$MentorConversationPayload<ExtArgs>[]
+      recommendations: Prisma.$MentorRecommendationPayload<ExtArgs>[]
+      realtimeEvents: Prisma.$RealtimeEventPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      status: $Enums.MentorStatus
+      headline: string | null
+      bio: string | null
+      yearsExperience: number | null
+      industries: string[]
+      skills: string[]
+      hourlyRate: Prisma.Decimal | null
+      currency: string | null
+      availability: Prisma.JsonValue | null
+      ratingAverage: number | null
+      submittedAt: Date
+      approvedAt: Date | null
+      rejectedAt: Date | null
+      rejectionReason: string | null
+      lastEventAt: Date
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["mentorProfile"]>
+    composites: {}
+  }
+
+  type MentorProfileGetPayload<S extends boolean | null | undefined | MentorProfileDefaultArgs> = $Result.GetResult<Prisma.$MentorProfilePayload, S>
+
+  type MentorProfileCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MentorProfileFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MentorProfileCountAggregateInputType | true
+    }
+
+  export interface MentorProfileDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MentorProfile'], meta: { name: 'MentorProfile' } }
+    /**
+     * Find zero or one MentorProfile that matches the filter.
+     * @param {MentorProfileFindUniqueArgs} args - Arguments to find a MentorProfile
+     * @example
+     * // Get one MentorProfile
+     * const mentorProfile = await prisma.mentorProfile.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MentorProfileFindUniqueArgs>(args: SelectSubset<T, MentorProfileFindUniqueArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MentorProfile that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MentorProfileFindUniqueOrThrowArgs} args - Arguments to find a MentorProfile
+     * @example
+     * // Get one MentorProfile
+     * const mentorProfile = await prisma.mentorProfile.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MentorProfileFindUniqueOrThrowArgs>(args: SelectSubset<T, MentorProfileFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorProfile that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorProfileFindFirstArgs} args - Arguments to find a MentorProfile
+     * @example
+     * // Get one MentorProfile
+     * const mentorProfile = await prisma.mentorProfile.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MentorProfileFindFirstArgs>(args?: SelectSubset<T, MentorProfileFindFirstArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorProfile that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorProfileFindFirstOrThrowArgs} args - Arguments to find a MentorProfile
+     * @example
+     * // Get one MentorProfile
+     * const mentorProfile = await prisma.mentorProfile.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MentorProfileFindFirstOrThrowArgs>(args?: SelectSubset<T, MentorProfileFindFirstOrThrowArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MentorProfiles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorProfileFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MentorProfiles
+     * const mentorProfiles = await prisma.mentorProfile.findMany()
+     * 
+     * // Get first 10 MentorProfiles
+     * const mentorProfiles = await prisma.mentorProfile.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mentorProfileWithIdOnly = await prisma.mentorProfile.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MentorProfileFindManyArgs>(args?: SelectSubset<T, MentorProfileFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MentorProfile.
+     * @param {MentorProfileCreateArgs} args - Arguments to create a MentorProfile.
+     * @example
+     * // Create one MentorProfile
+     * const MentorProfile = await prisma.mentorProfile.create({
+     *   data: {
+     *     // ... data to create a MentorProfile
+     *   }
+     * })
+     * 
+     */
+    create<T extends MentorProfileCreateArgs>(args: SelectSubset<T, MentorProfileCreateArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MentorProfiles.
+     * @param {MentorProfileCreateManyArgs} args - Arguments to create many MentorProfiles.
+     * @example
+     * // Create many MentorProfiles
+     * const mentorProfile = await prisma.mentorProfile.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MentorProfileCreateManyArgs>(args?: SelectSubset<T, MentorProfileCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MentorProfiles and returns the data saved in the database.
+     * @param {MentorProfileCreateManyAndReturnArgs} args - Arguments to create many MentorProfiles.
+     * @example
+     * // Create many MentorProfiles
+     * const mentorProfile = await prisma.mentorProfile.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MentorProfiles and only return the `id`
+     * const mentorProfileWithIdOnly = await prisma.mentorProfile.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MentorProfileCreateManyAndReturnArgs>(args?: SelectSubset<T, MentorProfileCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MentorProfile.
+     * @param {MentorProfileDeleteArgs} args - Arguments to delete one MentorProfile.
+     * @example
+     * // Delete one MentorProfile
+     * const MentorProfile = await prisma.mentorProfile.delete({
+     *   where: {
+     *     // ... filter to delete one MentorProfile
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MentorProfileDeleteArgs>(args: SelectSubset<T, MentorProfileDeleteArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MentorProfile.
+     * @param {MentorProfileUpdateArgs} args - Arguments to update one MentorProfile.
+     * @example
+     * // Update one MentorProfile
+     * const mentorProfile = await prisma.mentorProfile.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MentorProfileUpdateArgs>(args: SelectSubset<T, MentorProfileUpdateArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MentorProfiles.
+     * @param {MentorProfileDeleteManyArgs} args - Arguments to filter MentorProfiles to delete.
+     * @example
+     * // Delete a few MentorProfiles
+     * const { count } = await prisma.mentorProfile.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MentorProfileDeleteManyArgs>(args?: SelectSubset<T, MentorProfileDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorProfiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorProfileUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MentorProfiles
+     * const mentorProfile = await prisma.mentorProfile.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MentorProfileUpdateManyArgs>(args: SelectSubset<T, MentorProfileUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorProfiles and returns the data updated in the database.
+     * @param {MentorProfileUpdateManyAndReturnArgs} args - Arguments to update many MentorProfiles.
+     * @example
+     * // Update many MentorProfiles
+     * const mentorProfile = await prisma.mentorProfile.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MentorProfiles and only return the `id`
+     * const mentorProfileWithIdOnly = await prisma.mentorProfile.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MentorProfileUpdateManyAndReturnArgs>(args: SelectSubset<T, MentorProfileUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MentorProfile.
+     * @param {MentorProfileUpsertArgs} args - Arguments to update or create a MentorProfile.
+     * @example
+     * // Update or create a MentorProfile
+     * const mentorProfile = await prisma.mentorProfile.upsert({
+     *   create: {
+     *     // ... data to create a MentorProfile
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MentorProfile we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MentorProfileUpsertArgs>(args: SelectSubset<T, MentorProfileUpsertArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MentorProfiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorProfileCountArgs} args - Arguments to filter MentorProfiles to count.
+     * @example
+     * // Count the number of MentorProfiles
+     * const count = await prisma.mentorProfile.count({
+     *   where: {
+     *     // ... the filter for the MentorProfiles we want to count
+     *   }
+     * })
+    **/
+    count<T extends MentorProfileCountArgs>(
+      args?: Subset<T, MentorProfileCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MentorProfileCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MentorProfile.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorProfileAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MentorProfileAggregateArgs>(args: Subset<T, MentorProfileAggregateArgs>): Prisma.PrismaPromise<GetMentorProfileAggregateType<T>>
+
+    /**
+     * Group by MentorProfile.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorProfileGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MentorProfileGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MentorProfileGroupByArgs['orderBy'] }
+        : { orderBy?: MentorProfileGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MentorProfileGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMentorProfileGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MentorProfile model
+   */
+  readonly fields: MentorProfileFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MentorProfile.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MentorProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    proofDocuments<T extends MentorProfile$proofDocumentsArgs<ExtArgs> = {}>(args?: Subset<T, MentorProfile$proofDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sessions<T extends MentorProfile$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, MentorProfile$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    conversations<T extends MentorProfile$conversationsArgs<ExtArgs> = {}>(args?: Subset<T, MentorProfile$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    recommendations<T extends MentorProfile$recommendationsArgs<ExtArgs> = {}>(args?: Subset<T, MentorProfile$recommendationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    realtimeEvents<T extends MentorProfile$realtimeEventsArgs<ExtArgs> = {}>(args?: Subset<T, MentorProfile$realtimeEventsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MentorProfile model
+   */
+  interface MentorProfileFieldRefs {
+    readonly id: FieldRef<"MentorProfile", 'String'>
+    readonly userId: FieldRef<"MentorProfile", 'String'>
+    readonly status: FieldRef<"MentorProfile", 'MentorStatus'>
+    readonly headline: FieldRef<"MentorProfile", 'String'>
+    readonly bio: FieldRef<"MentorProfile", 'String'>
+    readonly yearsExperience: FieldRef<"MentorProfile", 'Int'>
+    readonly industries: FieldRef<"MentorProfile", 'String[]'>
+    readonly skills: FieldRef<"MentorProfile", 'String[]'>
+    readonly hourlyRate: FieldRef<"MentorProfile", 'Decimal'>
+    readonly currency: FieldRef<"MentorProfile", 'String'>
+    readonly availability: FieldRef<"MentorProfile", 'Json'>
+    readonly ratingAverage: FieldRef<"MentorProfile", 'Float'>
+    readonly submittedAt: FieldRef<"MentorProfile", 'DateTime'>
+    readonly approvedAt: FieldRef<"MentorProfile", 'DateTime'>
+    readonly rejectedAt: FieldRef<"MentorProfile", 'DateTime'>
+    readonly rejectionReason: FieldRef<"MentorProfile", 'String'>
+    readonly lastEventAt: FieldRef<"MentorProfile", 'DateTime'>
+    readonly createdAt: FieldRef<"MentorProfile", 'DateTime'>
+    readonly updatedAt: FieldRef<"MentorProfile", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MentorProfile findUnique
+   */
+  export type MentorProfileFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorProfile to fetch.
+     */
+    where: MentorProfileWhereUniqueInput
+  }
+
+  /**
+   * MentorProfile findUniqueOrThrow
+   */
+  export type MentorProfileFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorProfile to fetch.
+     */
+    where: MentorProfileWhereUniqueInput
+  }
+
+  /**
+   * MentorProfile findFirst
+   */
+  export type MentorProfileFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorProfile to fetch.
+     */
+    where?: MentorProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorProfiles to fetch.
+     */
+    orderBy?: MentorProfileOrderByWithRelationInput | MentorProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorProfiles.
+     */
+    cursor?: MentorProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorProfiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorProfiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorProfiles.
+     */
+    distinct?: MentorProfileScalarFieldEnum | MentorProfileScalarFieldEnum[]
+  }
+
+  /**
+   * MentorProfile findFirstOrThrow
+   */
+  export type MentorProfileFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorProfile to fetch.
+     */
+    where?: MentorProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorProfiles to fetch.
+     */
+    orderBy?: MentorProfileOrderByWithRelationInput | MentorProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorProfiles.
+     */
+    cursor?: MentorProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorProfiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorProfiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorProfiles.
+     */
+    distinct?: MentorProfileScalarFieldEnum | MentorProfileScalarFieldEnum[]
+  }
+
+  /**
+   * MentorProfile findMany
+   */
+  export type MentorProfileFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorProfiles to fetch.
+     */
+    where?: MentorProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorProfiles to fetch.
+     */
+    orderBy?: MentorProfileOrderByWithRelationInput | MentorProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MentorProfiles.
+     */
+    cursor?: MentorProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorProfiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorProfiles.
+     */
+    skip?: number
+    distinct?: MentorProfileScalarFieldEnum | MentorProfileScalarFieldEnum[]
+  }
+
+  /**
+   * MentorProfile create
+   */
+  export type MentorProfileCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MentorProfile.
+     */
+    data: XOR<MentorProfileCreateInput, MentorProfileUncheckedCreateInput>
+  }
+
+  /**
+   * MentorProfile createMany
+   */
+  export type MentorProfileCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MentorProfiles.
+     */
+    data: MentorProfileCreateManyInput | MentorProfileCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MentorProfile createManyAndReturn
+   */
+  export type MentorProfileCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * The data used to create many MentorProfiles.
+     */
+    data: MentorProfileCreateManyInput | MentorProfileCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorProfile update
+   */
+  export type MentorProfileUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MentorProfile.
+     */
+    data: XOR<MentorProfileUpdateInput, MentorProfileUncheckedUpdateInput>
+    /**
+     * Choose, which MentorProfile to update.
+     */
+    where: MentorProfileWhereUniqueInput
+  }
+
+  /**
+   * MentorProfile updateMany
+   */
+  export type MentorProfileUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MentorProfiles.
+     */
+    data: XOR<MentorProfileUpdateManyMutationInput, MentorProfileUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorProfiles to update
+     */
+    where?: MentorProfileWhereInput
+    /**
+     * Limit how many MentorProfiles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorProfile updateManyAndReturn
+   */
+  export type MentorProfileUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * The data used to update MentorProfiles.
+     */
+    data: XOR<MentorProfileUpdateManyMutationInput, MentorProfileUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorProfiles to update
+     */
+    where?: MentorProfileWhereInput
+    /**
+     * Limit how many MentorProfiles to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorProfile upsert
+   */
+  export type MentorProfileUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MentorProfile to update in case it exists.
+     */
+    where: MentorProfileWhereUniqueInput
+    /**
+     * In case the MentorProfile found by the `where` argument doesn't exist, create a new MentorProfile with this data.
+     */
+    create: XOR<MentorProfileCreateInput, MentorProfileUncheckedCreateInput>
+    /**
+     * In case the MentorProfile was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MentorProfileUpdateInput, MentorProfileUncheckedUpdateInput>
+  }
+
+  /**
+   * MentorProfile delete
+   */
+  export type MentorProfileDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+    /**
+     * Filter which MentorProfile to delete.
+     */
+    where: MentorProfileWhereUniqueInput
+  }
+
+  /**
+   * MentorProfile deleteMany
+   */
+  export type MentorProfileDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorProfiles to delete
+     */
+    where?: MentorProfileWhereInput
+    /**
+     * Limit how many MentorProfiles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorProfile.proofDocuments
+   */
+  export type MentorProfile$proofDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentInclude<ExtArgs> | null
+    where?: MentorDocumentWhereInput
+    orderBy?: MentorDocumentOrderByWithRelationInput | MentorDocumentOrderByWithRelationInput[]
+    cursor?: MentorDocumentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MentorDocumentScalarFieldEnum | MentorDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * MentorProfile.sessions
+   */
+  export type MentorProfile$sessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    where?: MentorSessionWhereInput
+    orderBy?: MentorSessionOrderByWithRelationInput | MentorSessionOrderByWithRelationInput[]
+    cursor?: MentorSessionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MentorSessionScalarFieldEnum | MentorSessionScalarFieldEnum[]
+  }
+
+  /**
+   * MentorProfile.conversations
+   */
+  export type MentorProfile$conversationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+    where?: MentorConversationWhereInput
+    orderBy?: MentorConversationOrderByWithRelationInput | MentorConversationOrderByWithRelationInput[]
+    cursor?: MentorConversationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MentorConversationScalarFieldEnum | MentorConversationScalarFieldEnum[]
+  }
+
+  /**
+   * MentorProfile.recommendations
+   */
+  export type MentorProfile$recommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    where?: MentorRecommendationWhereInput
+    orderBy?: MentorRecommendationOrderByWithRelationInput | MentorRecommendationOrderByWithRelationInput[]
+    cursor?: MentorRecommendationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MentorRecommendationScalarFieldEnum | MentorRecommendationScalarFieldEnum[]
+  }
+
+  /**
+   * MentorProfile.realtimeEvents
+   */
+  export type MentorProfile$realtimeEventsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventInclude<ExtArgs> | null
+    where?: RealtimeEventWhereInput
+    orderBy?: RealtimeEventOrderByWithRelationInput | RealtimeEventOrderByWithRelationInput[]
+    cursor?: RealtimeEventWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RealtimeEventScalarFieldEnum | RealtimeEventScalarFieldEnum[]
+  }
+
+  /**
+   * MentorProfile without action
+   */
+  export type MentorProfileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MentorDocument
+   */
+
+  export type AggregateMentorDocument = {
+    _count: MentorDocumentCountAggregateOutputType | null
+    _min: MentorDocumentMinAggregateOutputType | null
+    _max: MentorDocumentMaxAggregateOutputType | null
+  }
+
+  export type MentorDocumentMinAggregateOutputType = {
+    id: string | null
+    mentorId: string | null
+    type: string | null
+    url: string | null
+    status: $Enums.MentorDocumentStatus | null
+    description: string | null
+    verifiedBy: string | null
+    verifiedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorDocumentMaxAggregateOutputType = {
+    id: string | null
+    mentorId: string | null
+    type: string | null
+    url: string | null
+    status: $Enums.MentorDocumentStatus | null
+    description: string | null
+    verifiedBy: string | null
+    verifiedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorDocumentCountAggregateOutputType = {
+    id: number
+    mentorId: number
+    type: number
+    url: number
+    status: number
+    description: number
+    verifiedBy: number
+    verifiedAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MentorDocumentMinAggregateInputType = {
+    id?: true
+    mentorId?: true
+    type?: true
+    url?: true
+    status?: true
+    description?: true
+    verifiedBy?: true
+    verifiedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorDocumentMaxAggregateInputType = {
+    id?: true
+    mentorId?: true
+    type?: true
+    url?: true
+    status?: true
+    description?: true
+    verifiedBy?: true
+    verifiedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorDocumentCountAggregateInputType = {
+    id?: true
+    mentorId?: true
+    type?: true
+    url?: true
+    status?: true
+    description?: true
+    verifiedBy?: true
+    verifiedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MentorDocumentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorDocument to aggregate.
+     */
+    where?: MentorDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorDocuments to fetch.
+     */
+    orderBy?: MentorDocumentOrderByWithRelationInput | MentorDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MentorDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MentorDocuments
+    **/
+    _count?: true | MentorDocumentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MentorDocumentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MentorDocumentMaxAggregateInputType
+  }
+
+  export type GetMentorDocumentAggregateType<T extends MentorDocumentAggregateArgs> = {
+        [P in keyof T & keyof AggregateMentorDocument]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMentorDocument[P]>
+      : GetScalarType<T[P], AggregateMentorDocument[P]>
+  }
+
+
+
+
+  export type MentorDocumentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorDocumentWhereInput
+    orderBy?: MentorDocumentOrderByWithAggregationInput | MentorDocumentOrderByWithAggregationInput[]
+    by: MentorDocumentScalarFieldEnum[] | MentorDocumentScalarFieldEnum
+    having?: MentorDocumentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MentorDocumentCountAggregateInputType | true
+    _min?: MentorDocumentMinAggregateInputType
+    _max?: MentorDocumentMaxAggregateInputType
+  }
+
+  export type MentorDocumentGroupByOutputType = {
+    id: string
+    mentorId: string
+    type: string
+    url: string
+    status: $Enums.MentorDocumentStatus
+    description: string | null
+    verifiedBy: string | null
+    verifiedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MentorDocumentCountAggregateOutputType | null
+    _min: MentorDocumentMinAggregateOutputType | null
+    _max: MentorDocumentMaxAggregateOutputType | null
+  }
+
+  type GetMentorDocumentGroupByPayload<T extends MentorDocumentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MentorDocumentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MentorDocumentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MentorDocumentGroupByOutputType[P]>
+            : GetScalarType<T[P], MentorDocumentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MentorDocumentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    type?: boolean
+    url?: boolean
+    status?: boolean
+    description?: boolean
+    verifiedBy?: boolean
+    verifiedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorDocument"]>
+
+  export type MentorDocumentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    type?: boolean
+    url?: boolean
+    status?: boolean
+    description?: boolean
+    verifiedBy?: boolean
+    verifiedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorDocument"]>
+
+  export type MentorDocumentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    type?: boolean
+    url?: boolean
+    status?: boolean
+    description?: boolean
+    verifiedBy?: boolean
+    verifiedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorDocument"]>
+
+  export type MentorDocumentSelectScalar = {
+    id?: boolean
+    mentorId?: boolean
+    type?: boolean
+    url?: boolean
+    status?: boolean
+    description?: boolean
+    verifiedBy?: boolean
+    verifiedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MentorDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mentorId" | "type" | "url" | "status" | "description" | "verifiedBy" | "verifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["mentorDocument"]>
+  export type MentorDocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+  }
+  export type MentorDocumentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+  }
+  export type MentorDocumentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+  }
+
+  export type $MentorDocumentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MentorDocument"
+    objects: {
+      mentor: Prisma.$MentorProfilePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      mentorId: string
+      type: string
+      url: string
+      status: $Enums.MentorDocumentStatus
+      description: string | null
+      verifiedBy: string | null
+      verifiedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["mentorDocument"]>
+    composites: {}
+  }
+
+  type MentorDocumentGetPayload<S extends boolean | null | undefined | MentorDocumentDefaultArgs> = $Result.GetResult<Prisma.$MentorDocumentPayload, S>
+
+  type MentorDocumentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MentorDocumentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MentorDocumentCountAggregateInputType | true
+    }
+
+  export interface MentorDocumentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MentorDocument'], meta: { name: 'MentorDocument' } }
+    /**
+     * Find zero or one MentorDocument that matches the filter.
+     * @param {MentorDocumentFindUniqueArgs} args - Arguments to find a MentorDocument
+     * @example
+     * // Get one MentorDocument
+     * const mentorDocument = await prisma.mentorDocument.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MentorDocumentFindUniqueArgs>(args: SelectSubset<T, MentorDocumentFindUniqueArgs<ExtArgs>>): Prisma__MentorDocumentClient<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MentorDocument that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MentorDocumentFindUniqueOrThrowArgs} args - Arguments to find a MentorDocument
+     * @example
+     * // Get one MentorDocument
+     * const mentorDocument = await prisma.mentorDocument.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MentorDocumentFindUniqueOrThrowArgs>(args: SelectSubset<T, MentorDocumentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MentorDocumentClient<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorDocument that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorDocumentFindFirstArgs} args - Arguments to find a MentorDocument
+     * @example
+     * // Get one MentorDocument
+     * const mentorDocument = await prisma.mentorDocument.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MentorDocumentFindFirstArgs>(args?: SelectSubset<T, MentorDocumentFindFirstArgs<ExtArgs>>): Prisma__MentorDocumentClient<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorDocument that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorDocumentFindFirstOrThrowArgs} args - Arguments to find a MentorDocument
+     * @example
+     * // Get one MentorDocument
+     * const mentorDocument = await prisma.mentorDocument.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MentorDocumentFindFirstOrThrowArgs>(args?: SelectSubset<T, MentorDocumentFindFirstOrThrowArgs<ExtArgs>>): Prisma__MentorDocumentClient<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MentorDocuments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorDocumentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MentorDocuments
+     * const mentorDocuments = await prisma.mentorDocument.findMany()
+     * 
+     * // Get first 10 MentorDocuments
+     * const mentorDocuments = await prisma.mentorDocument.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mentorDocumentWithIdOnly = await prisma.mentorDocument.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MentorDocumentFindManyArgs>(args?: SelectSubset<T, MentorDocumentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MentorDocument.
+     * @param {MentorDocumentCreateArgs} args - Arguments to create a MentorDocument.
+     * @example
+     * // Create one MentorDocument
+     * const MentorDocument = await prisma.mentorDocument.create({
+     *   data: {
+     *     // ... data to create a MentorDocument
+     *   }
+     * })
+     * 
+     */
+    create<T extends MentorDocumentCreateArgs>(args: SelectSubset<T, MentorDocumentCreateArgs<ExtArgs>>): Prisma__MentorDocumentClient<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MentorDocuments.
+     * @param {MentorDocumentCreateManyArgs} args - Arguments to create many MentorDocuments.
+     * @example
+     * // Create many MentorDocuments
+     * const mentorDocument = await prisma.mentorDocument.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MentorDocumentCreateManyArgs>(args?: SelectSubset<T, MentorDocumentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MentorDocuments and returns the data saved in the database.
+     * @param {MentorDocumentCreateManyAndReturnArgs} args - Arguments to create many MentorDocuments.
+     * @example
+     * // Create many MentorDocuments
+     * const mentorDocument = await prisma.mentorDocument.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MentorDocuments and only return the `id`
+     * const mentorDocumentWithIdOnly = await prisma.mentorDocument.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MentorDocumentCreateManyAndReturnArgs>(args?: SelectSubset<T, MentorDocumentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MentorDocument.
+     * @param {MentorDocumentDeleteArgs} args - Arguments to delete one MentorDocument.
+     * @example
+     * // Delete one MentorDocument
+     * const MentorDocument = await prisma.mentorDocument.delete({
+     *   where: {
+     *     // ... filter to delete one MentorDocument
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MentorDocumentDeleteArgs>(args: SelectSubset<T, MentorDocumentDeleteArgs<ExtArgs>>): Prisma__MentorDocumentClient<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MentorDocument.
+     * @param {MentorDocumentUpdateArgs} args - Arguments to update one MentorDocument.
+     * @example
+     * // Update one MentorDocument
+     * const mentorDocument = await prisma.mentorDocument.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MentorDocumentUpdateArgs>(args: SelectSubset<T, MentorDocumentUpdateArgs<ExtArgs>>): Prisma__MentorDocumentClient<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MentorDocuments.
+     * @param {MentorDocumentDeleteManyArgs} args - Arguments to filter MentorDocuments to delete.
+     * @example
+     * // Delete a few MentorDocuments
+     * const { count } = await prisma.mentorDocument.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MentorDocumentDeleteManyArgs>(args?: SelectSubset<T, MentorDocumentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorDocuments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorDocumentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MentorDocuments
+     * const mentorDocument = await prisma.mentorDocument.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MentorDocumentUpdateManyArgs>(args: SelectSubset<T, MentorDocumentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorDocuments and returns the data updated in the database.
+     * @param {MentorDocumentUpdateManyAndReturnArgs} args - Arguments to update many MentorDocuments.
+     * @example
+     * // Update many MentorDocuments
+     * const mentorDocument = await prisma.mentorDocument.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MentorDocuments and only return the `id`
+     * const mentorDocumentWithIdOnly = await prisma.mentorDocument.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MentorDocumentUpdateManyAndReturnArgs>(args: SelectSubset<T, MentorDocumentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MentorDocument.
+     * @param {MentorDocumentUpsertArgs} args - Arguments to update or create a MentorDocument.
+     * @example
+     * // Update or create a MentorDocument
+     * const mentorDocument = await prisma.mentorDocument.upsert({
+     *   create: {
+     *     // ... data to create a MentorDocument
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MentorDocument we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MentorDocumentUpsertArgs>(args: SelectSubset<T, MentorDocumentUpsertArgs<ExtArgs>>): Prisma__MentorDocumentClient<$Result.GetResult<Prisma.$MentorDocumentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MentorDocuments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorDocumentCountArgs} args - Arguments to filter MentorDocuments to count.
+     * @example
+     * // Count the number of MentorDocuments
+     * const count = await prisma.mentorDocument.count({
+     *   where: {
+     *     // ... the filter for the MentorDocuments we want to count
+     *   }
+     * })
+    **/
+    count<T extends MentorDocumentCountArgs>(
+      args?: Subset<T, MentorDocumentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MentorDocumentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MentorDocument.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorDocumentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MentorDocumentAggregateArgs>(args: Subset<T, MentorDocumentAggregateArgs>): Prisma.PrismaPromise<GetMentorDocumentAggregateType<T>>
+
+    /**
+     * Group by MentorDocument.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorDocumentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MentorDocumentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MentorDocumentGroupByArgs['orderBy'] }
+        : { orderBy?: MentorDocumentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MentorDocumentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMentorDocumentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MentorDocument model
+   */
+  readonly fields: MentorDocumentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MentorDocument.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MentorDocumentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    mentor<T extends MentorProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MentorProfileDefaultArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MentorDocument model
+   */
+  interface MentorDocumentFieldRefs {
+    readonly id: FieldRef<"MentorDocument", 'String'>
+    readonly mentorId: FieldRef<"MentorDocument", 'String'>
+    readonly type: FieldRef<"MentorDocument", 'String'>
+    readonly url: FieldRef<"MentorDocument", 'String'>
+    readonly status: FieldRef<"MentorDocument", 'MentorDocumentStatus'>
+    readonly description: FieldRef<"MentorDocument", 'String'>
+    readonly verifiedBy: FieldRef<"MentorDocument", 'String'>
+    readonly verifiedAt: FieldRef<"MentorDocument", 'DateTime'>
+    readonly createdAt: FieldRef<"MentorDocument", 'DateTime'>
+    readonly updatedAt: FieldRef<"MentorDocument", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MentorDocument findUnique
+   */
+  export type MentorDocumentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorDocument to fetch.
+     */
+    where: MentorDocumentWhereUniqueInput
+  }
+
+  /**
+   * MentorDocument findUniqueOrThrow
+   */
+  export type MentorDocumentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorDocument to fetch.
+     */
+    where: MentorDocumentWhereUniqueInput
+  }
+
+  /**
+   * MentorDocument findFirst
+   */
+  export type MentorDocumentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorDocument to fetch.
+     */
+    where?: MentorDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorDocuments to fetch.
+     */
+    orderBy?: MentorDocumentOrderByWithRelationInput | MentorDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorDocuments.
+     */
+    cursor?: MentorDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorDocuments.
+     */
+    distinct?: MentorDocumentScalarFieldEnum | MentorDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * MentorDocument findFirstOrThrow
+   */
+  export type MentorDocumentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorDocument to fetch.
+     */
+    where?: MentorDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorDocuments to fetch.
+     */
+    orderBy?: MentorDocumentOrderByWithRelationInput | MentorDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorDocuments.
+     */
+    cursor?: MentorDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorDocuments.
+     */
+    distinct?: MentorDocumentScalarFieldEnum | MentorDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * MentorDocument findMany
+   */
+  export type MentorDocumentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorDocuments to fetch.
+     */
+    where?: MentorDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorDocuments to fetch.
+     */
+    orderBy?: MentorDocumentOrderByWithRelationInput | MentorDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MentorDocuments.
+     */
+    cursor?: MentorDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorDocuments.
+     */
+    skip?: number
+    distinct?: MentorDocumentScalarFieldEnum | MentorDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * MentorDocument create
+   */
+  export type MentorDocumentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MentorDocument.
+     */
+    data: XOR<MentorDocumentCreateInput, MentorDocumentUncheckedCreateInput>
+  }
+
+  /**
+   * MentorDocument createMany
+   */
+  export type MentorDocumentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MentorDocuments.
+     */
+    data: MentorDocumentCreateManyInput | MentorDocumentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MentorDocument createManyAndReturn
+   */
+  export type MentorDocumentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * The data used to create many MentorDocuments.
+     */
+    data: MentorDocumentCreateManyInput | MentorDocumentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorDocument update
+   */
+  export type MentorDocumentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MentorDocument.
+     */
+    data: XOR<MentorDocumentUpdateInput, MentorDocumentUncheckedUpdateInput>
+    /**
+     * Choose, which MentorDocument to update.
+     */
+    where: MentorDocumentWhereUniqueInput
+  }
+
+  /**
+   * MentorDocument updateMany
+   */
+  export type MentorDocumentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MentorDocuments.
+     */
+    data: XOR<MentorDocumentUpdateManyMutationInput, MentorDocumentUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorDocuments to update
+     */
+    where?: MentorDocumentWhereInput
+    /**
+     * Limit how many MentorDocuments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorDocument updateManyAndReturn
+   */
+  export type MentorDocumentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * The data used to update MentorDocuments.
+     */
+    data: XOR<MentorDocumentUpdateManyMutationInput, MentorDocumentUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorDocuments to update
+     */
+    where?: MentorDocumentWhereInput
+    /**
+     * Limit how many MentorDocuments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorDocument upsert
+   */
+  export type MentorDocumentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MentorDocument to update in case it exists.
+     */
+    where: MentorDocumentWhereUniqueInput
+    /**
+     * In case the MentorDocument found by the `where` argument doesn't exist, create a new MentorDocument with this data.
+     */
+    create: XOR<MentorDocumentCreateInput, MentorDocumentUncheckedCreateInput>
+    /**
+     * In case the MentorDocument was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MentorDocumentUpdateInput, MentorDocumentUncheckedUpdateInput>
+  }
+
+  /**
+   * MentorDocument delete
+   */
+  export type MentorDocumentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentInclude<ExtArgs> | null
+    /**
+     * Filter which MentorDocument to delete.
+     */
+    where: MentorDocumentWhereUniqueInput
+  }
+
+  /**
+   * MentorDocument deleteMany
+   */
+  export type MentorDocumentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorDocuments to delete
+     */
+    where?: MentorDocumentWhereInput
+    /**
+     * Limit how many MentorDocuments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorDocument without action
+   */
+  export type MentorDocumentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorDocument
+     */
+    select?: MentorDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorDocument
+     */
+    omit?: MentorDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorDocumentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MentorSession
+   */
+
+  export type AggregateMentorSession = {
+    _count: MentorSessionCountAggregateOutputType | null
+    _avg: MentorSessionAvgAggregateOutputType | null
+    _sum: MentorSessionSumAggregateOutputType | null
+    _min: MentorSessionMinAggregateOutputType | null
+    _max: MentorSessionMaxAggregateOutputType | null
+  }
+
+  export type MentorSessionAvgAggregateOutputType = {
+    durationMinutes: number | null
+    price: Decimal | null
+  }
+
+  export type MentorSessionSumAggregateOutputType = {
+    durationMinutes: number | null
+    price: Decimal | null
+  }
+
+  export type MentorSessionMinAggregateOutputType = {
+    id: string | null
+    mentorId: string | null
+    menteeId: string | null
+    status: $Enums.MentorSessionStatus | null
+    scheduledAt: Date | null
+    durationMinutes: number | null
+    price: Decimal | null
+    currency: string | null
+    notes: string | null
+    meetingUrl: string | null
+    cancelledAt: Date | null
+    cancellationReason: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorSessionMaxAggregateOutputType = {
+    id: string | null
+    mentorId: string | null
+    menteeId: string | null
+    status: $Enums.MentorSessionStatus | null
+    scheduledAt: Date | null
+    durationMinutes: number | null
+    price: Decimal | null
+    currency: string | null
+    notes: string | null
+    meetingUrl: string | null
+    cancelledAt: Date | null
+    cancellationReason: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorSessionCountAggregateOutputType = {
+    id: number
+    mentorId: number
+    menteeId: number
+    status: number
+    scheduledAt: number
+    durationMinutes: number
+    price: number
+    currency: number
+    notes: number
+    meetingUrl: number
+    cancelledAt: number
+    cancellationReason: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MentorSessionAvgAggregateInputType = {
+    durationMinutes?: true
+    price?: true
+  }
+
+  export type MentorSessionSumAggregateInputType = {
+    durationMinutes?: true
+    price?: true
+  }
+
+  export type MentorSessionMinAggregateInputType = {
+    id?: true
+    mentorId?: true
+    menteeId?: true
+    status?: true
+    scheduledAt?: true
+    durationMinutes?: true
+    price?: true
+    currency?: true
+    notes?: true
+    meetingUrl?: true
+    cancelledAt?: true
+    cancellationReason?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorSessionMaxAggregateInputType = {
+    id?: true
+    mentorId?: true
+    menteeId?: true
+    status?: true
+    scheduledAt?: true
+    durationMinutes?: true
+    price?: true
+    currency?: true
+    notes?: true
+    meetingUrl?: true
+    cancelledAt?: true
+    cancellationReason?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorSessionCountAggregateInputType = {
+    id?: true
+    mentorId?: true
+    menteeId?: true
+    status?: true
+    scheduledAt?: true
+    durationMinutes?: true
+    price?: true
+    currency?: true
+    notes?: true
+    meetingUrl?: true
+    cancelledAt?: true
+    cancellationReason?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MentorSessionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorSession to aggregate.
+     */
+    where?: MentorSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorSessions to fetch.
+     */
+    orderBy?: MentorSessionOrderByWithRelationInput | MentorSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MentorSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MentorSessions
+    **/
+    _count?: true | MentorSessionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MentorSessionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MentorSessionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MentorSessionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MentorSessionMaxAggregateInputType
+  }
+
+  export type GetMentorSessionAggregateType<T extends MentorSessionAggregateArgs> = {
+        [P in keyof T & keyof AggregateMentorSession]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMentorSession[P]>
+      : GetScalarType<T[P], AggregateMentorSession[P]>
+  }
+
+
+
+
+  export type MentorSessionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorSessionWhereInput
+    orderBy?: MentorSessionOrderByWithAggregationInput | MentorSessionOrderByWithAggregationInput[]
+    by: MentorSessionScalarFieldEnum[] | MentorSessionScalarFieldEnum
+    having?: MentorSessionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MentorSessionCountAggregateInputType | true
+    _avg?: MentorSessionAvgAggregateInputType
+    _sum?: MentorSessionSumAggregateInputType
+    _min?: MentorSessionMinAggregateInputType
+    _max?: MentorSessionMaxAggregateInputType
+  }
+
+  export type MentorSessionGroupByOutputType = {
+    id: string
+    mentorId: string
+    menteeId: string
+    status: $Enums.MentorSessionStatus
+    scheduledAt: Date
+    durationMinutes: number
+    price: Decimal | null
+    currency: string | null
+    notes: string | null
+    meetingUrl: string | null
+    cancelledAt: Date | null
+    cancellationReason: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MentorSessionCountAggregateOutputType | null
+    _avg: MentorSessionAvgAggregateOutputType | null
+    _sum: MentorSessionSumAggregateOutputType | null
+    _min: MentorSessionMinAggregateOutputType | null
+    _max: MentorSessionMaxAggregateOutputType | null
+  }
+
+  type GetMentorSessionGroupByPayload<T extends MentorSessionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MentorSessionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MentorSessionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MentorSessionGroupByOutputType[P]>
+            : GetScalarType<T[P], MentorSessionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MentorSessionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    status?: boolean
+    scheduledAt?: boolean
+    durationMinutes?: boolean
+    price?: boolean
+    currency?: boolean
+    notes?: boolean
+    meetingUrl?: boolean
+    cancelledAt?: boolean
+    cancellationReason?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+    recommendations?: boolean | MentorSession$recommendationsArgs<ExtArgs>
+    _count?: boolean | MentorSessionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorSession"]>
+
+  export type MentorSessionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    status?: boolean
+    scheduledAt?: boolean
+    durationMinutes?: boolean
+    price?: boolean
+    currency?: boolean
+    notes?: boolean
+    meetingUrl?: boolean
+    cancelledAt?: boolean
+    cancellationReason?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorSession"]>
+
+  export type MentorSessionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    status?: boolean
+    scheduledAt?: boolean
+    durationMinutes?: boolean
+    price?: boolean
+    currency?: boolean
+    notes?: boolean
+    meetingUrl?: boolean
+    cancelledAt?: boolean
+    cancellationReason?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorSession"]>
+
+  export type MentorSessionSelectScalar = {
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    status?: boolean
+    scheduledAt?: boolean
+    durationMinutes?: boolean
+    price?: boolean
+    currency?: boolean
+    notes?: boolean
+    meetingUrl?: boolean
+    cancelledAt?: boolean
+    cancellationReason?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MentorSessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mentorId" | "menteeId" | "status" | "scheduledAt" | "durationMinutes" | "price" | "currency" | "notes" | "meetingUrl" | "cancelledAt" | "cancellationReason" | "createdAt" | "updatedAt", ExtArgs["result"]["mentorSession"]>
+  export type MentorSessionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+    recommendations?: boolean | MentorSession$recommendationsArgs<ExtArgs>
+    _count?: boolean | MentorSessionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MentorSessionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MentorSessionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $MentorSessionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MentorSession"
+    objects: {
+      mentor: Prisma.$MentorProfilePayload<ExtArgs>
+      mentee: Prisma.$UserPayload<ExtArgs>
+      recommendations: Prisma.$MentorRecommendationPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      mentorId: string
+      menteeId: string
+      status: $Enums.MentorSessionStatus
+      scheduledAt: Date
+      durationMinutes: number
+      price: Prisma.Decimal | null
+      currency: string | null
+      notes: string | null
+      meetingUrl: string | null
+      cancelledAt: Date | null
+      cancellationReason: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["mentorSession"]>
+    composites: {}
+  }
+
+  type MentorSessionGetPayload<S extends boolean | null | undefined | MentorSessionDefaultArgs> = $Result.GetResult<Prisma.$MentorSessionPayload, S>
+
+  type MentorSessionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MentorSessionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MentorSessionCountAggregateInputType | true
+    }
+
+  export interface MentorSessionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MentorSession'], meta: { name: 'MentorSession' } }
+    /**
+     * Find zero or one MentorSession that matches the filter.
+     * @param {MentorSessionFindUniqueArgs} args - Arguments to find a MentorSession
+     * @example
+     * // Get one MentorSession
+     * const mentorSession = await prisma.mentorSession.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MentorSessionFindUniqueArgs>(args: SelectSubset<T, MentorSessionFindUniqueArgs<ExtArgs>>): Prisma__MentorSessionClient<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MentorSession that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MentorSessionFindUniqueOrThrowArgs} args - Arguments to find a MentorSession
+     * @example
+     * // Get one MentorSession
+     * const mentorSession = await prisma.mentorSession.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MentorSessionFindUniqueOrThrowArgs>(args: SelectSubset<T, MentorSessionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MentorSessionClient<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorSession that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorSessionFindFirstArgs} args - Arguments to find a MentorSession
+     * @example
+     * // Get one MentorSession
+     * const mentorSession = await prisma.mentorSession.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MentorSessionFindFirstArgs>(args?: SelectSubset<T, MentorSessionFindFirstArgs<ExtArgs>>): Prisma__MentorSessionClient<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorSession that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorSessionFindFirstOrThrowArgs} args - Arguments to find a MentorSession
+     * @example
+     * // Get one MentorSession
+     * const mentorSession = await prisma.mentorSession.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MentorSessionFindFirstOrThrowArgs>(args?: SelectSubset<T, MentorSessionFindFirstOrThrowArgs<ExtArgs>>): Prisma__MentorSessionClient<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MentorSessions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorSessionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MentorSessions
+     * const mentorSessions = await prisma.mentorSession.findMany()
+     * 
+     * // Get first 10 MentorSessions
+     * const mentorSessions = await prisma.mentorSession.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mentorSessionWithIdOnly = await prisma.mentorSession.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MentorSessionFindManyArgs>(args?: SelectSubset<T, MentorSessionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MentorSession.
+     * @param {MentorSessionCreateArgs} args - Arguments to create a MentorSession.
+     * @example
+     * // Create one MentorSession
+     * const MentorSession = await prisma.mentorSession.create({
+     *   data: {
+     *     // ... data to create a MentorSession
+     *   }
+     * })
+     * 
+     */
+    create<T extends MentorSessionCreateArgs>(args: SelectSubset<T, MentorSessionCreateArgs<ExtArgs>>): Prisma__MentorSessionClient<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MentorSessions.
+     * @param {MentorSessionCreateManyArgs} args - Arguments to create many MentorSessions.
+     * @example
+     * // Create many MentorSessions
+     * const mentorSession = await prisma.mentorSession.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MentorSessionCreateManyArgs>(args?: SelectSubset<T, MentorSessionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MentorSessions and returns the data saved in the database.
+     * @param {MentorSessionCreateManyAndReturnArgs} args - Arguments to create many MentorSessions.
+     * @example
+     * // Create many MentorSessions
+     * const mentorSession = await prisma.mentorSession.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MentorSessions and only return the `id`
+     * const mentorSessionWithIdOnly = await prisma.mentorSession.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MentorSessionCreateManyAndReturnArgs>(args?: SelectSubset<T, MentorSessionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MentorSession.
+     * @param {MentorSessionDeleteArgs} args - Arguments to delete one MentorSession.
+     * @example
+     * // Delete one MentorSession
+     * const MentorSession = await prisma.mentorSession.delete({
+     *   where: {
+     *     // ... filter to delete one MentorSession
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MentorSessionDeleteArgs>(args: SelectSubset<T, MentorSessionDeleteArgs<ExtArgs>>): Prisma__MentorSessionClient<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MentorSession.
+     * @param {MentorSessionUpdateArgs} args - Arguments to update one MentorSession.
+     * @example
+     * // Update one MentorSession
+     * const mentorSession = await prisma.mentorSession.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MentorSessionUpdateArgs>(args: SelectSubset<T, MentorSessionUpdateArgs<ExtArgs>>): Prisma__MentorSessionClient<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MentorSessions.
+     * @param {MentorSessionDeleteManyArgs} args - Arguments to filter MentorSessions to delete.
+     * @example
+     * // Delete a few MentorSessions
+     * const { count } = await prisma.mentorSession.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MentorSessionDeleteManyArgs>(args?: SelectSubset<T, MentorSessionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorSessionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MentorSessions
+     * const mentorSession = await prisma.mentorSession.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MentorSessionUpdateManyArgs>(args: SelectSubset<T, MentorSessionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorSessions and returns the data updated in the database.
+     * @param {MentorSessionUpdateManyAndReturnArgs} args - Arguments to update many MentorSessions.
+     * @example
+     * // Update many MentorSessions
+     * const mentorSession = await prisma.mentorSession.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MentorSessions and only return the `id`
+     * const mentorSessionWithIdOnly = await prisma.mentorSession.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MentorSessionUpdateManyAndReturnArgs>(args: SelectSubset<T, MentorSessionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MentorSession.
+     * @param {MentorSessionUpsertArgs} args - Arguments to update or create a MentorSession.
+     * @example
+     * // Update or create a MentorSession
+     * const mentorSession = await prisma.mentorSession.upsert({
+     *   create: {
+     *     // ... data to create a MentorSession
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MentorSession we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MentorSessionUpsertArgs>(args: SelectSubset<T, MentorSessionUpsertArgs<ExtArgs>>): Prisma__MentorSessionClient<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MentorSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorSessionCountArgs} args - Arguments to filter MentorSessions to count.
+     * @example
+     * // Count the number of MentorSessions
+     * const count = await prisma.mentorSession.count({
+     *   where: {
+     *     // ... the filter for the MentorSessions we want to count
+     *   }
+     * })
+    **/
+    count<T extends MentorSessionCountArgs>(
+      args?: Subset<T, MentorSessionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MentorSessionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MentorSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorSessionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MentorSessionAggregateArgs>(args: Subset<T, MentorSessionAggregateArgs>): Prisma.PrismaPromise<GetMentorSessionAggregateType<T>>
+
+    /**
+     * Group by MentorSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorSessionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MentorSessionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MentorSessionGroupByArgs['orderBy'] }
+        : { orderBy?: MentorSessionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MentorSessionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMentorSessionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MentorSession model
+   */
+  readonly fields: MentorSessionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MentorSession.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MentorSessionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    mentor<T extends MentorProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MentorProfileDefaultArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    mentee<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    recommendations<T extends MentorSession$recommendationsArgs<ExtArgs> = {}>(args?: Subset<T, MentorSession$recommendationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MentorSession model
+   */
+  interface MentorSessionFieldRefs {
+    readonly id: FieldRef<"MentorSession", 'String'>
+    readonly mentorId: FieldRef<"MentorSession", 'String'>
+    readonly menteeId: FieldRef<"MentorSession", 'String'>
+    readonly status: FieldRef<"MentorSession", 'MentorSessionStatus'>
+    readonly scheduledAt: FieldRef<"MentorSession", 'DateTime'>
+    readonly durationMinutes: FieldRef<"MentorSession", 'Int'>
+    readonly price: FieldRef<"MentorSession", 'Decimal'>
+    readonly currency: FieldRef<"MentorSession", 'String'>
+    readonly notes: FieldRef<"MentorSession", 'String'>
+    readonly meetingUrl: FieldRef<"MentorSession", 'String'>
+    readonly cancelledAt: FieldRef<"MentorSession", 'DateTime'>
+    readonly cancellationReason: FieldRef<"MentorSession", 'String'>
+    readonly createdAt: FieldRef<"MentorSession", 'DateTime'>
+    readonly updatedAt: FieldRef<"MentorSession", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MentorSession findUnique
+   */
+  export type MentorSessionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorSession to fetch.
+     */
+    where: MentorSessionWhereUniqueInput
+  }
+
+  /**
+   * MentorSession findUniqueOrThrow
+   */
+  export type MentorSessionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorSession to fetch.
+     */
+    where: MentorSessionWhereUniqueInput
+  }
+
+  /**
+   * MentorSession findFirst
+   */
+  export type MentorSessionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorSession to fetch.
+     */
+    where?: MentorSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorSessions to fetch.
+     */
+    orderBy?: MentorSessionOrderByWithRelationInput | MentorSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorSessions.
+     */
+    cursor?: MentorSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorSessions.
+     */
+    distinct?: MentorSessionScalarFieldEnum | MentorSessionScalarFieldEnum[]
+  }
+
+  /**
+   * MentorSession findFirstOrThrow
+   */
+  export type MentorSessionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorSession to fetch.
+     */
+    where?: MentorSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorSessions to fetch.
+     */
+    orderBy?: MentorSessionOrderByWithRelationInput | MentorSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorSessions.
+     */
+    cursor?: MentorSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorSessions.
+     */
+    distinct?: MentorSessionScalarFieldEnum | MentorSessionScalarFieldEnum[]
+  }
+
+  /**
+   * MentorSession findMany
+   */
+  export type MentorSessionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorSessions to fetch.
+     */
+    where?: MentorSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorSessions to fetch.
+     */
+    orderBy?: MentorSessionOrderByWithRelationInput | MentorSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MentorSessions.
+     */
+    cursor?: MentorSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorSessions.
+     */
+    skip?: number
+    distinct?: MentorSessionScalarFieldEnum | MentorSessionScalarFieldEnum[]
+  }
+
+  /**
+   * MentorSession create
+   */
+  export type MentorSessionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MentorSession.
+     */
+    data: XOR<MentorSessionCreateInput, MentorSessionUncheckedCreateInput>
+  }
+
+  /**
+   * MentorSession createMany
+   */
+  export type MentorSessionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MentorSessions.
+     */
+    data: MentorSessionCreateManyInput | MentorSessionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MentorSession createManyAndReturn
+   */
+  export type MentorSessionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * The data used to create many MentorSessions.
+     */
+    data: MentorSessionCreateManyInput | MentorSessionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorSession update
+   */
+  export type MentorSessionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MentorSession.
+     */
+    data: XOR<MentorSessionUpdateInput, MentorSessionUncheckedUpdateInput>
+    /**
+     * Choose, which MentorSession to update.
+     */
+    where: MentorSessionWhereUniqueInput
+  }
+
+  /**
+   * MentorSession updateMany
+   */
+  export type MentorSessionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MentorSessions.
+     */
+    data: XOR<MentorSessionUpdateManyMutationInput, MentorSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorSessions to update
+     */
+    where?: MentorSessionWhereInput
+    /**
+     * Limit how many MentorSessions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorSession updateManyAndReturn
+   */
+  export type MentorSessionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * The data used to update MentorSessions.
+     */
+    data: XOR<MentorSessionUpdateManyMutationInput, MentorSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorSessions to update
+     */
+    where?: MentorSessionWhereInput
+    /**
+     * Limit how many MentorSessions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorSession upsert
+   */
+  export type MentorSessionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MentorSession to update in case it exists.
+     */
+    where: MentorSessionWhereUniqueInput
+    /**
+     * In case the MentorSession found by the `where` argument doesn't exist, create a new MentorSession with this data.
+     */
+    create: XOR<MentorSessionCreateInput, MentorSessionUncheckedCreateInput>
+    /**
+     * In case the MentorSession was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MentorSessionUpdateInput, MentorSessionUncheckedUpdateInput>
+  }
+
+  /**
+   * MentorSession delete
+   */
+  export type MentorSessionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    /**
+     * Filter which MentorSession to delete.
+     */
+    where: MentorSessionWhereUniqueInput
+  }
+
+  /**
+   * MentorSession deleteMany
+   */
+  export type MentorSessionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorSessions to delete
+     */
+    where?: MentorSessionWhereInput
+    /**
+     * Limit how many MentorSessions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorSession.recommendations
+   */
+  export type MentorSession$recommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    where?: MentorRecommendationWhereInput
+    orderBy?: MentorRecommendationOrderByWithRelationInput | MentorRecommendationOrderByWithRelationInput[]
+    cursor?: MentorRecommendationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MentorRecommendationScalarFieldEnum | MentorRecommendationScalarFieldEnum[]
+  }
+
+  /**
+   * MentorSession without action
+   */
+  export type MentorSessionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MentorConversation
+   */
+
+  export type AggregateMentorConversation = {
+    _count: MentorConversationCountAggregateOutputType | null
+    _min: MentorConversationMinAggregateOutputType | null
+    _max: MentorConversationMaxAggregateOutputType | null
+  }
+
+  export type MentorConversationMinAggregateOutputType = {
+    id: string | null
+    mentorId: string | null
+    menteeId: string | null
+    lastMessageAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorConversationMaxAggregateOutputType = {
+    id: string | null
+    mentorId: string | null
+    menteeId: string | null
+    lastMessageAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorConversationCountAggregateOutputType = {
+    id: number
+    mentorId: number
+    menteeId: number
+    lastMessageAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MentorConversationMinAggregateInputType = {
+    id?: true
+    mentorId?: true
+    menteeId?: true
+    lastMessageAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorConversationMaxAggregateInputType = {
+    id?: true
+    mentorId?: true
+    menteeId?: true
+    lastMessageAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorConversationCountAggregateInputType = {
+    id?: true
+    mentorId?: true
+    menteeId?: true
+    lastMessageAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MentorConversationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorConversation to aggregate.
+     */
+    where?: MentorConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorConversations to fetch.
+     */
+    orderBy?: MentorConversationOrderByWithRelationInput | MentorConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MentorConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorConversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorConversations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MentorConversations
+    **/
+    _count?: true | MentorConversationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MentorConversationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MentorConversationMaxAggregateInputType
+  }
+
+  export type GetMentorConversationAggregateType<T extends MentorConversationAggregateArgs> = {
+        [P in keyof T & keyof AggregateMentorConversation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMentorConversation[P]>
+      : GetScalarType<T[P], AggregateMentorConversation[P]>
+  }
+
+
+
+
+  export type MentorConversationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorConversationWhereInput
+    orderBy?: MentorConversationOrderByWithAggregationInput | MentorConversationOrderByWithAggregationInput[]
+    by: MentorConversationScalarFieldEnum[] | MentorConversationScalarFieldEnum
+    having?: MentorConversationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MentorConversationCountAggregateInputType | true
+    _min?: MentorConversationMinAggregateInputType
+    _max?: MentorConversationMaxAggregateInputType
+  }
+
+  export type MentorConversationGroupByOutputType = {
+    id: string
+    mentorId: string
+    menteeId: string
+    lastMessageAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MentorConversationCountAggregateOutputType | null
+    _min: MentorConversationMinAggregateOutputType | null
+    _max: MentorConversationMaxAggregateOutputType | null
+  }
+
+  type GetMentorConversationGroupByPayload<T extends MentorConversationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MentorConversationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MentorConversationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MentorConversationGroupByOutputType[P]>
+            : GetScalarType<T[P], MentorConversationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MentorConversationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    lastMessageAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+    messages?: boolean | MentorConversation$messagesArgs<ExtArgs>
+    _count?: boolean | MentorConversationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorConversation"]>
+
+  export type MentorConversationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    lastMessageAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorConversation"]>
+
+  export type MentorConversationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    lastMessageAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorConversation"]>
+
+  export type MentorConversationSelectScalar = {
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    lastMessageAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MentorConversationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mentorId" | "menteeId" | "lastMessageAt" | "createdAt" | "updatedAt", ExtArgs["result"]["mentorConversation"]>
+  export type MentorConversationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+    messages?: boolean | MentorConversation$messagesArgs<ExtArgs>
+    _count?: boolean | MentorConversationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MentorConversationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MentorConversationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $MentorConversationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MentorConversation"
+    objects: {
+      mentor: Prisma.$MentorProfilePayload<ExtArgs>
+      mentee: Prisma.$UserPayload<ExtArgs>
+      messages: Prisma.$MentorMessagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      mentorId: string
+      menteeId: string
+      lastMessageAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["mentorConversation"]>
+    composites: {}
+  }
+
+  type MentorConversationGetPayload<S extends boolean | null | undefined | MentorConversationDefaultArgs> = $Result.GetResult<Prisma.$MentorConversationPayload, S>
+
+  type MentorConversationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MentorConversationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MentorConversationCountAggregateInputType | true
+    }
+
+  export interface MentorConversationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MentorConversation'], meta: { name: 'MentorConversation' } }
+    /**
+     * Find zero or one MentorConversation that matches the filter.
+     * @param {MentorConversationFindUniqueArgs} args - Arguments to find a MentorConversation
+     * @example
+     * // Get one MentorConversation
+     * const mentorConversation = await prisma.mentorConversation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MentorConversationFindUniqueArgs>(args: SelectSubset<T, MentorConversationFindUniqueArgs<ExtArgs>>): Prisma__MentorConversationClient<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MentorConversation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MentorConversationFindUniqueOrThrowArgs} args - Arguments to find a MentorConversation
+     * @example
+     * // Get one MentorConversation
+     * const mentorConversation = await prisma.mentorConversation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MentorConversationFindUniqueOrThrowArgs>(args: SelectSubset<T, MentorConversationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MentorConversationClient<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorConversation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorConversationFindFirstArgs} args - Arguments to find a MentorConversation
+     * @example
+     * // Get one MentorConversation
+     * const mentorConversation = await prisma.mentorConversation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MentorConversationFindFirstArgs>(args?: SelectSubset<T, MentorConversationFindFirstArgs<ExtArgs>>): Prisma__MentorConversationClient<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorConversation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorConversationFindFirstOrThrowArgs} args - Arguments to find a MentorConversation
+     * @example
+     * // Get one MentorConversation
+     * const mentorConversation = await prisma.mentorConversation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MentorConversationFindFirstOrThrowArgs>(args?: SelectSubset<T, MentorConversationFindFirstOrThrowArgs<ExtArgs>>): Prisma__MentorConversationClient<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MentorConversations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorConversationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MentorConversations
+     * const mentorConversations = await prisma.mentorConversation.findMany()
+     * 
+     * // Get first 10 MentorConversations
+     * const mentorConversations = await prisma.mentorConversation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mentorConversationWithIdOnly = await prisma.mentorConversation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MentorConversationFindManyArgs>(args?: SelectSubset<T, MentorConversationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MentorConversation.
+     * @param {MentorConversationCreateArgs} args - Arguments to create a MentorConversation.
+     * @example
+     * // Create one MentorConversation
+     * const MentorConversation = await prisma.mentorConversation.create({
+     *   data: {
+     *     // ... data to create a MentorConversation
+     *   }
+     * })
+     * 
+     */
+    create<T extends MentorConversationCreateArgs>(args: SelectSubset<T, MentorConversationCreateArgs<ExtArgs>>): Prisma__MentorConversationClient<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MentorConversations.
+     * @param {MentorConversationCreateManyArgs} args - Arguments to create many MentorConversations.
+     * @example
+     * // Create many MentorConversations
+     * const mentorConversation = await prisma.mentorConversation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MentorConversationCreateManyArgs>(args?: SelectSubset<T, MentorConversationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MentorConversations and returns the data saved in the database.
+     * @param {MentorConversationCreateManyAndReturnArgs} args - Arguments to create many MentorConversations.
+     * @example
+     * // Create many MentorConversations
+     * const mentorConversation = await prisma.mentorConversation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MentorConversations and only return the `id`
+     * const mentorConversationWithIdOnly = await prisma.mentorConversation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MentorConversationCreateManyAndReturnArgs>(args?: SelectSubset<T, MentorConversationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MentorConversation.
+     * @param {MentorConversationDeleteArgs} args - Arguments to delete one MentorConversation.
+     * @example
+     * // Delete one MentorConversation
+     * const MentorConversation = await prisma.mentorConversation.delete({
+     *   where: {
+     *     // ... filter to delete one MentorConversation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MentorConversationDeleteArgs>(args: SelectSubset<T, MentorConversationDeleteArgs<ExtArgs>>): Prisma__MentorConversationClient<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MentorConversation.
+     * @param {MentorConversationUpdateArgs} args - Arguments to update one MentorConversation.
+     * @example
+     * // Update one MentorConversation
+     * const mentorConversation = await prisma.mentorConversation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MentorConversationUpdateArgs>(args: SelectSubset<T, MentorConversationUpdateArgs<ExtArgs>>): Prisma__MentorConversationClient<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MentorConversations.
+     * @param {MentorConversationDeleteManyArgs} args - Arguments to filter MentorConversations to delete.
+     * @example
+     * // Delete a few MentorConversations
+     * const { count } = await prisma.mentorConversation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MentorConversationDeleteManyArgs>(args?: SelectSubset<T, MentorConversationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorConversations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorConversationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MentorConversations
+     * const mentorConversation = await prisma.mentorConversation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MentorConversationUpdateManyArgs>(args: SelectSubset<T, MentorConversationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorConversations and returns the data updated in the database.
+     * @param {MentorConversationUpdateManyAndReturnArgs} args - Arguments to update many MentorConversations.
+     * @example
+     * // Update many MentorConversations
+     * const mentorConversation = await prisma.mentorConversation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MentorConversations and only return the `id`
+     * const mentorConversationWithIdOnly = await prisma.mentorConversation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MentorConversationUpdateManyAndReturnArgs>(args: SelectSubset<T, MentorConversationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MentorConversation.
+     * @param {MentorConversationUpsertArgs} args - Arguments to update or create a MentorConversation.
+     * @example
+     * // Update or create a MentorConversation
+     * const mentorConversation = await prisma.mentorConversation.upsert({
+     *   create: {
+     *     // ... data to create a MentorConversation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MentorConversation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MentorConversationUpsertArgs>(args: SelectSubset<T, MentorConversationUpsertArgs<ExtArgs>>): Prisma__MentorConversationClient<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MentorConversations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorConversationCountArgs} args - Arguments to filter MentorConversations to count.
+     * @example
+     * // Count the number of MentorConversations
+     * const count = await prisma.mentorConversation.count({
+     *   where: {
+     *     // ... the filter for the MentorConversations we want to count
+     *   }
+     * })
+    **/
+    count<T extends MentorConversationCountArgs>(
+      args?: Subset<T, MentorConversationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MentorConversationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MentorConversation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorConversationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MentorConversationAggregateArgs>(args: Subset<T, MentorConversationAggregateArgs>): Prisma.PrismaPromise<GetMentorConversationAggregateType<T>>
+
+    /**
+     * Group by MentorConversation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorConversationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MentorConversationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MentorConversationGroupByArgs['orderBy'] }
+        : { orderBy?: MentorConversationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MentorConversationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMentorConversationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MentorConversation model
+   */
+  readonly fields: MentorConversationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MentorConversation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MentorConversationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    mentor<T extends MentorProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MentorProfileDefaultArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    mentee<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    messages<T extends MentorConversation$messagesArgs<ExtArgs> = {}>(args?: Subset<T, MentorConversation$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MentorConversation model
+   */
+  interface MentorConversationFieldRefs {
+    readonly id: FieldRef<"MentorConversation", 'String'>
+    readonly mentorId: FieldRef<"MentorConversation", 'String'>
+    readonly menteeId: FieldRef<"MentorConversation", 'String'>
+    readonly lastMessageAt: FieldRef<"MentorConversation", 'DateTime'>
+    readonly createdAt: FieldRef<"MentorConversation", 'DateTime'>
+    readonly updatedAt: FieldRef<"MentorConversation", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MentorConversation findUnique
+   */
+  export type MentorConversationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorConversation to fetch.
+     */
+    where: MentorConversationWhereUniqueInput
+  }
+
+  /**
+   * MentorConversation findUniqueOrThrow
+   */
+  export type MentorConversationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorConversation to fetch.
+     */
+    where: MentorConversationWhereUniqueInput
+  }
+
+  /**
+   * MentorConversation findFirst
+   */
+  export type MentorConversationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorConversation to fetch.
+     */
+    where?: MentorConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorConversations to fetch.
+     */
+    orderBy?: MentorConversationOrderByWithRelationInput | MentorConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorConversations.
+     */
+    cursor?: MentorConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorConversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorConversations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorConversations.
+     */
+    distinct?: MentorConversationScalarFieldEnum | MentorConversationScalarFieldEnum[]
+  }
+
+  /**
+   * MentorConversation findFirstOrThrow
+   */
+  export type MentorConversationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorConversation to fetch.
+     */
+    where?: MentorConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorConversations to fetch.
+     */
+    orderBy?: MentorConversationOrderByWithRelationInput | MentorConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorConversations.
+     */
+    cursor?: MentorConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorConversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorConversations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorConversations.
+     */
+    distinct?: MentorConversationScalarFieldEnum | MentorConversationScalarFieldEnum[]
+  }
+
+  /**
+   * MentorConversation findMany
+   */
+  export type MentorConversationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorConversations to fetch.
+     */
+    where?: MentorConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorConversations to fetch.
+     */
+    orderBy?: MentorConversationOrderByWithRelationInput | MentorConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MentorConversations.
+     */
+    cursor?: MentorConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorConversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorConversations.
+     */
+    skip?: number
+    distinct?: MentorConversationScalarFieldEnum | MentorConversationScalarFieldEnum[]
+  }
+
+  /**
+   * MentorConversation create
+   */
+  export type MentorConversationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MentorConversation.
+     */
+    data: XOR<MentorConversationCreateInput, MentorConversationUncheckedCreateInput>
+  }
+
+  /**
+   * MentorConversation createMany
+   */
+  export type MentorConversationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MentorConversations.
+     */
+    data: MentorConversationCreateManyInput | MentorConversationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MentorConversation createManyAndReturn
+   */
+  export type MentorConversationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * The data used to create many MentorConversations.
+     */
+    data: MentorConversationCreateManyInput | MentorConversationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorConversation update
+   */
+  export type MentorConversationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MentorConversation.
+     */
+    data: XOR<MentorConversationUpdateInput, MentorConversationUncheckedUpdateInput>
+    /**
+     * Choose, which MentorConversation to update.
+     */
+    where: MentorConversationWhereUniqueInput
+  }
+
+  /**
+   * MentorConversation updateMany
+   */
+  export type MentorConversationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MentorConversations.
+     */
+    data: XOR<MentorConversationUpdateManyMutationInput, MentorConversationUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorConversations to update
+     */
+    where?: MentorConversationWhereInput
+    /**
+     * Limit how many MentorConversations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorConversation updateManyAndReturn
+   */
+  export type MentorConversationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * The data used to update MentorConversations.
+     */
+    data: XOR<MentorConversationUpdateManyMutationInput, MentorConversationUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorConversations to update
+     */
+    where?: MentorConversationWhereInput
+    /**
+     * Limit how many MentorConversations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorConversation upsert
+   */
+  export type MentorConversationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MentorConversation to update in case it exists.
+     */
+    where: MentorConversationWhereUniqueInput
+    /**
+     * In case the MentorConversation found by the `where` argument doesn't exist, create a new MentorConversation with this data.
+     */
+    create: XOR<MentorConversationCreateInput, MentorConversationUncheckedCreateInput>
+    /**
+     * In case the MentorConversation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MentorConversationUpdateInput, MentorConversationUncheckedUpdateInput>
+  }
+
+  /**
+   * MentorConversation delete
+   */
+  export type MentorConversationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+    /**
+     * Filter which MentorConversation to delete.
+     */
+    where: MentorConversationWhereUniqueInput
+  }
+
+  /**
+   * MentorConversation deleteMany
+   */
+  export type MentorConversationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorConversations to delete
+     */
+    where?: MentorConversationWhereInput
+    /**
+     * Limit how many MentorConversations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorConversation.messages
+   */
+  export type MentorConversation$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+    where?: MentorMessageWhereInput
+    orderBy?: MentorMessageOrderByWithRelationInput | MentorMessageOrderByWithRelationInput[]
+    cursor?: MentorMessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MentorMessageScalarFieldEnum | MentorMessageScalarFieldEnum[]
+  }
+
+  /**
+   * MentorConversation without action
+   */
+  export type MentorConversationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorConversation
+     */
+    select?: MentorConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorConversation
+     */
+    omit?: MentorConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorConversationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MentorMessage
+   */
+
+  export type AggregateMentorMessage = {
+    _count: MentorMessageCountAggregateOutputType | null
+    _min: MentorMessageMinAggregateOutputType | null
+    _max: MentorMessageMaxAggregateOutputType | null
+  }
+
+  export type MentorMessageMinAggregateOutputType = {
+    id: string | null
+    conversationId: string | null
+    senderId: string | null
+    body: string | null
+    readAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type MentorMessageMaxAggregateOutputType = {
+    id: string | null
+    conversationId: string | null
+    senderId: string | null
+    body: string | null
+    readAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type MentorMessageCountAggregateOutputType = {
+    id: number
+    conversationId: number
+    senderId: number
+    body: number
+    attachments: number
+    readAt: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MentorMessageMinAggregateInputType = {
+    id?: true
+    conversationId?: true
+    senderId?: true
+    body?: true
+    readAt?: true
+    createdAt?: true
+  }
+
+  export type MentorMessageMaxAggregateInputType = {
+    id?: true
+    conversationId?: true
+    senderId?: true
+    body?: true
+    readAt?: true
+    createdAt?: true
+  }
+
+  export type MentorMessageCountAggregateInputType = {
+    id?: true
+    conversationId?: true
+    senderId?: true
+    body?: true
+    attachments?: true
+    readAt?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MentorMessageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorMessage to aggregate.
+     */
+    where?: MentorMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorMessages to fetch.
+     */
+    orderBy?: MentorMessageOrderByWithRelationInput | MentorMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MentorMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MentorMessages
+    **/
+    _count?: true | MentorMessageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MentorMessageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MentorMessageMaxAggregateInputType
+  }
+
+  export type GetMentorMessageAggregateType<T extends MentorMessageAggregateArgs> = {
+        [P in keyof T & keyof AggregateMentorMessage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMentorMessage[P]>
+      : GetScalarType<T[P], AggregateMentorMessage[P]>
+  }
+
+
+
+
+  export type MentorMessageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorMessageWhereInput
+    orderBy?: MentorMessageOrderByWithAggregationInput | MentorMessageOrderByWithAggregationInput[]
+    by: MentorMessageScalarFieldEnum[] | MentorMessageScalarFieldEnum
+    having?: MentorMessageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MentorMessageCountAggregateInputType | true
+    _min?: MentorMessageMinAggregateInputType
+    _max?: MentorMessageMaxAggregateInputType
+  }
+
+  export type MentorMessageGroupByOutputType = {
+    id: string
+    conversationId: string
+    senderId: string
+    body: string
+    attachments: JsonValue | null
+    readAt: Date | null
+    createdAt: Date
+    _count: MentorMessageCountAggregateOutputType | null
+    _min: MentorMessageMinAggregateOutputType | null
+    _max: MentorMessageMaxAggregateOutputType | null
+  }
+
+  type GetMentorMessageGroupByPayload<T extends MentorMessageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MentorMessageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MentorMessageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MentorMessageGroupByOutputType[P]>
+            : GetScalarType<T[P], MentorMessageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MentorMessageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    body?: boolean
+    attachments?: boolean
+    readAt?: boolean
+    createdAt?: boolean
+    conversation?: boolean | MentorConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorMessage"]>
+
+  export type MentorMessageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    body?: boolean
+    attachments?: boolean
+    readAt?: boolean
+    createdAt?: boolean
+    conversation?: boolean | MentorConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorMessage"]>
+
+  export type MentorMessageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    body?: boolean
+    attachments?: boolean
+    readAt?: boolean
+    createdAt?: boolean
+    conversation?: boolean | MentorConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorMessage"]>
+
+  export type MentorMessageSelectScalar = {
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    body?: boolean
+    attachments?: boolean
+    readAt?: boolean
+    createdAt?: boolean
+  }
+
+  export type MentorMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "conversationId" | "senderId" | "body" | "attachments" | "readAt" | "createdAt", ExtArgs["result"]["mentorMessage"]>
+  export type MentorMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | MentorConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MentorMessageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | MentorConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MentorMessageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | MentorConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $MentorMessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MentorMessage"
+    objects: {
+      conversation: Prisma.$MentorConversationPayload<ExtArgs>
+      sender: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      conversationId: string
+      senderId: string
+      body: string
+      attachments: Prisma.JsonValue | null
+      readAt: Date | null
+      createdAt: Date
+    }, ExtArgs["result"]["mentorMessage"]>
+    composites: {}
+  }
+
+  type MentorMessageGetPayload<S extends boolean | null | undefined | MentorMessageDefaultArgs> = $Result.GetResult<Prisma.$MentorMessagePayload, S>
+
+  type MentorMessageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MentorMessageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MentorMessageCountAggregateInputType | true
+    }
+
+  export interface MentorMessageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MentorMessage'], meta: { name: 'MentorMessage' } }
+    /**
+     * Find zero or one MentorMessage that matches the filter.
+     * @param {MentorMessageFindUniqueArgs} args - Arguments to find a MentorMessage
+     * @example
+     * // Get one MentorMessage
+     * const mentorMessage = await prisma.mentorMessage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MentorMessageFindUniqueArgs>(args: SelectSubset<T, MentorMessageFindUniqueArgs<ExtArgs>>): Prisma__MentorMessageClient<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MentorMessage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MentorMessageFindUniqueOrThrowArgs} args - Arguments to find a MentorMessage
+     * @example
+     * // Get one MentorMessage
+     * const mentorMessage = await prisma.mentorMessage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MentorMessageFindUniqueOrThrowArgs>(args: SelectSubset<T, MentorMessageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MentorMessageClient<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorMessage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorMessageFindFirstArgs} args - Arguments to find a MentorMessage
+     * @example
+     * // Get one MentorMessage
+     * const mentorMessage = await prisma.mentorMessage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MentorMessageFindFirstArgs>(args?: SelectSubset<T, MentorMessageFindFirstArgs<ExtArgs>>): Prisma__MentorMessageClient<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorMessage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorMessageFindFirstOrThrowArgs} args - Arguments to find a MentorMessage
+     * @example
+     * // Get one MentorMessage
+     * const mentorMessage = await prisma.mentorMessage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MentorMessageFindFirstOrThrowArgs>(args?: SelectSubset<T, MentorMessageFindFirstOrThrowArgs<ExtArgs>>): Prisma__MentorMessageClient<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MentorMessages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorMessageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MentorMessages
+     * const mentorMessages = await prisma.mentorMessage.findMany()
+     * 
+     * // Get first 10 MentorMessages
+     * const mentorMessages = await prisma.mentorMessage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mentorMessageWithIdOnly = await prisma.mentorMessage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MentorMessageFindManyArgs>(args?: SelectSubset<T, MentorMessageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MentorMessage.
+     * @param {MentorMessageCreateArgs} args - Arguments to create a MentorMessage.
+     * @example
+     * // Create one MentorMessage
+     * const MentorMessage = await prisma.mentorMessage.create({
+     *   data: {
+     *     // ... data to create a MentorMessage
+     *   }
+     * })
+     * 
+     */
+    create<T extends MentorMessageCreateArgs>(args: SelectSubset<T, MentorMessageCreateArgs<ExtArgs>>): Prisma__MentorMessageClient<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MentorMessages.
+     * @param {MentorMessageCreateManyArgs} args - Arguments to create many MentorMessages.
+     * @example
+     * // Create many MentorMessages
+     * const mentorMessage = await prisma.mentorMessage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MentorMessageCreateManyArgs>(args?: SelectSubset<T, MentorMessageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MentorMessages and returns the data saved in the database.
+     * @param {MentorMessageCreateManyAndReturnArgs} args - Arguments to create many MentorMessages.
+     * @example
+     * // Create many MentorMessages
+     * const mentorMessage = await prisma.mentorMessage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MentorMessages and only return the `id`
+     * const mentorMessageWithIdOnly = await prisma.mentorMessage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MentorMessageCreateManyAndReturnArgs>(args?: SelectSubset<T, MentorMessageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MentorMessage.
+     * @param {MentorMessageDeleteArgs} args - Arguments to delete one MentorMessage.
+     * @example
+     * // Delete one MentorMessage
+     * const MentorMessage = await prisma.mentorMessage.delete({
+     *   where: {
+     *     // ... filter to delete one MentorMessage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MentorMessageDeleteArgs>(args: SelectSubset<T, MentorMessageDeleteArgs<ExtArgs>>): Prisma__MentorMessageClient<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MentorMessage.
+     * @param {MentorMessageUpdateArgs} args - Arguments to update one MentorMessage.
+     * @example
+     * // Update one MentorMessage
+     * const mentorMessage = await prisma.mentorMessage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MentorMessageUpdateArgs>(args: SelectSubset<T, MentorMessageUpdateArgs<ExtArgs>>): Prisma__MentorMessageClient<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MentorMessages.
+     * @param {MentorMessageDeleteManyArgs} args - Arguments to filter MentorMessages to delete.
+     * @example
+     * // Delete a few MentorMessages
+     * const { count } = await prisma.mentorMessage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MentorMessageDeleteManyArgs>(args?: SelectSubset<T, MentorMessageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorMessageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MentorMessages
+     * const mentorMessage = await prisma.mentorMessage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MentorMessageUpdateManyArgs>(args: SelectSubset<T, MentorMessageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorMessages and returns the data updated in the database.
+     * @param {MentorMessageUpdateManyAndReturnArgs} args - Arguments to update many MentorMessages.
+     * @example
+     * // Update many MentorMessages
+     * const mentorMessage = await prisma.mentorMessage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MentorMessages and only return the `id`
+     * const mentorMessageWithIdOnly = await prisma.mentorMessage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MentorMessageUpdateManyAndReturnArgs>(args: SelectSubset<T, MentorMessageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MentorMessage.
+     * @param {MentorMessageUpsertArgs} args - Arguments to update or create a MentorMessage.
+     * @example
+     * // Update or create a MentorMessage
+     * const mentorMessage = await prisma.mentorMessage.upsert({
+     *   create: {
+     *     // ... data to create a MentorMessage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MentorMessage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MentorMessageUpsertArgs>(args: SelectSubset<T, MentorMessageUpsertArgs<ExtArgs>>): Prisma__MentorMessageClient<$Result.GetResult<Prisma.$MentorMessagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MentorMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorMessageCountArgs} args - Arguments to filter MentorMessages to count.
+     * @example
+     * // Count the number of MentorMessages
+     * const count = await prisma.mentorMessage.count({
+     *   where: {
+     *     // ... the filter for the MentorMessages we want to count
+     *   }
+     * })
+    **/
+    count<T extends MentorMessageCountArgs>(
+      args?: Subset<T, MentorMessageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MentorMessageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MentorMessage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorMessageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MentorMessageAggregateArgs>(args: Subset<T, MentorMessageAggregateArgs>): Prisma.PrismaPromise<GetMentorMessageAggregateType<T>>
+
+    /**
+     * Group by MentorMessage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorMessageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MentorMessageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MentorMessageGroupByArgs['orderBy'] }
+        : { orderBy?: MentorMessageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MentorMessageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMentorMessageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MentorMessage model
+   */
+  readonly fields: MentorMessageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MentorMessage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MentorMessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    conversation<T extends MentorConversationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MentorConversationDefaultArgs<ExtArgs>>): Prisma__MentorConversationClient<$Result.GetResult<Prisma.$MentorConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    sender<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MentorMessage model
+   */
+  interface MentorMessageFieldRefs {
+    readonly id: FieldRef<"MentorMessage", 'String'>
+    readonly conversationId: FieldRef<"MentorMessage", 'String'>
+    readonly senderId: FieldRef<"MentorMessage", 'String'>
+    readonly body: FieldRef<"MentorMessage", 'String'>
+    readonly attachments: FieldRef<"MentorMessage", 'Json'>
+    readonly readAt: FieldRef<"MentorMessage", 'DateTime'>
+    readonly createdAt: FieldRef<"MentorMessage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MentorMessage findUnique
+   */
+  export type MentorMessageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorMessage to fetch.
+     */
+    where: MentorMessageWhereUniqueInput
+  }
+
+  /**
+   * MentorMessage findUniqueOrThrow
+   */
+  export type MentorMessageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorMessage to fetch.
+     */
+    where: MentorMessageWhereUniqueInput
+  }
+
+  /**
+   * MentorMessage findFirst
+   */
+  export type MentorMessageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorMessage to fetch.
+     */
+    where?: MentorMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorMessages to fetch.
+     */
+    orderBy?: MentorMessageOrderByWithRelationInput | MentorMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorMessages.
+     */
+    cursor?: MentorMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorMessages.
+     */
+    distinct?: MentorMessageScalarFieldEnum | MentorMessageScalarFieldEnum[]
+  }
+
+  /**
+   * MentorMessage findFirstOrThrow
+   */
+  export type MentorMessageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorMessage to fetch.
+     */
+    where?: MentorMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorMessages to fetch.
+     */
+    orderBy?: MentorMessageOrderByWithRelationInput | MentorMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorMessages.
+     */
+    cursor?: MentorMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorMessages.
+     */
+    distinct?: MentorMessageScalarFieldEnum | MentorMessageScalarFieldEnum[]
+  }
+
+  /**
+   * MentorMessage findMany
+   */
+  export type MentorMessageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorMessages to fetch.
+     */
+    where?: MentorMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorMessages to fetch.
+     */
+    orderBy?: MentorMessageOrderByWithRelationInput | MentorMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MentorMessages.
+     */
+    cursor?: MentorMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorMessages.
+     */
+    skip?: number
+    distinct?: MentorMessageScalarFieldEnum | MentorMessageScalarFieldEnum[]
+  }
+
+  /**
+   * MentorMessage create
+   */
+  export type MentorMessageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MentorMessage.
+     */
+    data: XOR<MentorMessageCreateInput, MentorMessageUncheckedCreateInput>
+  }
+
+  /**
+   * MentorMessage createMany
+   */
+  export type MentorMessageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MentorMessages.
+     */
+    data: MentorMessageCreateManyInput | MentorMessageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MentorMessage createManyAndReturn
+   */
+  export type MentorMessageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * The data used to create many MentorMessages.
+     */
+    data: MentorMessageCreateManyInput | MentorMessageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorMessage update
+   */
+  export type MentorMessageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MentorMessage.
+     */
+    data: XOR<MentorMessageUpdateInput, MentorMessageUncheckedUpdateInput>
+    /**
+     * Choose, which MentorMessage to update.
+     */
+    where: MentorMessageWhereUniqueInput
+  }
+
+  /**
+   * MentorMessage updateMany
+   */
+  export type MentorMessageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MentorMessages.
+     */
+    data: XOR<MentorMessageUpdateManyMutationInput, MentorMessageUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorMessages to update
+     */
+    where?: MentorMessageWhereInput
+    /**
+     * Limit how many MentorMessages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorMessage updateManyAndReturn
+   */
+  export type MentorMessageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * The data used to update MentorMessages.
+     */
+    data: XOR<MentorMessageUpdateManyMutationInput, MentorMessageUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorMessages to update
+     */
+    where?: MentorMessageWhereInput
+    /**
+     * Limit how many MentorMessages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorMessage upsert
+   */
+  export type MentorMessageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MentorMessage to update in case it exists.
+     */
+    where: MentorMessageWhereUniqueInput
+    /**
+     * In case the MentorMessage found by the `where` argument doesn't exist, create a new MentorMessage with this data.
+     */
+    create: XOR<MentorMessageCreateInput, MentorMessageUncheckedCreateInput>
+    /**
+     * In case the MentorMessage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MentorMessageUpdateInput, MentorMessageUncheckedUpdateInput>
+  }
+
+  /**
+   * MentorMessage delete
+   */
+  export type MentorMessageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+    /**
+     * Filter which MentorMessage to delete.
+     */
+    where: MentorMessageWhereUniqueInput
+  }
+
+  /**
+   * MentorMessage deleteMany
+   */
+  export type MentorMessageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorMessages to delete
+     */
+    where?: MentorMessageWhereInput
+    /**
+     * Limit how many MentorMessages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorMessage without action
+   */
+  export type MentorMessageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorMessage
+     */
+    select?: MentorMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorMessage
+     */
+    omit?: MentorMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorMessageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MentorRecommendation
+   */
+
+  export type AggregateMentorRecommendation = {
+    _count: MentorRecommendationCountAggregateOutputType | null
+    _min: MentorRecommendationMinAggregateOutputType | null
+    _max: MentorRecommendationMaxAggregateOutputType | null
+  }
+
+  export type MentorRecommendationMinAggregateOutputType = {
+    id: string | null
+    mentorId: string | null
+    menteeId: string | null
+    sessionId: string | null
+    title: string | null
+    body: string | null
+    visibility: $Enums.RecommendationVisibility | null
+    publishedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorRecommendationMaxAggregateOutputType = {
+    id: string | null
+    mentorId: string | null
+    menteeId: string | null
+    sessionId: string | null
+    title: string | null
+    body: string | null
+    visibility: $Enums.RecommendationVisibility | null
+    publishedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorRecommendationCountAggregateOutputType = {
+    id: number
+    mentorId: number
+    menteeId: number
+    sessionId: number
+    title: number
+    body: number
+    visibility: number
+    publishedAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MentorRecommendationMinAggregateInputType = {
+    id?: true
+    mentorId?: true
+    menteeId?: true
+    sessionId?: true
+    title?: true
+    body?: true
+    visibility?: true
+    publishedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorRecommendationMaxAggregateInputType = {
+    id?: true
+    mentorId?: true
+    menteeId?: true
+    sessionId?: true
+    title?: true
+    body?: true
+    visibility?: true
+    publishedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorRecommendationCountAggregateInputType = {
+    id?: true
+    mentorId?: true
+    menteeId?: true
+    sessionId?: true
+    title?: true
+    body?: true
+    visibility?: true
+    publishedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MentorRecommendationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorRecommendation to aggregate.
+     */
+    where?: MentorRecommendationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorRecommendations to fetch.
+     */
+    orderBy?: MentorRecommendationOrderByWithRelationInput | MentorRecommendationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MentorRecommendationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorRecommendations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorRecommendations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MentorRecommendations
+    **/
+    _count?: true | MentorRecommendationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MentorRecommendationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MentorRecommendationMaxAggregateInputType
+  }
+
+  export type GetMentorRecommendationAggregateType<T extends MentorRecommendationAggregateArgs> = {
+        [P in keyof T & keyof AggregateMentorRecommendation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMentorRecommendation[P]>
+      : GetScalarType<T[P], AggregateMentorRecommendation[P]>
+  }
+
+
+
+
+  export type MentorRecommendationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorRecommendationWhereInput
+    orderBy?: MentorRecommendationOrderByWithAggregationInput | MentorRecommendationOrderByWithAggregationInput[]
+    by: MentorRecommendationScalarFieldEnum[] | MentorRecommendationScalarFieldEnum
+    having?: MentorRecommendationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MentorRecommendationCountAggregateInputType | true
+    _min?: MentorRecommendationMinAggregateInputType
+    _max?: MentorRecommendationMaxAggregateInputType
+  }
+
+  export type MentorRecommendationGroupByOutputType = {
+    id: string
+    mentorId: string
+    menteeId: string
+    sessionId: string | null
+    title: string
+    body: string
+    visibility: $Enums.RecommendationVisibility
+    publishedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MentorRecommendationCountAggregateOutputType | null
+    _min: MentorRecommendationMinAggregateOutputType | null
+    _max: MentorRecommendationMaxAggregateOutputType | null
+  }
+
+  type GetMentorRecommendationGroupByPayload<T extends MentorRecommendationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MentorRecommendationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MentorRecommendationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MentorRecommendationGroupByOutputType[P]>
+            : GetScalarType<T[P], MentorRecommendationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MentorRecommendationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    sessionId?: boolean
+    title?: boolean
+    body?: boolean
+    visibility?: boolean
+    publishedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+    session?: boolean | MentorRecommendation$sessionArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorRecommendation"]>
+
+  export type MentorRecommendationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    sessionId?: boolean
+    title?: boolean
+    body?: boolean
+    visibility?: boolean
+    publishedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+    session?: boolean | MentorRecommendation$sessionArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorRecommendation"]>
+
+  export type MentorRecommendationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    sessionId?: boolean
+    title?: boolean
+    body?: boolean
+    visibility?: boolean
+    publishedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+    session?: boolean | MentorRecommendation$sessionArgs<ExtArgs>
+  }, ExtArgs["result"]["mentorRecommendation"]>
+
+  export type MentorRecommendationSelectScalar = {
+    id?: boolean
+    mentorId?: boolean
+    menteeId?: boolean
+    sessionId?: boolean
+    title?: boolean
+    body?: boolean
+    visibility?: boolean
+    publishedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MentorRecommendationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mentorId" | "menteeId" | "sessionId" | "title" | "body" | "visibility" | "publishedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["mentorRecommendation"]>
+  export type MentorRecommendationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+    session?: boolean | MentorRecommendation$sessionArgs<ExtArgs>
+  }
+  export type MentorRecommendationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+    session?: boolean | MentorRecommendation$sessionArgs<ExtArgs>
+  }
+  export type MentorRecommendationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | MentorProfileDefaultArgs<ExtArgs>
+    mentee?: boolean | UserDefaultArgs<ExtArgs>
+    session?: boolean | MentorRecommendation$sessionArgs<ExtArgs>
+  }
+
+  export type $MentorRecommendationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MentorRecommendation"
+    objects: {
+      mentor: Prisma.$MentorProfilePayload<ExtArgs>
+      mentee: Prisma.$UserPayload<ExtArgs>
+      session: Prisma.$MentorSessionPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      mentorId: string
+      menteeId: string
+      sessionId: string | null
+      title: string
+      body: string
+      visibility: $Enums.RecommendationVisibility
+      publishedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["mentorRecommendation"]>
+    composites: {}
+  }
+
+  type MentorRecommendationGetPayload<S extends boolean | null | undefined | MentorRecommendationDefaultArgs> = $Result.GetResult<Prisma.$MentorRecommendationPayload, S>
+
+  type MentorRecommendationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MentorRecommendationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MentorRecommendationCountAggregateInputType | true
+    }
+
+  export interface MentorRecommendationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MentorRecommendation'], meta: { name: 'MentorRecommendation' } }
+    /**
+     * Find zero or one MentorRecommendation that matches the filter.
+     * @param {MentorRecommendationFindUniqueArgs} args - Arguments to find a MentorRecommendation
+     * @example
+     * // Get one MentorRecommendation
+     * const mentorRecommendation = await prisma.mentorRecommendation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MentorRecommendationFindUniqueArgs>(args: SelectSubset<T, MentorRecommendationFindUniqueArgs<ExtArgs>>): Prisma__MentorRecommendationClient<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MentorRecommendation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MentorRecommendationFindUniqueOrThrowArgs} args - Arguments to find a MentorRecommendation
+     * @example
+     * // Get one MentorRecommendation
+     * const mentorRecommendation = await prisma.mentorRecommendation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MentorRecommendationFindUniqueOrThrowArgs>(args: SelectSubset<T, MentorRecommendationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MentorRecommendationClient<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorRecommendation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorRecommendationFindFirstArgs} args - Arguments to find a MentorRecommendation
+     * @example
+     * // Get one MentorRecommendation
+     * const mentorRecommendation = await prisma.mentorRecommendation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MentorRecommendationFindFirstArgs>(args?: SelectSubset<T, MentorRecommendationFindFirstArgs<ExtArgs>>): Prisma__MentorRecommendationClient<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorRecommendation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorRecommendationFindFirstOrThrowArgs} args - Arguments to find a MentorRecommendation
+     * @example
+     * // Get one MentorRecommendation
+     * const mentorRecommendation = await prisma.mentorRecommendation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MentorRecommendationFindFirstOrThrowArgs>(args?: SelectSubset<T, MentorRecommendationFindFirstOrThrowArgs<ExtArgs>>): Prisma__MentorRecommendationClient<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MentorRecommendations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorRecommendationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MentorRecommendations
+     * const mentorRecommendations = await prisma.mentorRecommendation.findMany()
+     * 
+     * // Get first 10 MentorRecommendations
+     * const mentorRecommendations = await prisma.mentorRecommendation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mentorRecommendationWithIdOnly = await prisma.mentorRecommendation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MentorRecommendationFindManyArgs>(args?: SelectSubset<T, MentorRecommendationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MentorRecommendation.
+     * @param {MentorRecommendationCreateArgs} args - Arguments to create a MentorRecommendation.
+     * @example
+     * // Create one MentorRecommendation
+     * const MentorRecommendation = await prisma.mentorRecommendation.create({
+     *   data: {
+     *     // ... data to create a MentorRecommendation
+     *   }
+     * })
+     * 
+     */
+    create<T extends MentorRecommendationCreateArgs>(args: SelectSubset<T, MentorRecommendationCreateArgs<ExtArgs>>): Prisma__MentorRecommendationClient<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MentorRecommendations.
+     * @param {MentorRecommendationCreateManyArgs} args - Arguments to create many MentorRecommendations.
+     * @example
+     * // Create many MentorRecommendations
+     * const mentorRecommendation = await prisma.mentorRecommendation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MentorRecommendationCreateManyArgs>(args?: SelectSubset<T, MentorRecommendationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MentorRecommendations and returns the data saved in the database.
+     * @param {MentorRecommendationCreateManyAndReturnArgs} args - Arguments to create many MentorRecommendations.
+     * @example
+     * // Create many MentorRecommendations
+     * const mentorRecommendation = await prisma.mentorRecommendation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MentorRecommendations and only return the `id`
+     * const mentorRecommendationWithIdOnly = await prisma.mentorRecommendation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MentorRecommendationCreateManyAndReturnArgs>(args?: SelectSubset<T, MentorRecommendationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MentorRecommendation.
+     * @param {MentorRecommendationDeleteArgs} args - Arguments to delete one MentorRecommendation.
+     * @example
+     * // Delete one MentorRecommendation
+     * const MentorRecommendation = await prisma.mentorRecommendation.delete({
+     *   where: {
+     *     // ... filter to delete one MentorRecommendation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MentorRecommendationDeleteArgs>(args: SelectSubset<T, MentorRecommendationDeleteArgs<ExtArgs>>): Prisma__MentorRecommendationClient<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MentorRecommendation.
+     * @param {MentorRecommendationUpdateArgs} args - Arguments to update one MentorRecommendation.
+     * @example
+     * // Update one MentorRecommendation
+     * const mentorRecommendation = await prisma.mentorRecommendation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MentorRecommendationUpdateArgs>(args: SelectSubset<T, MentorRecommendationUpdateArgs<ExtArgs>>): Prisma__MentorRecommendationClient<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MentorRecommendations.
+     * @param {MentorRecommendationDeleteManyArgs} args - Arguments to filter MentorRecommendations to delete.
+     * @example
+     * // Delete a few MentorRecommendations
+     * const { count } = await prisma.mentorRecommendation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MentorRecommendationDeleteManyArgs>(args?: SelectSubset<T, MentorRecommendationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorRecommendations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorRecommendationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MentorRecommendations
+     * const mentorRecommendation = await prisma.mentorRecommendation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MentorRecommendationUpdateManyArgs>(args: SelectSubset<T, MentorRecommendationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorRecommendations and returns the data updated in the database.
+     * @param {MentorRecommendationUpdateManyAndReturnArgs} args - Arguments to update many MentorRecommendations.
+     * @example
+     * // Update many MentorRecommendations
+     * const mentorRecommendation = await prisma.mentorRecommendation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MentorRecommendations and only return the `id`
+     * const mentorRecommendationWithIdOnly = await prisma.mentorRecommendation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MentorRecommendationUpdateManyAndReturnArgs>(args: SelectSubset<T, MentorRecommendationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MentorRecommendation.
+     * @param {MentorRecommendationUpsertArgs} args - Arguments to update or create a MentorRecommendation.
+     * @example
+     * // Update or create a MentorRecommendation
+     * const mentorRecommendation = await prisma.mentorRecommendation.upsert({
+     *   create: {
+     *     // ... data to create a MentorRecommendation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MentorRecommendation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MentorRecommendationUpsertArgs>(args: SelectSubset<T, MentorRecommendationUpsertArgs<ExtArgs>>): Prisma__MentorRecommendationClient<$Result.GetResult<Prisma.$MentorRecommendationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MentorRecommendations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorRecommendationCountArgs} args - Arguments to filter MentorRecommendations to count.
+     * @example
+     * // Count the number of MentorRecommendations
+     * const count = await prisma.mentorRecommendation.count({
+     *   where: {
+     *     // ... the filter for the MentorRecommendations we want to count
+     *   }
+     * })
+    **/
+    count<T extends MentorRecommendationCountArgs>(
+      args?: Subset<T, MentorRecommendationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MentorRecommendationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MentorRecommendation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorRecommendationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MentorRecommendationAggregateArgs>(args: Subset<T, MentorRecommendationAggregateArgs>): Prisma.PrismaPromise<GetMentorRecommendationAggregateType<T>>
+
+    /**
+     * Group by MentorRecommendation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorRecommendationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MentorRecommendationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MentorRecommendationGroupByArgs['orderBy'] }
+        : { orderBy?: MentorRecommendationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MentorRecommendationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMentorRecommendationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MentorRecommendation model
+   */
+  readonly fields: MentorRecommendationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MentorRecommendation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MentorRecommendationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    mentor<T extends MentorProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MentorProfileDefaultArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    mentee<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    session<T extends MentorRecommendation$sessionArgs<ExtArgs> = {}>(args?: Subset<T, MentorRecommendation$sessionArgs<ExtArgs>>): Prisma__MentorSessionClient<$Result.GetResult<Prisma.$MentorSessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MentorRecommendation model
+   */
+  interface MentorRecommendationFieldRefs {
+    readonly id: FieldRef<"MentorRecommendation", 'String'>
+    readonly mentorId: FieldRef<"MentorRecommendation", 'String'>
+    readonly menteeId: FieldRef<"MentorRecommendation", 'String'>
+    readonly sessionId: FieldRef<"MentorRecommendation", 'String'>
+    readonly title: FieldRef<"MentorRecommendation", 'String'>
+    readonly body: FieldRef<"MentorRecommendation", 'String'>
+    readonly visibility: FieldRef<"MentorRecommendation", 'RecommendationVisibility'>
+    readonly publishedAt: FieldRef<"MentorRecommendation", 'DateTime'>
+    readonly createdAt: FieldRef<"MentorRecommendation", 'DateTime'>
+    readonly updatedAt: FieldRef<"MentorRecommendation", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MentorRecommendation findUnique
+   */
+  export type MentorRecommendationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorRecommendation to fetch.
+     */
+    where: MentorRecommendationWhereUniqueInput
+  }
+
+  /**
+   * MentorRecommendation findUniqueOrThrow
+   */
+  export type MentorRecommendationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorRecommendation to fetch.
+     */
+    where: MentorRecommendationWhereUniqueInput
+  }
+
+  /**
+   * MentorRecommendation findFirst
+   */
+  export type MentorRecommendationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorRecommendation to fetch.
+     */
+    where?: MentorRecommendationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorRecommendations to fetch.
+     */
+    orderBy?: MentorRecommendationOrderByWithRelationInput | MentorRecommendationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorRecommendations.
+     */
+    cursor?: MentorRecommendationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorRecommendations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorRecommendations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorRecommendations.
+     */
+    distinct?: MentorRecommendationScalarFieldEnum | MentorRecommendationScalarFieldEnum[]
+  }
+
+  /**
+   * MentorRecommendation findFirstOrThrow
+   */
+  export type MentorRecommendationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorRecommendation to fetch.
+     */
+    where?: MentorRecommendationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorRecommendations to fetch.
+     */
+    orderBy?: MentorRecommendationOrderByWithRelationInput | MentorRecommendationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorRecommendations.
+     */
+    cursor?: MentorRecommendationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorRecommendations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorRecommendations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorRecommendations.
+     */
+    distinct?: MentorRecommendationScalarFieldEnum | MentorRecommendationScalarFieldEnum[]
+  }
+
+  /**
+   * MentorRecommendation findMany
+   */
+  export type MentorRecommendationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    /**
+     * Filter, which MentorRecommendations to fetch.
+     */
+    where?: MentorRecommendationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorRecommendations to fetch.
+     */
+    orderBy?: MentorRecommendationOrderByWithRelationInput | MentorRecommendationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MentorRecommendations.
+     */
+    cursor?: MentorRecommendationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorRecommendations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorRecommendations.
+     */
+    skip?: number
+    distinct?: MentorRecommendationScalarFieldEnum | MentorRecommendationScalarFieldEnum[]
+  }
+
+  /**
+   * MentorRecommendation create
+   */
+  export type MentorRecommendationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MentorRecommendation.
+     */
+    data: XOR<MentorRecommendationCreateInput, MentorRecommendationUncheckedCreateInput>
+  }
+
+  /**
+   * MentorRecommendation createMany
+   */
+  export type MentorRecommendationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MentorRecommendations.
+     */
+    data: MentorRecommendationCreateManyInput | MentorRecommendationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MentorRecommendation createManyAndReturn
+   */
+  export type MentorRecommendationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * The data used to create many MentorRecommendations.
+     */
+    data: MentorRecommendationCreateManyInput | MentorRecommendationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorRecommendation update
+   */
+  export type MentorRecommendationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MentorRecommendation.
+     */
+    data: XOR<MentorRecommendationUpdateInput, MentorRecommendationUncheckedUpdateInput>
+    /**
+     * Choose, which MentorRecommendation to update.
+     */
+    where: MentorRecommendationWhereUniqueInput
+  }
+
+  /**
+   * MentorRecommendation updateMany
+   */
+  export type MentorRecommendationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MentorRecommendations.
+     */
+    data: XOR<MentorRecommendationUpdateManyMutationInput, MentorRecommendationUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorRecommendations to update
+     */
+    where?: MentorRecommendationWhereInput
+    /**
+     * Limit how many MentorRecommendations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorRecommendation updateManyAndReturn
+   */
+  export type MentorRecommendationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * The data used to update MentorRecommendations.
+     */
+    data: XOR<MentorRecommendationUpdateManyMutationInput, MentorRecommendationUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorRecommendations to update
+     */
+    where?: MentorRecommendationWhereInput
+    /**
+     * Limit how many MentorRecommendations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MentorRecommendation upsert
+   */
+  export type MentorRecommendationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MentorRecommendation to update in case it exists.
+     */
+    where: MentorRecommendationWhereUniqueInput
+    /**
+     * In case the MentorRecommendation found by the `where` argument doesn't exist, create a new MentorRecommendation with this data.
+     */
+    create: XOR<MentorRecommendationCreateInput, MentorRecommendationUncheckedCreateInput>
+    /**
+     * In case the MentorRecommendation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MentorRecommendationUpdateInput, MentorRecommendationUncheckedUpdateInput>
+  }
+
+  /**
+   * MentorRecommendation delete
+   */
+  export type MentorRecommendationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+    /**
+     * Filter which MentorRecommendation to delete.
+     */
+    where: MentorRecommendationWhereUniqueInput
+  }
+
+  /**
+   * MentorRecommendation deleteMany
+   */
+  export type MentorRecommendationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorRecommendations to delete
+     */
+    where?: MentorRecommendationWhereInput
+    /**
+     * Limit how many MentorRecommendations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorRecommendation.session
+   */
+  export type MentorRecommendation$sessionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorSession
+     */
+    select?: MentorSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorSession
+     */
+    omit?: MentorSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorSessionInclude<ExtArgs> | null
+    where?: MentorSessionWhereInput
+  }
+
+  /**
+   * MentorRecommendation without action
+   */
+  export type MentorRecommendationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorRecommendation
+     */
+    select?: MentorRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorRecommendation
+     */
+    omit?: MentorRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorRecommendationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Notification
+   */
+
+  export type AggregateNotification = {
+    _count: NotificationCountAggregateOutputType | null
+    _min: NotificationMinAggregateOutputType | null
+    _max: NotificationMaxAggregateOutputType | null
+  }
+
+  export type NotificationMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    type: $Enums.NotificationType | null
+    title: string | null
+    body: string | null
+    readAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NotificationMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    type: $Enums.NotificationType | null
+    title: string | null
+    body: string | null
+    readAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NotificationCountAggregateOutputType = {
+    id: number
+    userId: number
+    type: number
+    title: number
+    body: number
+    metadata: number
+    readAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type NotificationMinAggregateInputType = {
+    id?: true
+    userId?: true
+    type?: true
+    title?: true
+    body?: true
+    readAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NotificationMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    type?: true
+    title?: true
+    body?: true
+    readAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NotificationCountAggregateInputType = {
+    id?: true
+    userId?: true
+    type?: true
+    title?: true
+    body?: true
+    metadata?: true
+    readAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type NotificationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Notification to aggregate.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Notifications
+    **/
+    _count?: true | NotificationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NotificationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NotificationMaxAggregateInputType
+  }
+
+  export type GetNotificationAggregateType<T extends NotificationAggregateArgs> = {
+        [P in keyof T & keyof AggregateNotification]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNotification[P]>
+      : GetScalarType<T[P], AggregateNotification[P]>
+  }
+
+
+
+
+  export type NotificationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NotificationWhereInput
+    orderBy?: NotificationOrderByWithAggregationInput | NotificationOrderByWithAggregationInput[]
+    by: NotificationScalarFieldEnum[] | NotificationScalarFieldEnum
+    having?: NotificationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NotificationCountAggregateInputType | true
+    _min?: NotificationMinAggregateInputType
+    _max?: NotificationMaxAggregateInputType
+  }
+
+  export type NotificationGroupByOutputType = {
+    id: string
+    userId: string
+    type: $Enums.NotificationType
+    title: string
+    body: string | null
+    metadata: JsonValue | null
+    readAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: NotificationCountAggregateOutputType | null
+    _min: NotificationMinAggregateOutputType | null
+    _max: NotificationMaxAggregateOutputType | null
+  }
+
+  type GetNotificationGroupByPayload<T extends NotificationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NotificationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NotificationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NotificationGroupByOutputType[P]>
+            : GetScalarType<T[P], NotificationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NotificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    title?: boolean
+    body?: boolean
+    metadata?: boolean
+    readAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notification"]>
+
+  export type NotificationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    title?: boolean
+    body?: boolean
+    metadata?: boolean
+    readAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notification"]>
+
+  export type NotificationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    title?: boolean
+    body?: boolean
+    metadata?: boolean
+    readAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notification"]>
+
+  export type NotificationSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    title?: boolean
+    body?: boolean
+    metadata?: boolean
+    readAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type NotificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "title" | "body" | "metadata" | "readAt" | "createdAt" | "updatedAt", ExtArgs["result"]["notification"]>
+  export type NotificationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type NotificationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type NotificationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $NotificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Notification"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      type: $Enums.NotificationType
+      title: string
+      body: string | null
+      metadata: Prisma.JsonValue | null
+      readAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["notification"]>
+    composites: {}
+  }
+
+  type NotificationGetPayload<S extends boolean | null | undefined | NotificationDefaultArgs> = $Result.GetResult<Prisma.$NotificationPayload, S>
+
+  type NotificationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NotificationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NotificationCountAggregateInputType | true
+    }
+
+  export interface NotificationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Notification'], meta: { name: 'Notification' } }
+    /**
+     * Find zero or one Notification that matches the filter.
+     * @param {NotificationFindUniqueArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NotificationFindUniqueArgs>(args: SelectSubset<T, NotificationFindUniqueArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Notification that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NotificationFindUniqueOrThrowArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NotificationFindUniqueOrThrowArgs>(args: SelectSubset<T, NotificationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Notification that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationFindFirstArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NotificationFindFirstArgs>(args?: SelectSubset<T, NotificationFindFirstArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Notification that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationFindFirstOrThrowArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NotificationFindFirstOrThrowArgs>(args?: SelectSubset<T, NotificationFindFirstOrThrowArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Notifications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Notifications
+     * const notifications = await prisma.notification.findMany()
+     * 
+     * // Get first 10 Notifications
+     * const notifications = await prisma.notification.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const notificationWithIdOnly = await prisma.notification.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NotificationFindManyArgs>(args?: SelectSubset<T, NotificationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Notification.
+     * @param {NotificationCreateArgs} args - Arguments to create a Notification.
+     * @example
+     * // Create one Notification
+     * const Notification = await prisma.notification.create({
+     *   data: {
+     *     // ... data to create a Notification
+     *   }
+     * })
+     * 
+     */
+    create<T extends NotificationCreateArgs>(args: SelectSubset<T, NotificationCreateArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Notifications.
+     * @param {NotificationCreateManyArgs} args - Arguments to create many Notifications.
+     * @example
+     * // Create many Notifications
+     * const notification = await prisma.notification.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NotificationCreateManyArgs>(args?: SelectSubset<T, NotificationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Notifications and returns the data saved in the database.
+     * @param {NotificationCreateManyAndReturnArgs} args - Arguments to create many Notifications.
+     * @example
+     * // Create many Notifications
+     * const notification = await prisma.notification.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Notifications and only return the `id`
+     * const notificationWithIdOnly = await prisma.notification.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NotificationCreateManyAndReturnArgs>(args?: SelectSubset<T, NotificationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Notification.
+     * @param {NotificationDeleteArgs} args - Arguments to delete one Notification.
+     * @example
+     * // Delete one Notification
+     * const Notification = await prisma.notification.delete({
+     *   where: {
+     *     // ... filter to delete one Notification
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NotificationDeleteArgs>(args: SelectSubset<T, NotificationDeleteArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Notification.
+     * @param {NotificationUpdateArgs} args - Arguments to update one Notification.
+     * @example
+     * // Update one Notification
+     * const notification = await prisma.notification.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NotificationUpdateArgs>(args: SelectSubset<T, NotificationUpdateArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Notifications.
+     * @param {NotificationDeleteManyArgs} args - Arguments to filter Notifications to delete.
+     * @example
+     * // Delete a few Notifications
+     * const { count } = await prisma.notification.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NotificationDeleteManyArgs>(args?: SelectSubset<T, NotificationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Notifications
+     * const notification = await prisma.notification.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NotificationUpdateManyArgs>(args: SelectSubset<T, NotificationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notifications and returns the data updated in the database.
+     * @param {NotificationUpdateManyAndReturnArgs} args - Arguments to update many Notifications.
+     * @example
+     * // Update many Notifications
+     * const notification = await prisma.notification.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Notifications and only return the `id`
+     * const notificationWithIdOnly = await prisma.notification.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NotificationUpdateManyAndReturnArgs>(args: SelectSubset<T, NotificationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Notification.
+     * @param {NotificationUpsertArgs} args - Arguments to update or create a Notification.
+     * @example
+     * // Update or create a Notification
+     * const notification = await prisma.notification.upsert({
+     *   create: {
+     *     // ... data to create a Notification
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Notification we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NotificationUpsertArgs>(args: SelectSubset<T, NotificationUpsertArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Notifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationCountArgs} args - Arguments to filter Notifications to count.
+     * @example
+     * // Count the number of Notifications
+     * const count = await prisma.notification.count({
+     *   where: {
+     *     // ... the filter for the Notifications we want to count
+     *   }
+     * })
+    **/
+    count<T extends NotificationCountArgs>(
+      args?: Subset<T, NotificationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NotificationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Notification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NotificationAggregateArgs>(args: Subset<T, NotificationAggregateArgs>): Prisma.PrismaPromise<GetNotificationAggregateType<T>>
+
+    /**
+     * Group by Notification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NotificationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NotificationGroupByArgs['orderBy'] }
+        : { orderBy?: NotificationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NotificationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNotificationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Notification model
+   */
+  readonly fields: NotificationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Notification.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NotificationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Notification model
+   */
+  interface NotificationFieldRefs {
+    readonly id: FieldRef<"Notification", 'String'>
+    readonly userId: FieldRef<"Notification", 'String'>
+    readonly type: FieldRef<"Notification", 'NotificationType'>
+    readonly title: FieldRef<"Notification", 'String'>
+    readonly body: FieldRef<"Notification", 'String'>
+    readonly metadata: FieldRef<"Notification", 'Json'>
+    readonly readAt: FieldRef<"Notification", 'DateTime'>
+    readonly createdAt: FieldRef<"Notification", 'DateTime'>
+    readonly updatedAt: FieldRef<"Notification", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Notification findUnique
+   */
+  export type NotificationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification findUniqueOrThrow
+   */
+  export type NotificationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification findFirst
+   */
+  export type NotificationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Notifications.
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Notifications.
+     */
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * Notification findFirstOrThrow
+   */
+  export type NotificationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Notifications.
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Notifications.
+     */
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * Notification findMany
+   */
+  export type NotificationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notifications to fetch.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Notifications.
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * Notification create
+   */
+  export type NotificationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Notification.
+     */
+    data: XOR<NotificationCreateInput, NotificationUncheckedCreateInput>
+  }
+
+  /**
+   * Notification createMany
+   */
+  export type NotificationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Notifications.
+     */
+    data: NotificationCreateManyInput | NotificationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Notification createManyAndReturn
+   */
+  export type NotificationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * The data used to create many Notifications.
+     */
+    data: NotificationCreateManyInput | NotificationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Notification update
+   */
+  export type NotificationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Notification.
+     */
+    data: XOR<NotificationUpdateInput, NotificationUncheckedUpdateInput>
+    /**
+     * Choose, which Notification to update.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification updateMany
+   */
+  export type NotificationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Notifications.
+     */
+    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyInput>
+    /**
+     * Filter which Notifications to update
+     */
+    where?: NotificationWhereInput
+    /**
+     * Limit how many Notifications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Notification updateManyAndReturn
+   */
+  export type NotificationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * The data used to update Notifications.
+     */
+    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyInput>
+    /**
+     * Filter which Notifications to update
+     */
+    where?: NotificationWhereInput
+    /**
+     * Limit how many Notifications to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Notification upsert
+   */
+  export type NotificationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Notification to update in case it exists.
+     */
+    where: NotificationWhereUniqueInput
+    /**
+     * In case the Notification found by the `where` argument doesn't exist, create a new Notification with this data.
+     */
+    create: XOR<NotificationCreateInput, NotificationUncheckedCreateInput>
+    /**
+     * In case the Notification was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NotificationUpdateInput, NotificationUncheckedUpdateInput>
+  }
+
+  /**
+   * Notification delete
+   */
+  export type NotificationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter which Notification to delete.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification deleteMany
+   */
+  export type NotificationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Notifications to delete
+     */
+    where?: NotificationWhereInput
+    /**
+     * Limit how many Notifications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Notification without action
+   */
+  export type NotificationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RealtimeEvent
+   */
+
+  export type AggregateRealtimeEvent = {
+    _count: RealtimeEventCountAggregateOutputType | null
+    _min: RealtimeEventMinAggregateOutputType | null
+    _max: RealtimeEventMaxAggregateOutputType | null
+  }
+
+  export type RealtimeEventMinAggregateOutputType = {
+    id: string | null
+    type: string | null
+    mentorId: string | null
+    createdAt: Date | null
+  }
+
+  export type RealtimeEventMaxAggregateOutputType = {
+    id: string | null
+    type: string | null
+    mentorId: string | null
+    createdAt: Date | null
+  }
+
+  export type RealtimeEventCountAggregateOutputType = {
+    id: number
+    type: number
+    payload: number
+    mentorId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type RealtimeEventMinAggregateInputType = {
+    id?: true
+    type?: true
+    mentorId?: true
+    createdAt?: true
+  }
+
+  export type RealtimeEventMaxAggregateInputType = {
+    id?: true
+    type?: true
+    mentorId?: true
+    createdAt?: true
+  }
+
+  export type RealtimeEventCountAggregateInputType = {
+    id?: true
+    type?: true
+    payload?: true
+    mentorId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type RealtimeEventAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RealtimeEvent to aggregate.
+     */
+    where?: RealtimeEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RealtimeEvents to fetch.
+     */
+    orderBy?: RealtimeEventOrderByWithRelationInput | RealtimeEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RealtimeEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RealtimeEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RealtimeEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RealtimeEvents
+    **/
+    _count?: true | RealtimeEventCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RealtimeEventMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RealtimeEventMaxAggregateInputType
+  }
+
+  export type GetRealtimeEventAggregateType<T extends RealtimeEventAggregateArgs> = {
+        [P in keyof T & keyof AggregateRealtimeEvent]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRealtimeEvent[P]>
+      : GetScalarType<T[P], AggregateRealtimeEvent[P]>
+  }
+
+
+
+
+  export type RealtimeEventGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RealtimeEventWhereInput
+    orderBy?: RealtimeEventOrderByWithAggregationInput | RealtimeEventOrderByWithAggregationInput[]
+    by: RealtimeEventScalarFieldEnum[] | RealtimeEventScalarFieldEnum
+    having?: RealtimeEventScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RealtimeEventCountAggregateInputType | true
+    _min?: RealtimeEventMinAggregateInputType
+    _max?: RealtimeEventMaxAggregateInputType
+  }
+
+  export type RealtimeEventGroupByOutputType = {
+    id: string
+    type: string
+    payload: JsonValue | null
+    mentorId: string | null
+    createdAt: Date
+    _count: RealtimeEventCountAggregateOutputType | null
+    _min: RealtimeEventMinAggregateOutputType | null
+    _max: RealtimeEventMaxAggregateOutputType | null
+  }
+
+  type GetRealtimeEventGroupByPayload<T extends RealtimeEventGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RealtimeEventGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RealtimeEventGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RealtimeEventGroupByOutputType[P]>
+            : GetScalarType<T[P], RealtimeEventGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RealtimeEventSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    payload?: boolean
+    mentorId?: boolean
+    createdAt?: boolean
+    mentor?: boolean | RealtimeEvent$mentorArgs<ExtArgs>
+  }, ExtArgs["result"]["realtimeEvent"]>
+
+  export type RealtimeEventSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    payload?: boolean
+    mentorId?: boolean
+    createdAt?: boolean
+    mentor?: boolean | RealtimeEvent$mentorArgs<ExtArgs>
+  }, ExtArgs["result"]["realtimeEvent"]>
+
+  export type RealtimeEventSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    payload?: boolean
+    mentorId?: boolean
+    createdAt?: boolean
+    mentor?: boolean | RealtimeEvent$mentorArgs<ExtArgs>
+  }, ExtArgs["result"]["realtimeEvent"]>
+
+  export type RealtimeEventSelectScalar = {
+    id?: boolean
+    type?: boolean
+    payload?: boolean
+    mentorId?: boolean
+    createdAt?: boolean
+  }
+
+  export type RealtimeEventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "payload" | "mentorId" | "createdAt", ExtArgs["result"]["realtimeEvent"]>
+  export type RealtimeEventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | RealtimeEvent$mentorArgs<ExtArgs>
+  }
+  export type RealtimeEventIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | RealtimeEvent$mentorArgs<ExtArgs>
+  }
+  export type RealtimeEventIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | RealtimeEvent$mentorArgs<ExtArgs>
+  }
+
+  export type $RealtimeEventPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RealtimeEvent"
+    objects: {
+      mentor: Prisma.$MentorProfilePayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      type: string
+      payload: Prisma.JsonValue | null
+      mentorId: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["realtimeEvent"]>
+    composites: {}
+  }
+
+  type RealtimeEventGetPayload<S extends boolean | null | undefined | RealtimeEventDefaultArgs> = $Result.GetResult<Prisma.$RealtimeEventPayload, S>
+
+  type RealtimeEventCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RealtimeEventFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RealtimeEventCountAggregateInputType | true
+    }
+
+  export interface RealtimeEventDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RealtimeEvent'], meta: { name: 'RealtimeEvent' } }
+    /**
+     * Find zero or one RealtimeEvent that matches the filter.
+     * @param {RealtimeEventFindUniqueArgs} args - Arguments to find a RealtimeEvent
+     * @example
+     * // Get one RealtimeEvent
+     * const realtimeEvent = await prisma.realtimeEvent.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RealtimeEventFindUniqueArgs>(args: SelectSubset<T, RealtimeEventFindUniqueArgs<ExtArgs>>): Prisma__RealtimeEventClient<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RealtimeEvent that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RealtimeEventFindUniqueOrThrowArgs} args - Arguments to find a RealtimeEvent
+     * @example
+     * // Get one RealtimeEvent
+     * const realtimeEvent = await prisma.realtimeEvent.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RealtimeEventFindUniqueOrThrowArgs>(args: SelectSubset<T, RealtimeEventFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RealtimeEventClient<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RealtimeEvent that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealtimeEventFindFirstArgs} args - Arguments to find a RealtimeEvent
+     * @example
+     * // Get one RealtimeEvent
+     * const realtimeEvent = await prisma.realtimeEvent.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RealtimeEventFindFirstArgs>(args?: SelectSubset<T, RealtimeEventFindFirstArgs<ExtArgs>>): Prisma__RealtimeEventClient<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RealtimeEvent that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealtimeEventFindFirstOrThrowArgs} args - Arguments to find a RealtimeEvent
+     * @example
+     * // Get one RealtimeEvent
+     * const realtimeEvent = await prisma.realtimeEvent.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RealtimeEventFindFirstOrThrowArgs>(args?: SelectSubset<T, RealtimeEventFindFirstOrThrowArgs<ExtArgs>>): Prisma__RealtimeEventClient<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RealtimeEvents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealtimeEventFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RealtimeEvents
+     * const realtimeEvents = await prisma.realtimeEvent.findMany()
+     * 
+     * // Get first 10 RealtimeEvents
+     * const realtimeEvents = await prisma.realtimeEvent.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const realtimeEventWithIdOnly = await prisma.realtimeEvent.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RealtimeEventFindManyArgs>(args?: SelectSubset<T, RealtimeEventFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RealtimeEvent.
+     * @param {RealtimeEventCreateArgs} args - Arguments to create a RealtimeEvent.
+     * @example
+     * // Create one RealtimeEvent
+     * const RealtimeEvent = await prisma.realtimeEvent.create({
+     *   data: {
+     *     // ... data to create a RealtimeEvent
+     *   }
+     * })
+     * 
+     */
+    create<T extends RealtimeEventCreateArgs>(args: SelectSubset<T, RealtimeEventCreateArgs<ExtArgs>>): Prisma__RealtimeEventClient<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RealtimeEvents.
+     * @param {RealtimeEventCreateManyArgs} args - Arguments to create many RealtimeEvents.
+     * @example
+     * // Create many RealtimeEvents
+     * const realtimeEvent = await prisma.realtimeEvent.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RealtimeEventCreateManyArgs>(args?: SelectSubset<T, RealtimeEventCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many RealtimeEvents and returns the data saved in the database.
+     * @param {RealtimeEventCreateManyAndReturnArgs} args - Arguments to create many RealtimeEvents.
+     * @example
+     * // Create many RealtimeEvents
+     * const realtimeEvent = await prisma.realtimeEvent.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many RealtimeEvents and only return the `id`
+     * const realtimeEventWithIdOnly = await prisma.realtimeEvent.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RealtimeEventCreateManyAndReturnArgs>(args?: SelectSubset<T, RealtimeEventCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a RealtimeEvent.
+     * @param {RealtimeEventDeleteArgs} args - Arguments to delete one RealtimeEvent.
+     * @example
+     * // Delete one RealtimeEvent
+     * const RealtimeEvent = await prisma.realtimeEvent.delete({
+     *   where: {
+     *     // ... filter to delete one RealtimeEvent
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RealtimeEventDeleteArgs>(args: SelectSubset<T, RealtimeEventDeleteArgs<ExtArgs>>): Prisma__RealtimeEventClient<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RealtimeEvent.
+     * @param {RealtimeEventUpdateArgs} args - Arguments to update one RealtimeEvent.
+     * @example
+     * // Update one RealtimeEvent
+     * const realtimeEvent = await prisma.realtimeEvent.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RealtimeEventUpdateArgs>(args: SelectSubset<T, RealtimeEventUpdateArgs<ExtArgs>>): Prisma__RealtimeEventClient<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RealtimeEvents.
+     * @param {RealtimeEventDeleteManyArgs} args - Arguments to filter RealtimeEvents to delete.
+     * @example
+     * // Delete a few RealtimeEvents
+     * const { count } = await prisma.realtimeEvent.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RealtimeEventDeleteManyArgs>(args?: SelectSubset<T, RealtimeEventDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RealtimeEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealtimeEventUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RealtimeEvents
+     * const realtimeEvent = await prisma.realtimeEvent.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RealtimeEventUpdateManyArgs>(args: SelectSubset<T, RealtimeEventUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RealtimeEvents and returns the data updated in the database.
+     * @param {RealtimeEventUpdateManyAndReturnArgs} args - Arguments to update many RealtimeEvents.
+     * @example
+     * // Update many RealtimeEvents
+     * const realtimeEvent = await prisma.realtimeEvent.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more RealtimeEvents and only return the `id`
+     * const realtimeEventWithIdOnly = await prisma.realtimeEvent.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RealtimeEventUpdateManyAndReturnArgs>(args: SelectSubset<T, RealtimeEventUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one RealtimeEvent.
+     * @param {RealtimeEventUpsertArgs} args - Arguments to update or create a RealtimeEvent.
+     * @example
+     * // Update or create a RealtimeEvent
+     * const realtimeEvent = await prisma.realtimeEvent.upsert({
+     *   create: {
+     *     // ... data to create a RealtimeEvent
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RealtimeEvent we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RealtimeEventUpsertArgs>(args: SelectSubset<T, RealtimeEventUpsertArgs<ExtArgs>>): Prisma__RealtimeEventClient<$Result.GetResult<Prisma.$RealtimeEventPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RealtimeEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealtimeEventCountArgs} args - Arguments to filter RealtimeEvents to count.
+     * @example
+     * // Count the number of RealtimeEvents
+     * const count = await prisma.realtimeEvent.count({
+     *   where: {
+     *     // ... the filter for the RealtimeEvents we want to count
+     *   }
+     * })
+    **/
+    count<T extends RealtimeEventCountArgs>(
+      args?: Subset<T, RealtimeEventCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RealtimeEventCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RealtimeEvent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealtimeEventAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RealtimeEventAggregateArgs>(args: Subset<T, RealtimeEventAggregateArgs>): Prisma.PrismaPromise<GetRealtimeEventAggregateType<T>>
+
+    /**
+     * Group by RealtimeEvent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealtimeEventGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RealtimeEventGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RealtimeEventGroupByArgs['orderBy'] }
+        : { orderBy?: RealtimeEventGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RealtimeEventGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRealtimeEventGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RealtimeEvent model
+   */
+  readonly fields: RealtimeEventFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RealtimeEvent.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RealtimeEventClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    mentor<T extends RealtimeEvent$mentorArgs<ExtArgs> = {}>(args?: Subset<T, RealtimeEvent$mentorArgs<ExtArgs>>): Prisma__MentorProfileClient<$Result.GetResult<Prisma.$MentorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RealtimeEvent model
+   */
+  interface RealtimeEventFieldRefs {
+    readonly id: FieldRef<"RealtimeEvent", 'String'>
+    readonly type: FieldRef<"RealtimeEvent", 'String'>
+    readonly payload: FieldRef<"RealtimeEvent", 'Json'>
+    readonly mentorId: FieldRef<"RealtimeEvent", 'String'>
+    readonly createdAt: FieldRef<"RealtimeEvent", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RealtimeEvent findUnique
+   */
+  export type RealtimeEventFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventInclude<ExtArgs> | null
+    /**
+     * Filter, which RealtimeEvent to fetch.
+     */
+    where: RealtimeEventWhereUniqueInput
+  }
+
+  /**
+   * RealtimeEvent findUniqueOrThrow
+   */
+  export type RealtimeEventFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventInclude<ExtArgs> | null
+    /**
+     * Filter, which RealtimeEvent to fetch.
+     */
+    where: RealtimeEventWhereUniqueInput
+  }
+
+  /**
+   * RealtimeEvent findFirst
+   */
+  export type RealtimeEventFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventInclude<ExtArgs> | null
+    /**
+     * Filter, which RealtimeEvent to fetch.
+     */
+    where?: RealtimeEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RealtimeEvents to fetch.
+     */
+    orderBy?: RealtimeEventOrderByWithRelationInput | RealtimeEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RealtimeEvents.
+     */
+    cursor?: RealtimeEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RealtimeEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RealtimeEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RealtimeEvents.
+     */
+    distinct?: RealtimeEventScalarFieldEnum | RealtimeEventScalarFieldEnum[]
+  }
+
+  /**
+   * RealtimeEvent findFirstOrThrow
+   */
+  export type RealtimeEventFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventInclude<ExtArgs> | null
+    /**
+     * Filter, which RealtimeEvent to fetch.
+     */
+    where?: RealtimeEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RealtimeEvents to fetch.
+     */
+    orderBy?: RealtimeEventOrderByWithRelationInput | RealtimeEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RealtimeEvents.
+     */
+    cursor?: RealtimeEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RealtimeEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RealtimeEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RealtimeEvents.
+     */
+    distinct?: RealtimeEventScalarFieldEnum | RealtimeEventScalarFieldEnum[]
+  }
+
+  /**
+   * RealtimeEvent findMany
+   */
+  export type RealtimeEventFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventInclude<ExtArgs> | null
+    /**
+     * Filter, which RealtimeEvents to fetch.
+     */
+    where?: RealtimeEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RealtimeEvents to fetch.
+     */
+    orderBy?: RealtimeEventOrderByWithRelationInput | RealtimeEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RealtimeEvents.
+     */
+    cursor?: RealtimeEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RealtimeEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RealtimeEvents.
+     */
+    skip?: number
+    distinct?: RealtimeEventScalarFieldEnum | RealtimeEventScalarFieldEnum[]
+  }
+
+  /**
+   * RealtimeEvent create
+   */
+  export type RealtimeEventCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RealtimeEvent.
+     */
+    data: XOR<RealtimeEventCreateInput, RealtimeEventUncheckedCreateInput>
+  }
+
+  /**
+   * RealtimeEvent createMany
+   */
+  export type RealtimeEventCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RealtimeEvents.
+     */
+    data: RealtimeEventCreateManyInput | RealtimeEventCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RealtimeEvent createManyAndReturn
+   */
+  export type RealtimeEventCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * The data used to create many RealtimeEvents.
+     */
+    data: RealtimeEventCreateManyInput | RealtimeEventCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RealtimeEvent update
+   */
+  export type RealtimeEventUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RealtimeEvent.
+     */
+    data: XOR<RealtimeEventUpdateInput, RealtimeEventUncheckedUpdateInput>
+    /**
+     * Choose, which RealtimeEvent to update.
+     */
+    where: RealtimeEventWhereUniqueInput
+  }
+
+  /**
+   * RealtimeEvent updateMany
+   */
+  export type RealtimeEventUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RealtimeEvents.
+     */
+    data: XOR<RealtimeEventUpdateManyMutationInput, RealtimeEventUncheckedUpdateManyInput>
+    /**
+     * Filter which RealtimeEvents to update
+     */
+    where?: RealtimeEventWhereInput
+    /**
+     * Limit how many RealtimeEvents to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RealtimeEvent updateManyAndReturn
+   */
+  export type RealtimeEventUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * The data used to update RealtimeEvents.
+     */
+    data: XOR<RealtimeEventUpdateManyMutationInput, RealtimeEventUncheckedUpdateManyInput>
+    /**
+     * Filter which RealtimeEvents to update
+     */
+    where?: RealtimeEventWhereInput
+    /**
+     * Limit how many RealtimeEvents to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RealtimeEvent upsert
+   */
+  export type RealtimeEventUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RealtimeEvent to update in case it exists.
+     */
+    where: RealtimeEventWhereUniqueInput
+    /**
+     * In case the RealtimeEvent found by the `where` argument doesn't exist, create a new RealtimeEvent with this data.
+     */
+    create: XOR<RealtimeEventCreateInput, RealtimeEventUncheckedCreateInput>
+    /**
+     * In case the RealtimeEvent was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RealtimeEventUpdateInput, RealtimeEventUncheckedUpdateInput>
+  }
+
+  /**
+   * RealtimeEvent delete
+   */
+  export type RealtimeEventDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventInclude<ExtArgs> | null
+    /**
+     * Filter which RealtimeEvent to delete.
+     */
+    where: RealtimeEventWhereUniqueInput
+  }
+
+  /**
+   * RealtimeEvent deleteMany
+   */
+  export type RealtimeEventDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RealtimeEvents to delete
+     */
+    where?: RealtimeEventWhereInput
+    /**
+     * Limit how many RealtimeEvents to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RealtimeEvent.mentor
+   */
+  export type RealtimeEvent$mentorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorProfile
+     */
+    select?: MentorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorProfile
+     */
+    omit?: MentorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MentorProfileInclude<ExtArgs> | null
+    where?: MentorProfileWhereInput
+  }
+
+  /**
+   * RealtimeEvent without action
+   */
+  export type RealtimeEventDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealtimeEvent
+     */
+    select?: RealtimeEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealtimeEvent
+     */
+    omit?: RealtimeEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RealtimeEventInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -7115,7 +17606,10 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     bio: 'bio',
     experience: 'experience',
-    skills: 'skills'
+    skills: 'skills',
+    mentorStatus: 'mentorStatus',
+    mentorStatusReason: 'mentorStatusReason',
+    mentorStatusUpdatedAt: 'mentorStatusUpdatedAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -7180,12 +17674,148 @@ export namespace Prisma {
   export type IndustryInsightScalarFieldEnum = (typeof IndustryInsightScalarFieldEnum)[keyof typeof IndustryInsightScalarFieldEnum]
 
 
+  export const MentorProfileScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    status: 'status',
+    headline: 'headline',
+    bio: 'bio',
+    yearsExperience: 'yearsExperience',
+    industries: 'industries',
+    skills: 'skills',
+    hourlyRate: 'hourlyRate',
+    currency: 'currency',
+    availability: 'availability',
+    ratingAverage: 'ratingAverage',
+    submittedAt: 'submittedAt',
+    approvedAt: 'approvedAt',
+    rejectedAt: 'rejectedAt',
+    rejectionReason: 'rejectionReason',
+    lastEventAt: 'lastEventAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MentorProfileScalarFieldEnum = (typeof MentorProfileScalarFieldEnum)[keyof typeof MentorProfileScalarFieldEnum]
+
+
+  export const MentorDocumentScalarFieldEnum: {
+    id: 'id',
+    mentorId: 'mentorId',
+    type: 'type',
+    url: 'url',
+    status: 'status',
+    description: 'description',
+    verifiedBy: 'verifiedBy',
+    verifiedAt: 'verifiedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MentorDocumentScalarFieldEnum = (typeof MentorDocumentScalarFieldEnum)[keyof typeof MentorDocumentScalarFieldEnum]
+
+
+  export const MentorSessionScalarFieldEnum: {
+    id: 'id',
+    mentorId: 'mentorId',
+    menteeId: 'menteeId',
+    status: 'status',
+    scheduledAt: 'scheduledAt',
+    durationMinutes: 'durationMinutes',
+    price: 'price',
+    currency: 'currency',
+    notes: 'notes',
+    meetingUrl: 'meetingUrl',
+    cancelledAt: 'cancelledAt',
+    cancellationReason: 'cancellationReason',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MentorSessionScalarFieldEnum = (typeof MentorSessionScalarFieldEnum)[keyof typeof MentorSessionScalarFieldEnum]
+
+
+  export const MentorConversationScalarFieldEnum: {
+    id: 'id',
+    mentorId: 'mentorId',
+    menteeId: 'menteeId',
+    lastMessageAt: 'lastMessageAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MentorConversationScalarFieldEnum = (typeof MentorConversationScalarFieldEnum)[keyof typeof MentorConversationScalarFieldEnum]
+
+
+  export const MentorMessageScalarFieldEnum: {
+    id: 'id',
+    conversationId: 'conversationId',
+    senderId: 'senderId',
+    body: 'body',
+    attachments: 'attachments',
+    readAt: 'readAt',
+    createdAt: 'createdAt'
+  };
+
+  export type MentorMessageScalarFieldEnum = (typeof MentorMessageScalarFieldEnum)[keyof typeof MentorMessageScalarFieldEnum]
+
+
+  export const MentorRecommendationScalarFieldEnum: {
+    id: 'id',
+    mentorId: 'mentorId',
+    menteeId: 'menteeId',
+    sessionId: 'sessionId',
+    title: 'title',
+    body: 'body',
+    visibility: 'visibility',
+    publishedAt: 'publishedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MentorRecommendationScalarFieldEnum = (typeof MentorRecommendationScalarFieldEnum)[keyof typeof MentorRecommendationScalarFieldEnum]
+
+
+  export const NotificationScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    type: 'type',
+    title: 'title',
+    body: 'body',
+    metadata: 'metadata',
+    readAt: 'readAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+
+
+  export const RealtimeEventScalarFieldEnum: {
+    id: 'id',
+    type: 'type',
+    payload: 'payload',
+    mentorId: 'mentorId',
+    createdAt: 'createdAt'
+  };
+
+  export type RealtimeEventScalarFieldEnum = (typeof RealtimeEventScalarFieldEnum)[keyof typeof RealtimeEventScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -7202,6 +17832,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -7252,6 +17891,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'MentorStatus'
+   */
+  export type EnumMentorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MentorStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'MentorStatus[]'
+   */
+  export type ListEnumMentorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MentorStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -7277,6 +17930,83 @@ export namespace Prisma {
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
     
+
+
+  /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'MentorDocumentStatus'
+   */
+  export type EnumMentorDocumentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MentorDocumentStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'MentorDocumentStatus[]'
+   */
+  export type ListEnumMentorDocumentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MentorDocumentStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'MentorSessionStatus'
+   */
+  export type EnumMentorSessionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MentorSessionStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'MentorSessionStatus[]'
+   */
+  export type ListEnumMentorSessionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MentorSessionStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'RecommendationVisibility'
+   */
+  export type EnumRecommendationVisibilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RecommendationVisibility'>
+    
+
+
+  /**
+   * Reference to a field of type 'RecommendationVisibility[]'
+   */
+  export type ListEnumRecommendationVisibilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RecommendationVisibility[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'NotificationType'
+   */
+  export type EnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationType'>
+    
+
+
+  /**
+   * Reference to a field of type 'NotificationType[]'
+   */
+  export type ListEnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationType[]'>
+    
   /**
    * Deep Input Types
    */
@@ -7297,10 +18027,19 @@ export namespace Prisma {
     bio?: StringNullableFilter<"User"> | string | null
     experience?: IntNullableFilter<"User"> | number | null
     skills?: StringNullableListFilter<"User">
+    mentorStatus?: EnumMentorStatusFilter<"User"> | $Enums.MentorStatus
+    mentorStatusReason?: StringNullableFilter<"User"> | string | null
+    mentorStatusUpdatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     industryInsight?: XOR<IndustryInsightNullableScalarRelationFilter, IndustryInsightWhereInput> | null
     assessments?: AssessmentListRelationFilter
     resume?: XOR<ResumeNullableScalarRelationFilter, ResumeWhereInput> | null
     coverLetter?: CoverLetterListRelationFilter
+    mentorProfile?: XOR<MentorProfileNullableScalarRelationFilter, MentorProfileWhereInput> | null
+    mentorSessions?: MentorSessionListRelationFilter
+    conversations?: MentorConversationListRelationFilter
+    messages?: MentorMessageListRelationFilter
+    recommendations?: MentorRecommendationListRelationFilter
+    notifications?: NotificationListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7315,10 +18054,19 @@ export namespace Prisma {
     bio?: SortOrderInput | SortOrder
     experience?: SortOrderInput | SortOrder
     skills?: SortOrder
+    mentorStatus?: SortOrder
+    mentorStatusReason?: SortOrderInput | SortOrder
+    mentorStatusUpdatedAt?: SortOrderInput | SortOrder
     industryInsight?: IndustryInsightOrderByWithRelationInput
     assessments?: AssessmentOrderByRelationAggregateInput
     resume?: ResumeOrderByWithRelationInput
     coverLetter?: CoverLetterOrderByRelationAggregateInput
+    mentorProfile?: MentorProfileOrderByWithRelationInput
+    mentorSessions?: MentorSessionOrderByRelationAggregateInput
+    conversations?: MentorConversationOrderByRelationAggregateInput
+    messages?: MentorMessageOrderByRelationAggregateInput
+    recommendations?: MentorRecommendationOrderByRelationAggregateInput
+    notifications?: NotificationOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -7336,10 +18084,19 @@ export namespace Prisma {
     bio?: StringNullableFilter<"User"> | string | null
     experience?: IntNullableFilter<"User"> | number | null
     skills?: StringNullableListFilter<"User">
+    mentorStatus?: EnumMentorStatusFilter<"User"> | $Enums.MentorStatus
+    mentorStatusReason?: StringNullableFilter<"User"> | string | null
+    mentorStatusUpdatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     industryInsight?: XOR<IndustryInsightNullableScalarRelationFilter, IndustryInsightWhereInput> | null
     assessments?: AssessmentListRelationFilter
     resume?: XOR<ResumeNullableScalarRelationFilter, ResumeWhereInput> | null
     coverLetter?: CoverLetterListRelationFilter
+    mentorProfile?: XOR<MentorProfileNullableScalarRelationFilter, MentorProfileWhereInput> | null
+    mentorSessions?: MentorSessionListRelationFilter
+    conversations?: MentorConversationListRelationFilter
+    messages?: MentorMessageListRelationFilter
+    recommendations?: MentorRecommendationListRelationFilter
+    notifications?: NotificationListRelationFilter
   }, "id" | "clerkUserId" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -7354,6 +18111,9 @@ export namespace Prisma {
     bio?: SortOrderInput | SortOrder
     experience?: SortOrderInput | SortOrder
     skills?: SortOrder
+    mentorStatus?: SortOrder
+    mentorStatusReason?: SortOrderInput | SortOrder
+    mentorStatusUpdatedAt?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -7376,6 +18136,9 @@ export namespace Prisma {
     bio?: StringNullableWithAggregatesFilter<"User"> | string | null
     experience?: IntNullableWithAggregatesFilter<"User"> | number | null
     skills?: StringNullableListFilter<"User">
+    mentorStatus?: EnumMentorStatusWithAggregatesFilter<"User"> | $Enums.MentorStatus
+    mentorStatusReason?: StringNullableWithAggregatesFilter<"User"> | string | null
+    mentorStatusUpdatedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
   export type AssessmentWhereInput = {
@@ -7679,6 +18442,687 @@ export namespace Prisma {
     nextUpdate?: DateTimeWithAggregatesFilter<"IndustryInsight"> | Date | string
   }
 
+  export type MentorProfileWhereInput = {
+    AND?: MentorProfileWhereInput | MentorProfileWhereInput[]
+    OR?: MentorProfileWhereInput[]
+    NOT?: MentorProfileWhereInput | MentorProfileWhereInput[]
+    id?: StringFilter<"MentorProfile"> | string
+    userId?: StringFilter<"MentorProfile"> | string
+    status?: EnumMentorStatusFilter<"MentorProfile"> | $Enums.MentorStatus
+    headline?: StringNullableFilter<"MentorProfile"> | string | null
+    bio?: StringNullableFilter<"MentorProfile"> | string | null
+    yearsExperience?: IntNullableFilter<"MentorProfile"> | number | null
+    industries?: StringNullableListFilter<"MentorProfile">
+    skills?: StringNullableListFilter<"MentorProfile">
+    hourlyRate?: DecimalNullableFilter<"MentorProfile"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringNullableFilter<"MentorProfile"> | string | null
+    availability?: JsonNullableFilter<"MentorProfile">
+    ratingAverage?: FloatNullableFilter<"MentorProfile"> | number | null
+    submittedAt?: DateTimeFilter<"MentorProfile"> | Date | string
+    approvedAt?: DateTimeNullableFilter<"MentorProfile"> | Date | string | null
+    rejectedAt?: DateTimeNullableFilter<"MentorProfile"> | Date | string | null
+    rejectionReason?: StringNullableFilter<"MentorProfile"> | string | null
+    lastEventAt?: DateTimeFilter<"MentorProfile"> | Date | string
+    createdAt?: DateTimeFilter<"MentorProfile"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorProfile"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    proofDocuments?: MentorDocumentListRelationFilter
+    sessions?: MentorSessionListRelationFilter
+    conversations?: MentorConversationListRelationFilter
+    recommendations?: MentorRecommendationListRelationFilter
+    realtimeEvents?: RealtimeEventListRelationFilter
+  }
+
+  export type MentorProfileOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    status?: SortOrder
+    headline?: SortOrderInput | SortOrder
+    bio?: SortOrderInput | SortOrder
+    yearsExperience?: SortOrderInput | SortOrder
+    industries?: SortOrder
+    skills?: SortOrder
+    hourlyRate?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
+    availability?: SortOrderInput | SortOrder
+    ratingAverage?: SortOrderInput | SortOrder
+    submittedAt?: SortOrder
+    approvedAt?: SortOrderInput | SortOrder
+    rejectedAt?: SortOrderInput | SortOrder
+    rejectionReason?: SortOrderInput | SortOrder
+    lastEventAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    proofDocuments?: MentorDocumentOrderByRelationAggregateInput
+    sessions?: MentorSessionOrderByRelationAggregateInput
+    conversations?: MentorConversationOrderByRelationAggregateInput
+    recommendations?: MentorRecommendationOrderByRelationAggregateInput
+    realtimeEvents?: RealtimeEventOrderByRelationAggregateInput
+  }
+
+  export type MentorProfileWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId?: string
+    AND?: MentorProfileWhereInput | MentorProfileWhereInput[]
+    OR?: MentorProfileWhereInput[]
+    NOT?: MentorProfileWhereInput | MentorProfileWhereInput[]
+    status?: EnumMentorStatusFilter<"MentorProfile"> | $Enums.MentorStatus
+    headline?: StringNullableFilter<"MentorProfile"> | string | null
+    bio?: StringNullableFilter<"MentorProfile"> | string | null
+    yearsExperience?: IntNullableFilter<"MentorProfile"> | number | null
+    industries?: StringNullableListFilter<"MentorProfile">
+    skills?: StringNullableListFilter<"MentorProfile">
+    hourlyRate?: DecimalNullableFilter<"MentorProfile"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringNullableFilter<"MentorProfile"> | string | null
+    availability?: JsonNullableFilter<"MentorProfile">
+    ratingAverage?: FloatNullableFilter<"MentorProfile"> | number | null
+    submittedAt?: DateTimeFilter<"MentorProfile"> | Date | string
+    approvedAt?: DateTimeNullableFilter<"MentorProfile"> | Date | string | null
+    rejectedAt?: DateTimeNullableFilter<"MentorProfile"> | Date | string | null
+    rejectionReason?: StringNullableFilter<"MentorProfile"> | string | null
+    lastEventAt?: DateTimeFilter<"MentorProfile"> | Date | string
+    createdAt?: DateTimeFilter<"MentorProfile"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorProfile"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    proofDocuments?: MentorDocumentListRelationFilter
+    sessions?: MentorSessionListRelationFilter
+    conversations?: MentorConversationListRelationFilter
+    recommendations?: MentorRecommendationListRelationFilter
+    realtimeEvents?: RealtimeEventListRelationFilter
+  }, "id" | "userId">
+
+  export type MentorProfileOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    status?: SortOrder
+    headline?: SortOrderInput | SortOrder
+    bio?: SortOrderInput | SortOrder
+    yearsExperience?: SortOrderInput | SortOrder
+    industries?: SortOrder
+    skills?: SortOrder
+    hourlyRate?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
+    availability?: SortOrderInput | SortOrder
+    ratingAverage?: SortOrderInput | SortOrder
+    submittedAt?: SortOrder
+    approvedAt?: SortOrderInput | SortOrder
+    rejectedAt?: SortOrderInput | SortOrder
+    rejectionReason?: SortOrderInput | SortOrder
+    lastEventAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MentorProfileCountOrderByAggregateInput
+    _avg?: MentorProfileAvgOrderByAggregateInput
+    _max?: MentorProfileMaxOrderByAggregateInput
+    _min?: MentorProfileMinOrderByAggregateInput
+    _sum?: MentorProfileSumOrderByAggregateInput
+  }
+
+  export type MentorProfileScalarWhereWithAggregatesInput = {
+    AND?: MentorProfileScalarWhereWithAggregatesInput | MentorProfileScalarWhereWithAggregatesInput[]
+    OR?: MentorProfileScalarWhereWithAggregatesInput[]
+    NOT?: MentorProfileScalarWhereWithAggregatesInput | MentorProfileScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MentorProfile"> | string
+    userId?: StringWithAggregatesFilter<"MentorProfile"> | string
+    status?: EnumMentorStatusWithAggregatesFilter<"MentorProfile"> | $Enums.MentorStatus
+    headline?: StringNullableWithAggregatesFilter<"MentorProfile"> | string | null
+    bio?: StringNullableWithAggregatesFilter<"MentorProfile"> | string | null
+    yearsExperience?: IntNullableWithAggregatesFilter<"MentorProfile"> | number | null
+    industries?: StringNullableListFilter<"MentorProfile">
+    skills?: StringNullableListFilter<"MentorProfile">
+    hourlyRate?: DecimalNullableWithAggregatesFilter<"MentorProfile"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringNullableWithAggregatesFilter<"MentorProfile"> | string | null
+    availability?: JsonNullableWithAggregatesFilter<"MentorProfile">
+    ratingAverage?: FloatNullableWithAggregatesFilter<"MentorProfile"> | number | null
+    submittedAt?: DateTimeWithAggregatesFilter<"MentorProfile"> | Date | string
+    approvedAt?: DateTimeNullableWithAggregatesFilter<"MentorProfile"> | Date | string | null
+    rejectedAt?: DateTimeNullableWithAggregatesFilter<"MentorProfile"> | Date | string | null
+    rejectionReason?: StringNullableWithAggregatesFilter<"MentorProfile"> | string | null
+    lastEventAt?: DateTimeWithAggregatesFilter<"MentorProfile"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"MentorProfile"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MentorProfile"> | Date | string
+  }
+
+  export type MentorDocumentWhereInput = {
+    AND?: MentorDocumentWhereInput | MentorDocumentWhereInput[]
+    OR?: MentorDocumentWhereInput[]
+    NOT?: MentorDocumentWhereInput | MentorDocumentWhereInput[]
+    id?: StringFilter<"MentorDocument"> | string
+    mentorId?: StringFilter<"MentorDocument"> | string
+    type?: StringFilter<"MentorDocument"> | string
+    url?: StringFilter<"MentorDocument"> | string
+    status?: EnumMentorDocumentStatusFilter<"MentorDocument"> | $Enums.MentorDocumentStatus
+    description?: StringNullableFilter<"MentorDocument"> | string | null
+    verifiedBy?: StringNullableFilter<"MentorDocument"> | string | null
+    verifiedAt?: DateTimeNullableFilter<"MentorDocument"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorDocument"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorDocument"> | Date | string
+    mentor?: XOR<MentorProfileScalarRelationFilter, MentorProfileWhereInput>
+  }
+
+  export type MentorDocumentOrderByWithRelationInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    status?: SortOrder
+    description?: SortOrderInput | SortOrder
+    verifiedBy?: SortOrderInput | SortOrder
+    verifiedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mentor?: MentorProfileOrderByWithRelationInput
+  }
+
+  export type MentorDocumentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MentorDocumentWhereInput | MentorDocumentWhereInput[]
+    OR?: MentorDocumentWhereInput[]
+    NOT?: MentorDocumentWhereInput | MentorDocumentWhereInput[]
+    mentorId?: StringFilter<"MentorDocument"> | string
+    type?: StringFilter<"MentorDocument"> | string
+    url?: StringFilter<"MentorDocument"> | string
+    status?: EnumMentorDocumentStatusFilter<"MentorDocument"> | $Enums.MentorDocumentStatus
+    description?: StringNullableFilter<"MentorDocument"> | string | null
+    verifiedBy?: StringNullableFilter<"MentorDocument"> | string | null
+    verifiedAt?: DateTimeNullableFilter<"MentorDocument"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorDocument"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorDocument"> | Date | string
+    mentor?: XOR<MentorProfileScalarRelationFilter, MentorProfileWhereInput>
+  }, "id">
+
+  export type MentorDocumentOrderByWithAggregationInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    status?: SortOrder
+    description?: SortOrderInput | SortOrder
+    verifiedBy?: SortOrderInput | SortOrder
+    verifiedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MentorDocumentCountOrderByAggregateInput
+    _max?: MentorDocumentMaxOrderByAggregateInput
+    _min?: MentorDocumentMinOrderByAggregateInput
+  }
+
+  export type MentorDocumentScalarWhereWithAggregatesInput = {
+    AND?: MentorDocumentScalarWhereWithAggregatesInput | MentorDocumentScalarWhereWithAggregatesInput[]
+    OR?: MentorDocumentScalarWhereWithAggregatesInput[]
+    NOT?: MentorDocumentScalarWhereWithAggregatesInput | MentorDocumentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MentorDocument"> | string
+    mentorId?: StringWithAggregatesFilter<"MentorDocument"> | string
+    type?: StringWithAggregatesFilter<"MentorDocument"> | string
+    url?: StringWithAggregatesFilter<"MentorDocument"> | string
+    status?: EnumMentorDocumentStatusWithAggregatesFilter<"MentorDocument"> | $Enums.MentorDocumentStatus
+    description?: StringNullableWithAggregatesFilter<"MentorDocument"> | string | null
+    verifiedBy?: StringNullableWithAggregatesFilter<"MentorDocument"> | string | null
+    verifiedAt?: DateTimeNullableWithAggregatesFilter<"MentorDocument"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"MentorDocument"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MentorDocument"> | Date | string
+  }
+
+  export type MentorSessionWhereInput = {
+    AND?: MentorSessionWhereInput | MentorSessionWhereInput[]
+    OR?: MentorSessionWhereInput[]
+    NOT?: MentorSessionWhereInput | MentorSessionWhereInput[]
+    id?: StringFilter<"MentorSession"> | string
+    mentorId?: StringFilter<"MentorSession"> | string
+    menteeId?: StringFilter<"MentorSession"> | string
+    status?: EnumMentorSessionStatusFilter<"MentorSession"> | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFilter<"MentorSession"> | Date | string
+    durationMinutes?: IntFilter<"MentorSession"> | number
+    price?: DecimalNullableFilter<"MentorSession"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringNullableFilter<"MentorSession"> | string | null
+    notes?: StringNullableFilter<"MentorSession"> | string | null
+    meetingUrl?: StringNullableFilter<"MentorSession"> | string | null
+    cancelledAt?: DateTimeNullableFilter<"MentorSession"> | Date | string | null
+    cancellationReason?: StringNullableFilter<"MentorSession"> | string | null
+    createdAt?: DateTimeFilter<"MentorSession"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorSession"> | Date | string
+    mentor?: XOR<MentorProfileScalarRelationFilter, MentorProfileWhereInput>
+    mentee?: XOR<UserScalarRelationFilter, UserWhereInput>
+    recommendations?: MentorRecommendationListRelationFilter
+  }
+
+  export type MentorSessionOrderByWithRelationInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    status?: SortOrder
+    scheduledAt?: SortOrder
+    durationMinutes?: SortOrder
+    price?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    meetingUrl?: SortOrderInput | SortOrder
+    cancelledAt?: SortOrderInput | SortOrder
+    cancellationReason?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mentor?: MentorProfileOrderByWithRelationInput
+    mentee?: UserOrderByWithRelationInput
+    recommendations?: MentorRecommendationOrderByRelationAggregateInput
+  }
+
+  export type MentorSessionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MentorSessionWhereInput | MentorSessionWhereInput[]
+    OR?: MentorSessionWhereInput[]
+    NOT?: MentorSessionWhereInput | MentorSessionWhereInput[]
+    mentorId?: StringFilter<"MentorSession"> | string
+    menteeId?: StringFilter<"MentorSession"> | string
+    status?: EnumMentorSessionStatusFilter<"MentorSession"> | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFilter<"MentorSession"> | Date | string
+    durationMinutes?: IntFilter<"MentorSession"> | number
+    price?: DecimalNullableFilter<"MentorSession"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringNullableFilter<"MentorSession"> | string | null
+    notes?: StringNullableFilter<"MentorSession"> | string | null
+    meetingUrl?: StringNullableFilter<"MentorSession"> | string | null
+    cancelledAt?: DateTimeNullableFilter<"MentorSession"> | Date | string | null
+    cancellationReason?: StringNullableFilter<"MentorSession"> | string | null
+    createdAt?: DateTimeFilter<"MentorSession"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorSession"> | Date | string
+    mentor?: XOR<MentorProfileScalarRelationFilter, MentorProfileWhereInput>
+    mentee?: XOR<UserScalarRelationFilter, UserWhereInput>
+    recommendations?: MentorRecommendationListRelationFilter
+  }, "id">
+
+  export type MentorSessionOrderByWithAggregationInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    status?: SortOrder
+    scheduledAt?: SortOrder
+    durationMinutes?: SortOrder
+    price?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    meetingUrl?: SortOrderInput | SortOrder
+    cancelledAt?: SortOrderInput | SortOrder
+    cancellationReason?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MentorSessionCountOrderByAggregateInput
+    _avg?: MentorSessionAvgOrderByAggregateInput
+    _max?: MentorSessionMaxOrderByAggregateInput
+    _min?: MentorSessionMinOrderByAggregateInput
+    _sum?: MentorSessionSumOrderByAggregateInput
+  }
+
+  export type MentorSessionScalarWhereWithAggregatesInput = {
+    AND?: MentorSessionScalarWhereWithAggregatesInput | MentorSessionScalarWhereWithAggregatesInput[]
+    OR?: MentorSessionScalarWhereWithAggregatesInput[]
+    NOT?: MentorSessionScalarWhereWithAggregatesInput | MentorSessionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MentorSession"> | string
+    mentorId?: StringWithAggregatesFilter<"MentorSession"> | string
+    menteeId?: StringWithAggregatesFilter<"MentorSession"> | string
+    status?: EnumMentorSessionStatusWithAggregatesFilter<"MentorSession"> | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeWithAggregatesFilter<"MentorSession"> | Date | string
+    durationMinutes?: IntWithAggregatesFilter<"MentorSession"> | number
+    price?: DecimalNullableWithAggregatesFilter<"MentorSession"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringNullableWithAggregatesFilter<"MentorSession"> | string | null
+    notes?: StringNullableWithAggregatesFilter<"MentorSession"> | string | null
+    meetingUrl?: StringNullableWithAggregatesFilter<"MentorSession"> | string | null
+    cancelledAt?: DateTimeNullableWithAggregatesFilter<"MentorSession"> | Date | string | null
+    cancellationReason?: StringNullableWithAggregatesFilter<"MentorSession"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"MentorSession"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MentorSession"> | Date | string
+  }
+
+  export type MentorConversationWhereInput = {
+    AND?: MentorConversationWhereInput | MentorConversationWhereInput[]
+    OR?: MentorConversationWhereInput[]
+    NOT?: MentorConversationWhereInput | MentorConversationWhereInput[]
+    id?: StringFilter<"MentorConversation"> | string
+    mentorId?: StringFilter<"MentorConversation"> | string
+    menteeId?: StringFilter<"MentorConversation"> | string
+    lastMessageAt?: DateTimeNullableFilter<"MentorConversation"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorConversation"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorConversation"> | Date | string
+    mentor?: XOR<MentorProfileScalarRelationFilter, MentorProfileWhereInput>
+    mentee?: XOR<UserScalarRelationFilter, UserWhereInput>
+    messages?: MentorMessageListRelationFilter
+  }
+
+  export type MentorConversationOrderByWithRelationInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    lastMessageAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mentor?: MentorProfileOrderByWithRelationInput
+    mentee?: UserOrderByWithRelationInput
+    messages?: MentorMessageOrderByRelationAggregateInput
+  }
+
+  export type MentorConversationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    mentorId_menteeId?: MentorConversationMentorIdMenteeIdCompoundUniqueInput
+    AND?: MentorConversationWhereInput | MentorConversationWhereInput[]
+    OR?: MentorConversationWhereInput[]
+    NOT?: MentorConversationWhereInput | MentorConversationWhereInput[]
+    mentorId?: StringFilter<"MentorConversation"> | string
+    menteeId?: StringFilter<"MentorConversation"> | string
+    lastMessageAt?: DateTimeNullableFilter<"MentorConversation"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorConversation"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorConversation"> | Date | string
+    mentor?: XOR<MentorProfileScalarRelationFilter, MentorProfileWhereInput>
+    mentee?: XOR<UserScalarRelationFilter, UserWhereInput>
+    messages?: MentorMessageListRelationFilter
+  }, "id" | "mentorId_menteeId">
+
+  export type MentorConversationOrderByWithAggregationInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    lastMessageAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MentorConversationCountOrderByAggregateInput
+    _max?: MentorConversationMaxOrderByAggregateInput
+    _min?: MentorConversationMinOrderByAggregateInput
+  }
+
+  export type MentorConversationScalarWhereWithAggregatesInput = {
+    AND?: MentorConversationScalarWhereWithAggregatesInput | MentorConversationScalarWhereWithAggregatesInput[]
+    OR?: MentorConversationScalarWhereWithAggregatesInput[]
+    NOT?: MentorConversationScalarWhereWithAggregatesInput | MentorConversationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MentorConversation"> | string
+    mentorId?: StringWithAggregatesFilter<"MentorConversation"> | string
+    menteeId?: StringWithAggregatesFilter<"MentorConversation"> | string
+    lastMessageAt?: DateTimeNullableWithAggregatesFilter<"MentorConversation"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"MentorConversation"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MentorConversation"> | Date | string
+  }
+
+  export type MentorMessageWhereInput = {
+    AND?: MentorMessageWhereInput | MentorMessageWhereInput[]
+    OR?: MentorMessageWhereInput[]
+    NOT?: MentorMessageWhereInput | MentorMessageWhereInput[]
+    id?: StringFilter<"MentorMessage"> | string
+    conversationId?: StringFilter<"MentorMessage"> | string
+    senderId?: StringFilter<"MentorMessage"> | string
+    body?: StringFilter<"MentorMessage"> | string
+    attachments?: JsonNullableFilter<"MentorMessage">
+    readAt?: DateTimeNullableFilter<"MentorMessage"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorMessage"> | Date | string
+    conversation?: XOR<MentorConversationScalarRelationFilter, MentorConversationWhereInput>
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type MentorMessageOrderByWithRelationInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    body?: SortOrder
+    attachments?: SortOrderInput | SortOrder
+    readAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    conversation?: MentorConversationOrderByWithRelationInput
+    sender?: UserOrderByWithRelationInput
+  }
+
+  export type MentorMessageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MentorMessageWhereInput | MentorMessageWhereInput[]
+    OR?: MentorMessageWhereInput[]
+    NOT?: MentorMessageWhereInput | MentorMessageWhereInput[]
+    conversationId?: StringFilter<"MentorMessage"> | string
+    senderId?: StringFilter<"MentorMessage"> | string
+    body?: StringFilter<"MentorMessage"> | string
+    attachments?: JsonNullableFilter<"MentorMessage">
+    readAt?: DateTimeNullableFilter<"MentorMessage"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorMessage"> | Date | string
+    conversation?: XOR<MentorConversationScalarRelationFilter, MentorConversationWhereInput>
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type MentorMessageOrderByWithAggregationInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    body?: SortOrder
+    attachments?: SortOrderInput | SortOrder
+    readAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: MentorMessageCountOrderByAggregateInput
+    _max?: MentorMessageMaxOrderByAggregateInput
+    _min?: MentorMessageMinOrderByAggregateInput
+  }
+
+  export type MentorMessageScalarWhereWithAggregatesInput = {
+    AND?: MentorMessageScalarWhereWithAggregatesInput | MentorMessageScalarWhereWithAggregatesInput[]
+    OR?: MentorMessageScalarWhereWithAggregatesInput[]
+    NOT?: MentorMessageScalarWhereWithAggregatesInput | MentorMessageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MentorMessage"> | string
+    conversationId?: StringWithAggregatesFilter<"MentorMessage"> | string
+    senderId?: StringWithAggregatesFilter<"MentorMessage"> | string
+    body?: StringWithAggregatesFilter<"MentorMessage"> | string
+    attachments?: JsonNullableWithAggregatesFilter<"MentorMessage">
+    readAt?: DateTimeNullableWithAggregatesFilter<"MentorMessage"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"MentorMessage"> | Date | string
+  }
+
+  export type MentorRecommendationWhereInput = {
+    AND?: MentorRecommendationWhereInput | MentorRecommendationWhereInput[]
+    OR?: MentorRecommendationWhereInput[]
+    NOT?: MentorRecommendationWhereInput | MentorRecommendationWhereInput[]
+    id?: StringFilter<"MentorRecommendation"> | string
+    mentorId?: StringFilter<"MentorRecommendation"> | string
+    menteeId?: StringFilter<"MentorRecommendation"> | string
+    sessionId?: StringNullableFilter<"MentorRecommendation"> | string | null
+    title?: StringFilter<"MentorRecommendation"> | string
+    body?: StringFilter<"MentorRecommendation"> | string
+    visibility?: EnumRecommendationVisibilityFilter<"MentorRecommendation"> | $Enums.RecommendationVisibility
+    publishedAt?: DateTimeNullableFilter<"MentorRecommendation"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorRecommendation"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorRecommendation"> | Date | string
+    mentor?: XOR<MentorProfileScalarRelationFilter, MentorProfileWhereInput>
+    mentee?: XOR<UserScalarRelationFilter, UserWhereInput>
+    session?: XOR<MentorSessionNullableScalarRelationFilter, MentorSessionWhereInput> | null
+  }
+
+  export type MentorRecommendationOrderByWithRelationInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    sessionId?: SortOrderInput | SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    visibility?: SortOrder
+    publishedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mentor?: MentorProfileOrderByWithRelationInput
+    mentee?: UserOrderByWithRelationInput
+    session?: MentorSessionOrderByWithRelationInput
+  }
+
+  export type MentorRecommendationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MentorRecommendationWhereInput | MentorRecommendationWhereInput[]
+    OR?: MentorRecommendationWhereInput[]
+    NOT?: MentorRecommendationWhereInput | MentorRecommendationWhereInput[]
+    mentorId?: StringFilter<"MentorRecommendation"> | string
+    menteeId?: StringFilter<"MentorRecommendation"> | string
+    sessionId?: StringNullableFilter<"MentorRecommendation"> | string | null
+    title?: StringFilter<"MentorRecommendation"> | string
+    body?: StringFilter<"MentorRecommendation"> | string
+    visibility?: EnumRecommendationVisibilityFilter<"MentorRecommendation"> | $Enums.RecommendationVisibility
+    publishedAt?: DateTimeNullableFilter<"MentorRecommendation"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorRecommendation"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorRecommendation"> | Date | string
+    mentor?: XOR<MentorProfileScalarRelationFilter, MentorProfileWhereInput>
+    mentee?: XOR<UserScalarRelationFilter, UserWhereInput>
+    session?: XOR<MentorSessionNullableScalarRelationFilter, MentorSessionWhereInput> | null
+  }, "id">
+
+  export type MentorRecommendationOrderByWithAggregationInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    sessionId?: SortOrderInput | SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    visibility?: SortOrder
+    publishedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MentorRecommendationCountOrderByAggregateInput
+    _max?: MentorRecommendationMaxOrderByAggregateInput
+    _min?: MentorRecommendationMinOrderByAggregateInput
+  }
+
+  export type MentorRecommendationScalarWhereWithAggregatesInput = {
+    AND?: MentorRecommendationScalarWhereWithAggregatesInput | MentorRecommendationScalarWhereWithAggregatesInput[]
+    OR?: MentorRecommendationScalarWhereWithAggregatesInput[]
+    NOT?: MentorRecommendationScalarWhereWithAggregatesInput | MentorRecommendationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MentorRecommendation"> | string
+    mentorId?: StringWithAggregatesFilter<"MentorRecommendation"> | string
+    menteeId?: StringWithAggregatesFilter<"MentorRecommendation"> | string
+    sessionId?: StringNullableWithAggregatesFilter<"MentorRecommendation"> | string | null
+    title?: StringWithAggregatesFilter<"MentorRecommendation"> | string
+    body?: StringWithAggregatesFilter<"MentorRecommendation"> | string
+    visibility?: EnumRecommendationVisibilityWithAggregatesFilter<"MentorRecommendation"> | $Enums.RecommendationVisibility
+    publishedAt?: DateTimeNullableWithAggregatesFilter<"MentorRecommendation"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"MentorRecommendation"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MentorRecommendation"> | Date | string
+  }
+
+  export type NotificationWhereInput = {
+    AND?: NotificationWhereInput | NotificationWhereInput[]
+    OR?: NotificationWhereInput[]
+    NOT?: NotificationWhereInput | NotificationWhereInput[]
+    id?: StringFilter<"Notification"> | string
+    userId?: StringFilter<"Notification"> | string
+    type?: EnumNotificationTypeFilter<"Notification"> | $Enums.NotificationType
+    title?: StringFilter<"Notification"> | string
+    body?: StringNullableFilter<"Notification"> | string | null
+    metadata?: JsonNullableFilter<"Notification">
+    readAt?: DateTimeNullableFilter<"Notification"> | Date | string | null
+    createdAt?: DateTimeFilter<"Notification"> | Date | string
+    updatedAt?: DateTimeFilter<"Notification"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type NotificationOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    body?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
+    readAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type NotificationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: NotificationWhereInput | NotificationWhereInput[]
+    OR?: NotificationWhereInput[]
+    NOT?: NotificationWhereInput | NotificationWhereInput[]
+    userId?: StringFilter<"Notification"> | string
+    type?: EnumNotificationTypeFilter<"Notification"> | $Enums.NotificationType
+    title?: StringFilter<"Notification"> | string
+    body?: StringNullableFilter<"Notification"> | string | null
+    metadata?: JsonNullableFilter<"Notification">
+    readAt?: DateTimeNullableFilter<"Notification"> | Date | string | null
+    createdAt?: DateTimeFilter<"Notification"> | Date | string
+    updatedAt?: DateTimeFilter<"Notification"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type NotificationOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    body?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
+    readAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: NotificationCountOrderByAggregateInput
+    _max?: NotificationMaxOrderByAggregateInput
+    _min?: NotificationMinOrderByAggregateInput
+  }
+
+  export type NotificationScalarWhereWithAggregatesInput = {
+    AND?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
+    OR?: NotificationScalarWhereWithAggregatesInput[]
+    NOT?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Notification"> | string
+    userId?: StringWithAggregatesFilter<"Notification"> | string
+    type?: EnumNotificationTypeWithAggregatesFilter<"Notification"> | $Enums.NotificationType
+    title?: StringWithAggregatesFilter<"Notification"> | string
+    body?: StringNullableWithAggregatesFilter<"Notification"> | string | null
+    metadata?: JsonNullableWithAggregatesFilter<"Notification">
+    readAt?: DateTimeNullableWithAggregatesFilter<"Notification"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Notification"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Notification"> | Date | string
+  }
+
+  export type RealtimeEventWhereInput = {
+    AND?: RealtimeEventWhereInput | RealtimeEventWhereInput[]
+    OR?: RealtimeEventWhereInput[]
+    NOT?: RealtimeEventWhereInput | RealtimeEventWhereInput[]
+    id?: StringFilter<"RealtimeEvent"> | string
+    type?: StringFilter<"RealtimeEvent"> | string
+    payload?: JsonNullableFilter<"RealtimeEvent">
+    mentorId?: StringNullableFilter<"RealtimeEvent"> | string | null
+    createdAt?: DateTimeFilter<"RealtimeEvent"> | Date | string
+    mentor?: XOR<MentorProfileNullableScalarRelationFilter, MentorProfileWhereInput> | null
+  }
+
+  export type RealtimeEventOrderByWithRelationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    payload?: SortOrderInput | SortOrder
+    mentorId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    mentor?: MentorProfileOrderByWithRelationInput
+  }
+
+  export type RealtimeEventWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: RealtimeEventWhereInput | RealtimeEventWhereInput[]
+    OR?: RealtimeEventWhereInput[]
+    NOT?: RealtimeEventWhereInput | RealtimeEventWhereInput[]
+    type?: StringFilter<"RealtimeEvent"> | string
+    payload?: JsonNullableFilter<"RealtimeEvent">
+    mentorId?: StringNullableFilter<"RealtimeEvent"> | string | null
+    createdAt?: DateTimeFilter<"RealtimeEvent"> | Date | string
+    mentor?: XOR<MentorProfileNullableScalarRelationFilter, MentorProfileWhereInput> | null
+  }, "id">
+
+  export type RealtimeEventOrderByWithAggregationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    payload?: SortOrderInput | SortOrder
+    mentorId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: RealtimeEventCountOrderByAggregateInput
+    _max?: RealtimeEventMaxOrderByAggregateInput
+    _min?: RealtimeEventMinOrderByAggregateInput
+  }
+
+  export type RealtimeEventScalarWhereWithAggregatesInput = {
+    AND?: RealtimeEventScalarWhereWithAggregatesInput | RealtimeEventScalarWhereWithAggregatesInput[]
+    OR?: RealtimeEventScalarWhereWithAggregatesInput[]
+    NOT?: RealtimeEventScalarWhereWithAggregatesInput | RealtimeEventScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"RealtimeEvent"> | string
+    type?: StringWithAggregatesFilter<"RealtimeEvent"> | string
+    payload?: JsonNullableWithAggregatesFilter<"RealtimeEvent">
+    mentorId?: StringNullableWithAggregatesFilter<"RealtimeEvent"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"RealtimeEvent"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     clerkUserId: string
@@ -7690,10 +19134,19 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
     industryInsight?: IndustryInsightCreateNestedOneWithoutUsersInput
     assessments?: AssessmentCreateNestedManyWithoutUserInput
     resume?: ResumeCreateNestedOneWithoutUserInput
     coverLetter?: CoverLetterCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -7708,9 +19161,18 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
     assessments?: AssessmentUncheckedCreateNestedManyWithoutUserInput
     resume?: ResumeUncheckedCreateNestedOneWithoutUserInput
     coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileUncheckedCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionUncheckedCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -7724,10 +19186,19 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     industryInsight?: IndustryInsightUpdateOneWithoutUsersNestedInput
     assessments?: AssessmentUpdateManyWithoutUserNestedInput
     resume?: ResumeUpdateOneWithoutUserNestedInput
     coverLetter?: CoverLetterUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -7742,9 +19213,18 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     assessments?: AssessmentUncheckedUpdateManyWithoutUserNestedInput
     resume?: ResumeUncheckedUpdateOneWithoutUserNestedInput
     coverLetter?: CoverLetterUncheckedUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUncheckedUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUncheckedUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUncheckedUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -7759,6 +19239,9 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -7772,6 +19255,9 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -7786,6 +19272,9 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AssessmentCreateInput = {
@@ -8118,6 +19607,749 @@ export namespace Prisma {
     nextUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type MentorProfileCreateInput = {
+    id?: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutMentorProfileInput
+    proofDocuments?: MentorDocumentCreateNestedManyWithoutMentorInput
+    sessions?: MentorSessionCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileUncheckedCreateInput = {
+    id?: string
+    userId: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    proofDocuments?: MentorDocumentUncheckedCreateNestedManyWithoutMentorInput
+    sessions?: MentorSessionUncheckedCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventUncheckedCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMentorProfileNestedInput
+    proofDocuments?: MentorDocumentUpdateManyWithoutMentorNestedInput
+    sessions?: MentorSessionUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUpdateManyWithoutMentorNestedInput
+  }
+
+  export type MentorProfileUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proofDocuments?: MentorDocumentUncheckedUpdateManyWithoutMentorNestedInput
+    sessions?: MentorSessionUncheckedUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUncheckedUpdateManyWithoutMentorNestedInput
+  }
+
+  export type MentorProfileCreateManyInput = {
+    id?: string
+    userId: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorProfileUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorProfileUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorDocumentCreateInput = {
+    id?: string
+    type: string
+    url: string
+    status?: $Enums.MentorDocumentStatus
+    description?: string | null
+    verifiedBy?: string | null
+    verifiedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentor: MentorProfileCreateNestedOneWithoutProofDocumentsInput
+  }
+
+  export type MentorDocumentUncheckedCreateInput = {
+    id?: string
+    mentorId: string
+    type: string
+    url: string
+    status?: $Enums.MentorDocumentStatus
+    description?: string | null
+    verifiedBy?: string | null
+    verifiedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorDocumentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorDocumentStatusFieldUpdateOperationsInput | $Enums.MentorDocumentStatus
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentor?: MentorProfileUpdateOneRequiredWithoutProofDocumentsNestedInput
+  }
+
+  export type MentorDocumentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorDocumentStatusFieldUpdateOperationsInput | $Enums.MentorDocumentStatus
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorDocumentCreateManyInput = {
+    id?: string
+    mentorId: string
+    type: string
+    url: string
+    status?: $Enums.MentorDocumentStatus
+    description?: string | null
+    verifiedBy?: string | null
+    verifiedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorDocumentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorDocumentStatusFieldUpdateOperationsInput | $Enums.MentorDocumentStatus
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorDocumentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorDocumentStatusFieldUpdateOperationsInput | $Enums.MentorDocumentStatus
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorSessionCreateInput = {
+    id?: string
+    status?: $Enums.MentorSessionStatus
+    scheduledAt: Date | string
+    durationMinutes: number
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    notes?: string | null
+    meetingUrl?: string | null
+    cancelledAt?: Date | string | null
+    cancellationReason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentor: MentorProfileCreateNestedOneWithoutSessionsInput
+    mentee: UserCreateNestedOneWithoutMentorSessionsInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutSessionInput
+  }
+
+  export type MentorSessionUncheckedCreateInput = {
+    id?: string
+    mentorId: string
+    menteeId: string
+    status?: $Enums.MentorSessionStatus
+    scheduledAt: Date | string
+    durationMinutes: number
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    notes?: string | null
+    meetingUrl?: string | null
+    cancelledAt?: Date | string | null
+    cancellationReason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type MentorSessionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentor?: MentorProfileUpdateOneRequiredWithoutSessionsNestedInput
+    mentee?: UserUpdateOneRequiredWithoutMentorSessionsNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutSessionNestedInput
+  }
+
+  export type MentorSessionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type MentorSessionCreateManyInput = {
+    id?: string
+    mentorId: string
+    menteeId: string
+    status?: $Enums.MentorSessionStatus
+    scheduledAt: Date | string
+    durationMinutes: number
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    notes?: string | null
+    meetingUrl?: string | null
+    cancelledAt?: Date | string | null
+    cancellationReason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorSessionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorSessionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorConversationCreateInput = {
+    id?: string
+    lastMessageAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentor: MentorProfileCreateNestedOneWithoutConversationsInput
+    mentee: UserCreateNestedOneWithoutConversationsInput
+    messages?: MentorMessageCreateNestedManyWithoutConversationInput
+  }
+
+  export type MentorConversationUncheckedCreateInput = {
+    id?: string
+    mentorId: string
+    menteeId: string
+    lastMessageAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type MentorConversationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentor?: MentorProfileUpdateOneRequiredWithoutConversationsNestedInput
+    mentee?: UserUpdateOneRequiredWithoutConversationsNestedInput
+    messages?: MentorMessageUpdateManyWithoutConversationNestedInput
+  }
+
+  export type MentorConversationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MentorMessageUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type MentorConversationCreateManyInput = {
+    id?: string
+    mentorId: string
+    menteeId: string
+    lastMessageAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorConversationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorConversationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorMessageCreateInput = {
+    id?: string
+    body: string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+    conversation: MentorConversationCreateNestedOneWithoutMessagesInput
+    sender: UserCreateNestedOneWithoutMessagesInput
+  }
+
+  export type MentorMessageUncheckedCreateInput = {
+    id?: string
+    conversationId: string
+    senderId: string
+    body: string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type MentorMessageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: MentorConversationUpdateOneRequiredWithoutMessagesNestedInput
+    sender?: UserUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type MentorMessageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorMessageCreateManyInput = {
+    id?: string
+    conversationId: string
+    senderId: string
+    body: string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type MentorMessageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorMessageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorRecommendationCreateInput = {
+    id?: string
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentor: MentorProfileCreateNestedOneWithoutRecommendationsInput
+    mentee: UserCreateNestedOneWithoutRecommendationsInput
+    session?: MentorSessionCreateNestedOneWithoutRecommendationsInput
+  }
+
+  export type MentorRecommendationUncheckedCreateInput = {
+    id?: string
+    mentorId: string
+    menteeId: string
+    sessionId?: string | null
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorRecommendationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentor?: MentorProfileUpdateOneRequiredWithoutRecommendationsNestedInput
+    mentee?: UserUpdateOneRequiredWithoutRecommendationsNestedInput
+    session?: MentorSessionUpdateOneWithoutRecommendationsNestedInput
+  }
+
+  export type MentorRecommendationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    sessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorRecommendationCreateManyInput = {
+    id?: string
+    mentorId: string
+    menteeId: string
+    sessionId?: string | null
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorRecommendationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorRecommendationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    sessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationCreateInput = {
+    id?: string
+    type: $Enums.NotificationType
+    title: string
+    body?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutNotificationsInput
+  }
+
+  export type NotificationUncheckedCreateInput = {
+    id?: string
+    userId: string
+    type: $Enums.NotificationType
+    title: string
+    body?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NotificationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    title?: StringFieldUpdateOperationsInput | string
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutNotificationsNestedInput
+  }
+
+  export type NotificationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    title?: StringFieldUpdateOperationsInput | string
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationCreateManyInput = {
+    id?: string
+    userId: string
+    type: $Enums.NotificationType
+    title: string
+    body?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NotificationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    title?: StringFieldUpdateOperationsInput | string
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    title?: StringFieldUpdateOperationsInput | string
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RealtimeEventCreateInput = {
+    id?: string
+    type: string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    mentor?: MentorProfileCreateNestedOneWithoutRealtimeEventsInput
+  }
+
+  export type RealtimeEventUncheckedCreateInput = {
+    id?: string
+    type: string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    mentorId?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RealtimeEventUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentor?: MentorProfileUpdateOneWithoutRealtimeEventsNestedInput
+  }
+
+  export type RealtimeEventUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    mentorId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RealtimeEventCreateManyInput = {
+    id?: string
+    type: string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    mentorId?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RealtimeEventUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RealtimeEventUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    mentorId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -8178,6 +20410,24 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type EnumMentorStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorStatus | EnumMentorStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorStatus[] | ListEnumMentorStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorStatus[] | ListEnumMentorStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorStatusFilter<$PrismaModel> | $Enums.MentorStatus
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type IndustryInsightNullableScalarRelationFilter = {
     is?: IndustryInsightWhereInput | null
     isNot?: IndustryInsightWhereInput | null
@@ -8200,6 +20450,41 @@ export namespace Prisma {
     none?: CoverLetterWhereInput
   }
 
+  export type MentorProfileNullableScalarRelationFilter = {
+    is?: MentorProfileWhereInput | null
+    isNot?: MentorProfileWhereInput | null
+  }
+
+  export type MentorSessionListRelationFilter = {
+    every?: MentorSessionWhereInput
+    some?: MentorSessionWhereInput
+    none?: MentorSessionWhereInput
+  }
+
+  export type MentorConversationListRelationFilter = {
+    every?: MentorConversationWhereInput
+    some?: MentorConversationWhereInput
+    none?: MentorConversationWhereInput
+  }
+
+  export type MentorMessageListRelationFilter = {
+    every?: MentorMessageWhereInput
+    some?: MentorMessageWhereInput
+    none?: MentorMessageWhereInput
+  }
+
+  export type MentorRecommendationListRelationFilter = {
+    every?: MentorRecommendationWhereInput
+    some?: MentorRecommendationWhereInput
+    none?: MentorRecommendationWhereInput
+  }
+
+  export type NotificationListRelationFilter = {
+    every?: NotificationWhereInput
+    some?: NotificationWhereInput
+    none?: NotificationWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -8210,6 +20495,26 @@ export namespace Prisma {
   }
 
   export type CoverLetterOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MentorSessionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MentorConversationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MentorMessageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MentorRecommendationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type NotificationOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8225,6 +20530,9 @@ export namespace Prisma {
     bio?: SortOrder
     experience?: SortOrder
     skills?: SortOrder
+    mentorStatus?: SortOrder
+    mentorStatusReason?: SortOrder
+    mentorStatusUpdatedAt?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -8242,6 +20550,9 @@ export namespace Prisma {
     updatedAt?: SortOrder
     bio?: SortOrder
     experience?: SortOrder
+    mentorStatus?: SortOrder
+    mentorStatusReason?: SortOrder
+    mentorStatusUpdatedAt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -8255,6 +20566,9 @@ export namespace Prisma {
     updatedAt?: SortOrder
     bio?: SortOrder
     experience?: SortOrder
+    mentorStatus?: SortOrder
+    mentorStatusReason?: SortOrder
+    mentorStatusUpdatedAt?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -8325,6 +20639,30 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type EnumMentorStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorStatus | EnumMentorStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorStatus[] | ListEnumMentorStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorStatus[] | ListEnumMentorStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorStatusWithAggregatesFilter<$PrismaModel> | $Enums.MentorStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMentorStatusFilter<$PrismaModel>
+    _max?: NestedEnumMentorStatusFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -8565,6 +20903,539 @@ export namespace Prisma {
     growthRate?: SortOrder
   }
 
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type MentorDocumentListRelationFilter = {
+    every?: MentorDocumentWhereInput
+    some?: MentorDocumentWhereInput
+    none?: MentorDocumentWhereInput
+  }
+
+  export type RealtimeEventListRelationFilter = {
+    every?: RealtimeEventWhereInput
+    some?: RealtimeEventWhereInput
+    none?: RealtimeEventWhereInput
+  }
+
+  export type MentorDocumentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RealtimeEventOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MentorProfileCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    status?: SortOrder
+    headline?: SortOrder
+    bio?: SortOrder
+    yearsExperience?: SortOrder
+    industries?: SortOrder
+    skills?: SortOrder
+    hourlyRate?: SortOrder
+    currency?: SortOrder
+    availability?: SortOrder
+    ratingAverage?: SortOrder
+    submittedAt?: SortOrder
+    approvedAt?: SortOrder
+    rejectedAt?: SortOrder
+    rejectionReason?: SortOrder
+    lastEventAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorProfileAvgOrderByAggregateInput = {
+    yearsExperience?: SortOrder
+    hourlyRate?: SortOrder
+    ratingAverage?: SortOrder
+  }
+
+  export type MentorProfileMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    status?: SortOrder
+    headline?: SortOrder
+    bio?: SortOrder
+    yearsExperience?: SortOrder
+    hourlyRate?: SortOrder
+    currency?: SortOrder
+    ratingAverage?: SortOrder
+    submittedAt?: SortOrder
+    approvedAt?: SortOrder
+    rejectedAt?: SortOrder
+    rejectionReason?: SortOrder
+    lastEventAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorProfileMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    status?: SortOrder
+    headline?: SortOrder
+    bio?: SortOrder
+    yearsExperience?: SortOrder
+    hourlyRate?: SortOrder
+    currency?: SortOrder
+    ratingAverage?: SortOrder
+    submittedAt?: SortOrder
+    approvedAt?: SortOrder
+    rejectedAt?: SortOrder
+    rejectionReason?: SortOrder
+    lastEventAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorProfileSumOrderByAggregateInput = {
+    yearsExperience?: SortOrder
+    hourlyRate?: SortOrder
+    ratingAverage?: SortOrder
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type EnumMentorDocumentStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorDocumentStatus | EnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorDocumentStatus[] | ListEnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorDocumentStatus[] | ListEnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorDocumentStatusFilter<$PrismaModel> | $Enums.MentorDocumentStatus
+  }
+
+  export type MentorProfileScalarRelationFilter = {
+    is?: MentorProfileWhereInput
+    isNot?: MentorProfileWhereInput
+  }
+
+  export type MentorDocumentCountOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    status?: SortOrder
+    description?: SortOrder
+    verifiedBy?: SortOrder
+    verifiedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorDocumentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    status?: SortOrder
+    description?: SortOrder
+    verifiedBy?: SortOrder
+    verifiedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorDocumentMinOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    status?: SortOrder
+    description?: SortOrder
+    verifiedBy?: SortOrder
+    verifiedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumMentorDocumentStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorDocumentStatus | EnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorDocumentStatus[] | ListEnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorDocumentStatus[] | ListEnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorDocumentStatusWithAggregatesFilter<$PrismaModel> | $Enums.MentorDocumentStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMentorDocumentStatusFilter<$PrismaModel>
+    _max?: NestedEnumMentorDocumentStatusFilter<$PrismaModel>
+  }
+
+  export type EnumMentorSessionStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorSessionStatus | EnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorSessionStatus[] | ListEnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorSessionStatus[] | ListEnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorSessionStatusFilter<$PrismaModel> | $Enums.MentorSessionStatus
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type MentorSessionCountOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    status?: SortOrder
+    scheduledAt?: SortOrder
+    durationMinutes?: SortOrder
+    price?: SortOrder
+    currency?: SortOrder
+    notes?: SortOrder
+    meetingUrl?: SortOrder
+    cancelledAt?: SortOrder
+    cancellationReason?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorSessionAvgOrderByAggregateInput = {
+    durationMinutes?: SortOrder
+    price?: SortOrder
+  }
+
+  export type MentorSessionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    status?: SortOrder
+    scheduledAt?: SortOrder
+    durationMinutes?: SortOrder
+    price?: SortOrder
+    currency?: SortOrder
+    notes?: SortOrder
+    meetingUrl?: SortOrder
+    cancelledAt?: SortOrder
+    cancellationReason?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorSessionMinOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    status?: SortOrder
+    scheduledAt?: SortOrder
+    durationMinutes?: SortOrder
+    price?: SortOrder
+    currency?: SortOrder
+    notes?: SortOrder
+    meetingUrl?: SortOrder
+    cancelledAt?: SortOrder
+    cancellationReason?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorSessionSumOrderByAggregateInput = {
+    durationMinutes?: SortOrder
+    price?: SortOrder
+  }
+
+  export type EnumMentorSessionStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorSessionStatus | EnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorSessionStatus[] | ListEnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorSessionStatus[] | ListEnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorSessionStatusWithAggregatesFilter<$PrismaModel> | $Enums.MentorSessionStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMentorSessionStatusFilter<$PrismaModel>
+    _max?: NestedEnumMentorSessionStatusFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type MentorConversationMentorIdMenteeIdCompoundUniqueInput = {
+    mentorId: string
+    menteeId: string
+  }
+
+  export type MentorConversationCountOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    lastMessageAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorConversationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    lastMessageAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorConversationMinOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    lastMessageAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorConversationScalarRelationFilter = {
+    is?: MentorConversationWhereInput
+    isNot?: MentorConversationWhereInput
+  }
+
+  export type MentorMessageCountOrderByAggregateInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    body?: SortOrder
+    attachments?: SortOrder
+    readAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MentorMessageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    body?: SortOrder
+    readAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MentorMessageMinOrderByAggregateInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    body?: SortOrder
+    readAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EnumRecommendationVisibilityFilter<$PrismaModel = never> = {
+    equals?: $Enums.RecommendationVisibility | EnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    in?: $Enums.RecommendationVisibility[] | ListEnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RecommendationVisibility[] | ListEnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    not?: NestedEnumRecommendationVisibilityFilter<$PrismaModel> | $Enums.RecommendationVisibility
+  }
+
+  export type MentorSessionNullableScalarRelationFilter = {
+    is?: MentorSessionWhereInput | null
+    isNot?: MentorSessionWhereInput | null
+  }
+
+  export type MentorRecommendationCountOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    sessionId?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    visibility?: SortOrder
+    publishedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorRecommendationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    sessionId?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    visibility?: SortOrder
+    publishedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorRecommendationMinOrderByAggregateInput = {
+    id?: SortOrder
+    mentorId?: SortOrder
+    menteeId?: SortOrder
+    sessionId?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    visibility?: SortOrder
+    publishedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumRecommendationVisibilityWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RecommendationVisibility | EnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    in?: $Enums.RecommendationVisibility[] | ListEnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RecommendationVisibility[] | ListEnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    not?: NestedEnumRecommendationVisibilityWithAggregatesFilter<$PrismaModel> | $Enums.RecommendationVisibility
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRecommendationVisibilityFilter<$PrismaModel>
+    _max?: NestedEnumRecommendationVisibilityFilter<$PrismaModel>
+  }
+
+  export type EnumNotificationTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumNotificationTypeFilter<$PrismaModel> | $Enums.NotificationType
+  }
+
+  export type NotificationCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    metadata?: SortOrder
+    readAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NotificationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    readAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NotificationMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    readAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumNotificationTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumNotificationTypeWithAggregatesFilter<$PrismaModel> | $Enums.NotificationType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumNotificationTypeFilter<$PrismaModel>
+    _max?: NestedEnumNotificationTypeFilter<$PrismaModel>
+  }
+
+  export type RealtimeEventCountOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    payload?: SortOrder
+    mentorId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RealtimeEventMaxOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    mentorId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RealtimeEventMinOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    mentorId?: SortOrder
+    createdAt?: SortOrder
+  }
+
   export type UserCreateskillsInput = {
     set: string[]
   }
@@ -8595,6 +21466,47 @@ export namespace Prisma {
     connect?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
   }
 
+  export type MentorProfileCreateNestedOneWithoutUserInput = {
+    create?: XOR<MentorProfileCreateWithoutUserInput, MentorProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutUserInput
+    connect?: MentorProfileWhereUniqueInput
+  }
+
+  export type MentorSessionCreateNestedManyWithoutMenteeInput = {
+    create?: XOR<MentorSessionCreateWithoutMenteeInput, MentorSessionUncheckedCreateWithoutMenteeInput> | MentorSessionCreateWithoutMenteeInput[] | MentorSessionUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorSessionCreateOrConnectWithoutMenteeInput | MentorSessionCreateOrConnectWithoutMenteeInput[]
+    createMany?: MentorSessionCreateManyMenteeInputEnvelope
+    connect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+  }
+
+  export type MentorConversationCreateNestedManyWithoutMenteeInput = {
+    create?: XOR<MentorConversationCreateWithoutMenteeInput, MentorConversationUncheckedCreateWithoutMenteeInput> | MentorConversationCreateWithoutMenteeInput[] | MentorConversationUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorConversationCreateOrConnectWithoutMenteeInput | MentorConversationCreateOrConnectWithoutMenteeInput[]
+    createMany?: MentorConversationCreateManyMenteeInputEnvelope
+    connect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+  }
+
+  export type MentorMessageCreateNestedManyWithoutSenderInput = {
+    create?: XOR<MentorMessageCreateWithoutSenderInput, MentorMessageUncheckedCreateWithoutSenderInput> | MentorMessageCreateWithoutSenderInput[] | MentorMessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MentorMessageCreateOrConnectWithoutSenderInput | MentorMessageCreateOrConnectWithoutSenderInput[]
+    createMany?: MentorMessageCreateManySenderInputEnvelope
+    connect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+  }
+
+  export type MentorRecommendationCreateNestedManyWithoutMenteeInput = {
+    create?: XOR<MentorRecommendationCreateWithoutMenteeInput, MentorRecommendationUncheckedCreateWithoutMenteeInput> | MentorRecommendationCreateWithoutMenteeInput[] | MentorRecommendationUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutMenteeInput | MentorRecommendationCreateOrConnectWithoutMenteeInput[]
+    createMany?: MentorRecommendationCreateManyMenteeInputEnvelope
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+  }
+
+  export type NotificationCreateNestedManyWithoutUserInput = {
+    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
+    createMany?: NotificationCreateManyUserInputEnvelope
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  }
+
   export type AssessmentUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AssessmentCreateWithoutUserInput, AssessmentUncheckedCreateWithoutUserInput> | AssessmentCreateWithoutUserInput[] | AssessmentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AssessmentCreateOrConnectWithoutUserInput | AssessmentCreateOrConnectWithoutUserInput[]
@@ -8613,6 +21525,47 @@ export namespace Prisma {
     connectOrCreate?: CoverLetterCreateOrConnectWithoutUserInput | CoverLetterCreateOrConnectWithoutUserInput[]
     createMany?: CoverLetterCreateManyUserInputEnvelope
     connect?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
+  }
+
+  export type MentorProfileUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<MentorProfileCreateWithoutUserInput, MentorProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutUserInput
+    connect?: MentorProfileWhereUniqueInput
+  }
+
+  export type MentorSessionUncheckedCreateNestedManyWithoutMenteeInput = {
+    create?: XOR<MentorSessionCreateWithoutMenteeInput, MentorSessionUncheckedCreateWithoutMenteeInput> | MentorSessionCreateWithoutMenteeInput[] | MentorSessionUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorSessionCreateOrConnectWithoutMenteeInput | MentorSessionCreateOrConnectWithoutMenteeInput[]
+    createMany?: MentorSessionCreateManyMenteeInputEnvelope
+    connect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+  }
+
+  export type MentorConversationUncheckedCreateNestedManyWithoutMenteeInput = {
+    create?: XOR<MentorConversationCreateWithoutMenteeInput, MentorConversationUncheckedCreateWithoutMenteeInput> | MentorConversationCreateWithoutMenteeInput[] | MentorConversationUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorConversationCreateOrConnectWithoutMenteeInput | MentorConversationCreateOrConnectWithoutMenteeInput[]
+    createMany?: MentorConversationCreateManyMenteeInputEnvelope
+    connect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+  }
+
+  export type MentorMessageUncheckedCreateNestedManyWithoutSenderInput = {
+    create?: XOR<MentorMessageCreateWithoutSenderInput, MentorMessageUncheckedCreateWithoutSenderInput> | MentorMessageCreateWithoutSenderInput[] | MentorMessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MentorMessageCreateOrConnectWithoutSenderInput | MentorMessageCreateOrConnectWithoutSenderInput[]
+    createMany?: MentorMessageCreateManySenderInputEnvelope
+    connect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+  }
+
+  export type MentorRecommendationUncheckedCreateNestedManyWithoutMenteeInput = {
+    create?: XOR<MentorRecommendationCreateWithoutMenteeInput, MentorRecommendationUncheckedCreateWithoutMenteeInput> | MentorRecommendationCreateWithoutMenteeInput[] | MentorRecommendationUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutMenteeInput | MentorRecommendationCreateOrConnectWithoutMenteeInput[]
+    createMany?: MentorRecommendationCreateManyMenteeInputEnvelope
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+  }
+
+  export type NotificationUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
+    createMany?: NotificationCreateManyUserInputEnvelope
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8638,6 +21591,14 @@ export namespace Prisma {
   export type UserUpdateskillsInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type EnumMentorStatusFieldUpdateOperationsInput = {
+    set?: $Enums.MentorStatus
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type IndustryInsightUpdateOneWithoutUsersNestedInput = {
@@ -8688,6 +21649,86 @@ export namespace Prisma {
     deleteMany?: CoverLetterScalarWhereInput | CoverLetterScalarWhereInput[]
   }
 
+  export type MentorProfileUpdateOneWithoutUserNestedInput = {
+    create?: XOR<MentorProfileCreateWithoutUserInput, MentorProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutUserInput
+    upsert?: MentorProfileUpsertWithoutUserInput
+    disconnect?: MentorProfileWhereInput | boolean
+    delete?: MentorProfileWhereInput | boolean
+    connect?: MentorProfileWhereUniqueInput
+    update?: XOR<XOR<MentorProfileUpdateToOneWithWhereWithoutUserInput, MentorProfileUpdateWithoutUserInput>, MentorProfileUncheckedUpdateWithoutUserInput>
+  }
+
+  export type MentorSessionUpdateManyWithoutMenteeNestedInput = {
+    create?: XOR<MentorSessionCreateWithoutMenteeInput, MentorSessionUncheckedCreateWithoutMenteeInput> | MentorSessionCreateWithoutMenteeInput[] | MentorSessionUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorSessionCreateOrConnectWithoutMenteeInput | MentorSessionCreateOrConnectWithoutMenteeInput[]
+    upsert?: MentorSessionUpsertWithWhereUniqueWithoutMenteeInput | MentorSessionUpsertWithWhereUniqueWithoutMenteeInput[]
+    createMany?: MentorSessionCreateManyMenteeInputEnvelope
+    set?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    disconnect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    delete?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    connect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    update?: MentorSessionUpdateWithWhereUniqueWithoutMenteeInput | MentorSessionUpdateWithWhereUniqueWithoutMenteeInput[]
+    updateMany?: MentorSessionUpdateManyWithWhereWithoutMenteeInput | MentorSessionUpdateManyWithWhereWithoutMenteeInput[]
+    deleteMany?: MentorSessionScalarWhereInput | MentorSessionScalarWhereInput[]
+  }
+
+  export type MentorConversationUpdateManyWithoutMenteeNestedInput = {
+    create?: XOR<MentorConversationCreateWithoutMenteeInput, MentorConversationUncheckedCreateWithoutMenteeInput> | MentorConversationCreateWithoutMenteeInput[] | MentorConversationUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorConversationCreateOrConnectWithoutMenteeInput | MentorConversationCreateOrConnectWithoutMenteeInput[]
+    upsert?: MentorConversationUpsertWithWhereUniqueWithoutMenteeInput | MentorConversationUpsertWithWhereUniqueWithoutMenteeInput[]
+    createMany?: MentorConversationCreateManyMenteeInputEnvelope
+    set?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    disconnect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    delete?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    connect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    update?: MentorConversationUpdateWithWhereUniqueWithoutMenteeInput | MentorConversationUpdateWithWhereUniqueWithoutMenteeInput[]
+    updateMany?: MentorConversationUpdateManyWithWhereWithoutMenteeInput | MentorConversationUpdateManyWithWhereWithoutMenteeInput[]
+    deleteMany?: MentorConversationScalarWhereInput | MentorConversationScalarWhereInput[]
+  }
+
+  export type MentorMessageUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<MentorMessageCreateWithoutSenderInput, MentorMessageUncheckedCreateWithoutSenderInput> | MentorMessageCreateWithoutSenderInput[] | MentorMessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MentorMessageCreateOrConnectWithoutSenderInput | MentorMessageCreateOrConnectWithoutSenderInput[]
+    upsert?: MentorMessageUpsertWithWhereUniqueWithoutSenderInput | MentorMessageUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: MentorMessageCreateManySenderInputEnvelope
+    set?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    disconnect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    delete?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    connect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    update?: MentorMessageUpdateWithWhereUniqueWithoutSenderInput | MentorMessageUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: MentorMessageUpdateManyWithWhereWithoutSenderInput | MentorMessageUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: MentorMessageScalarWhereInput | MentorMessageScalarWhereInput[]
+  }
+
+  export type MentorRecommendationUpdateManyWithoutMenteeNestedInput = {
+    create?: XOR<MentorRecommendationCreateWithoutMenteeInput, MentorRecommendationUncheckedCreateWithoutMenteeInput> | MentorRecommendationCreateWithoutMenteeInput[] | MentorRecommendationUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutMenteeInput | MentorRecommendationCreateOrConnectWithoutMenteeInput[]
+    upsert?: MentorRecommendationUpsertWithWhereUniqueWithoutMenteeInput | MentorRecommendationUpsertWithWhereUniqueWithoutMenteeInput[]
+    createMany?: MentorRecommendationCreateManyMenteeInputEnvelope
+    set?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    disconnect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    delete?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    update?: MentorRecommendationUpdateWithWhereUniqueWithoutMenteeInput | MentorRecommendationUpdateWithWhereUniqueWithoutMenteeInput[]
+    updateMany?: MentorRecommendationUpdateManyWithWhereWithoutMenteeInput | MentorRecommendationUpdateManyWithWhereWithoutMenteeInput[]
+    deleteMany?: MentorRecommendationScalarWhereInput | MentorRecommendationScalarWhereInput[]
+  }
+
+  export type NotificationUpdateManyWithoutUserNestedInput = {
+    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
+    upsert?: NotificationUpsertWithWhereUniqueWithoutUserInput | NotificationUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: NotificationCreateManyUserInputEnvelope
+    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    update?: NotificationUpdateWithWhereUniqueWithoutUserInput | NotificationUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: NotificationUpdateManyWithWhereWithoutUserInput | NotificationUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  }
+
   export type AssessmentUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AssessmentCreateWithoutUserInput, AssessmentUncheckedCreateWithoutUserInput> | AssessmentCreateWithoutUserInput[] | AssessmentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AssessmentCreateOrConnectWithoutUserInput | AssessmentCreateOrConnectWithoutUserInput[]
@@ -8724,6 +21765,86 @@ export namespace Prisma {
     update?: CoverLetterUpdateWithWhereUniqueWithoutUserInput | CoverLetterUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: CoverLetterUpdateManyWithWhereWithoutUserInput | CoverLetterUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: CoverLetterScalarWhereInput | CoverLetterScalarWhereInput[]
+  }
+
+  export type MentorProfileUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<MentorProfileCreateWithoutUserInput, MentorProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutUserInput
+    upsert?: MentorProfileUpsertWithoutUserInput
+    disconnect?: MentorProfileWhereInput | boolean
+    delete?: MentorProfileWhereInput | boolean
+    connect?: MentorProfileWhereUniqueInput
+    update?: XOR<XOR<MentorProfileUpdateToOneWithWhereWithoutUserInput, MentorProfileUpdateWithoutUserInput>, MentorProfileUncheckedUpdateWithoutUserInput>
+  }
+
+  export type MentorSessionUncheckedUpdateManyWithoutMenteeNestedInput = {
+    create?: XOR<MentorSessionCreateWithoutMenteeInput, MentorSessionUncheckedCreateWithoutMenteeInput> | MentorSessionCreateWithoutMenteeInput[] | MentorSessionUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorSessionCreateOrConnectWithoutMenteeInput | MentorSessionCreateOrConnectWithoutMenteeInput[]
+    upsert?: MentorSessionUpsertWithWhereUniqueWithoutMenteeInput | MentorSessionUpsertWithWhereUniqueWithoutMenteeInput[]
+    createMany?: MentorSessionCreateManyMenteeInputEnvelope
+    set?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    disconnect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    delete?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    connect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    update?: MentorSessionUpdateWithWhereUniqueWithoutMenteeInput | MentorSessionUpdateWithWhereUniqueWithoutMenteeInput[]
+    updateMany?: MentorSessionUpdateManyWithWhereWithoutMenteeInput | MentorSessionUpdateManyWithWhereWithoutMenteeInput[]
+    deleteMany?: MentorSessionScalarWhereInput | MentorSessionScalarWhereInput[]
+  }
+
+  export type MentorConversationUncheckedUpdateManyWithoutMenteeNestedInput = {
+    create?: XOR<MentorConversationCreateWithoutMenteeInput, MentorConversationUncheckedCreateWithoutMenteeInput> | MentorConversationCreateWithoutMenteeInput[] | MentorConversationUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorConversationCreateOrConnectWithoutMenteeInput | MentorConversationCreateOrConnectWithoutMenteeInput[]
+    upsert?: MentorConversationUpsertWithWhereUniqueWithoutMenteeInput | MentorConversationUpsertWithWhereUniqueWithoutMenteeInput[]
+    createMany?: MentorConversationCreateManyMenteeInputEnvelope
+    set?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    disconnect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    delete?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    connect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    update?: MentorConversationUpdateWithWhereUniqueWithoutMenteeInput | MentorConversationUpdateWithWhereUniqueWithoutMenteeInput[]
+    updateMany?: MentorConversationUpdateManyWithWhereWithoutMenteeInput | MentorConversationUpdateManyWithWhereWithoutMenteeInput[]
+    deleteMany?: MentorConversationScalarWhereInput | MentorConversationScalarWhereInput[]
+  }
+
+  export type MentorMessageUncheckedUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<MentorMessageCreateWithoutSenderInput, MentorMessageUncheckedCreateWithoutSenderInput> | MentorMessageCreateWithoutSenderInput[] | MentorMessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MentorMessageCreateOrConnectWithoutSenderInput | MentorMessageCreateOrConnectWithoutSenderInput[]
+    upsert?: MentorMessageUpsertWithWhereUniqueWithoutSenderInput | MentorMessageUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: MentorMessageCreateManySenderInputEnvelope
+    set?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    disconnect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    delete?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    connect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    update?: MentorMessageUpdateWithWhereUniqueWithoutSenderInput | MentorMessageUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: MentorMessageUpdateManyWithWhereWithoutSenderInput | MentorMessageUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: MentorMessageScalarWhereInput | MentorMessageScalarWhereInput[]
+  }
+
+  export type MentorRecommendationUncheckedUpdateManyWithoutMenteeNestedInput = {
+    create?: XOR<MentorRecommendationCreateWithoutMenteeInput, MentorRecommendationUncheckedCreateWithoutMenteeInput> | MentorRecommendationCreateWithoutMenteeInput[] | MentorRecommendationUncheckedCreateWithoutMenteeInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutMenteeInput | MentorRecommendationCreateOrConnectWithoutMenteeInput[]
+    upsert?: MentorRecommendationUpsertWithWhereUniqueWithoutMenteeInput | MentorRecommendationUpsertWithWhereUniqueWithoutMenteeInput[]
+    createMany?: MentorRecommendationCreateManyMenteeInputEnvelope
+    set?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    disconnect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    delete?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    update?: MentorRecommendationUpdateWithWhereUniqueWithoutMenteeInput | MentorRecommendationUpdateWithWhereUniqueWithoutMenteeInput[]
+    updateMany?: MentorRecommendationUpdateManyWithWhereWithoutMenteeInput | MentorRecommendationUpdateManyWithWhereWithoutMenteeInput[]
+    deleteMany?: MentorRecommendationScalarWhereInput | MentorRecommendationScalarWhereInput[]
+  }
+
+  export type NotificationUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
+    upsert?: NotificationUpsertWithWhereUniqueWithoutUserInput | NotificationUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: NotificationCreateManyUserInputEnvelope
+    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    update?: NotificationUpdateWithWhereUniqueWithoutUserInput | NotificationUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: NotificationUpdateManyWithWhereWithoutUserInput | NotificationUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
   }
 
   export type AssessmentCreatequestionsInput = {
@@ -8871,6 +21992,536 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type MentorProfileCreateindustriesInput = {
+    set: string[]
+  }
+
+  export type MentorProfileCreateskillsInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutMentorProfileInput = {
+    create?: XOR<UserCreateWithoutMentorProfileInput, UserUncheckedCreateWithoutMentorProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMentorProfileInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type MentorDocumentCreateNestedManyWithoutMentorInput = {
+    create?: XOR<MentorDocumentCreateWithoutMentorInput, MentorDocumentUncheckedCreateWithoutMentorInput> | MentorDocumentCreateWithoutMentorInput[] | MentorDocumentUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorDocumentCreateOrConnectWithoutMentorInput | MentorDocumentCreateOrConnectWithoutMentorInput[]
+    createMany?: MentorDocumentCreateManyMentorInputEnvelope
+    connect?: MentorDocumentWhereUniqueInput | MentorDocumentWhereUniqueInput[]
+  }
+
+  export type MentorSessionCreateNestedManyWithoutMentorInput = {
+    create?: XOR<MentorSessionCreateWithoutMentorInput, MentorSessionUncheckedCreateWithoutMentorInput> | MentorSessionCreateWithoutMentorInput[] | MentorSessionUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorSessionCreateOrConnectWithoutMentorInput | MentorSessionCreateOrConnectWithoutMentorInput[]
+    createMany?: MentorSessionCreateManyMentorInputEnvelope
+    connect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+  }
+
+  export type MentorConversationCreateNestedManyWithoutMentorInput = {
+    create?: XOR<MentorConversationCreateWithoutMentorInput, MentorConversationUncheckedCreateWithoutMentorInput> | MentorConversationCreateWithoutMentorInput[] | MentorConversationUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorConversationCreateOrConnectWithoutMentorInput | MentorConversationCreateOrConnectWithoutMentorInput[]
+    createMany?: MentorConversationCreateManyMentorInputEnvelope
+    connect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+  }
+
+  export type MentorRecommendationCreateNestedManyWithoutMentorInput = {
+    create?: XOR<MentorRecommendationCreateWithoutMentorInput, MentorRecommendationUncheckedCreateWithoutMentorInput> | MentorRecommendationCreateWithoutMentorInput[] | MentorRecommendationUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutMentorInput | MentorRecommendationCreateOrConnectWithoutMentorInput[]
+    createMany?: MentorRecommendationCreateManyMentorInputEnvelope
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+  }
+
+  export type RealtimeEventCreateNestedManyWithoutMentorInput = {
+    create?: XOR<RealtimeEventCreateWithoutMentorInput, RealtimeEventUncheckedCreateWithoutMentorInput> | RealtimeEventCreateWithoutMentorInput[] | RealtimeEventUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: RealtimeEventCreateOrConnectWithoutMentorInput | RealtimeEventCreateOrConnectWithoutMentorInput[]
+    createMany?: RealtimeEventCreateManyMentorInputEnvelope
+    connect?: RealtimeEventWhereUniqueInput | RealtimeEventWhereUniqueInput[]
+  }
+
+  export type MentorDocumentUncheckedCreateNestedManyWithoutMentorInput = {
+    create?: XOR<MentorDocumentCreateWithoutMentorInput, MentorDocumentUncheckedCreateWithoutMentorInput> | MentorDocumentCreateWithoutMentorInput[] | MentorDocumentUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorDocumentCreateOrConnectWithoutMentorInput | MentorDocumentCreateOrConnectWithoutMentorInput[]
+    createMany?: MentorDocumentCreateManyMentorInputEnvelope
+    connect?: MentorDocumentWhereUniqueInput | MentorDocumentWhereUniqueInput[]
+  }
+
+  export type MentorSessionUncheckedCreateNestedManyWithoutMentorInput = {
+    create?: XOR<MentorSessionCreateWithoutMentorInput, MentorSessionUncheckedCreateWithoutMentorInput> | MentorSessionCreateWithoutMentorInput[] | MentorSessionUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorSessionCreateOrConnectWithoutMentorInput | MentorSessionCreateOrConnectWithoutMentorInput[]
+    createMany?: MentorSessionCreateManyMentorInputEnvelope
+    connect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+  }
+
+  export type MentorConversationUncheckedCreateNestedManyWithoutMentorInput = {
+    create?: XOR<MentorConversationCreateWithoutMentorInput, MentorConversationUncheckedCreateWithoutMentorInput> | MentorConversationCreateWithoutMentorInput[] | MentorConversationUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorConversationCreateOrConnectWithoutMentorInput | MentorConversationCreateOrConnectWithoutMentorInput[]
+    createMany?: MentorConversationCreateManyMentorInputEnvelope
+    connect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+  }
+
+  export type MentorRecommendationUncheckedCreateNestedManyWithoutMentorInput = {
+    create?: XOR<MentorRecommendationCreateWithoutMentorInput, MentorRecommendationUncheckedCreateWithoutMentorInput> | MentorRecommendationCreateWithoutMentorInput[] | MentorRecommendationUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutMentorInput | MentorRecommendationCreateOrConnectWithoutMentorInput[]
+    createMany?: MentorRecommendationCreateManyMentorInputEnvelope
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+  }
+
+  export type RealtimeEventUncheckedCreateNestedManyWithoutMentorInput = {
+    create?: XOR<RealtimeEventCreateWithoutMentorInput, RealtimeEventUncheckedCreateWithoutMentorInput> | RealtimeEventCreateWithoutMentorInput[] | RealtimeEventUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: RealtimeEventCreateOrConnectWithoutMentorInput | RealtimeEventCreateOrConnectWithoutMentorInput[]
+    createMany?: RealtimeEventCreateManyMentorInputEnvelope
+    connect?: RealtimeEventWhereUniqueInput | RealtimeEventWhereUniqueInput[]
+  }
+
+  export type MentorProfileUpdateindustriesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type MentorProfileUpdateskillsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type UserUpdateOneRequiredWithoutMentorProfileNestedInput = {
+    create?: XOR<UserCreateWithoutMentorProfileInput, UserUncheckedCreateWithoutMentorProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMentorProfileInput
+    upsert?: UserUpsertWithoutMentorProfileInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMentorProfileInput, UserUpdateWithoutMentorProfileInput>, UserUncheckedUpdateWithoutMentorProfileInput>
+  }
+
+  export type MentorDocumentUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<MentorDocumentCreateWithoutMentorInput, MentorDocumentUncheckedCreateWithoutMentorInput> | MentorDocumentCreateWithoutMentorInput[] | MentorDocumentUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorDocumentCreateOrConnectWithoutMentorInput | MentorDocumentCreateOrConnectWithoutMentorInput[]
+    upsert?: MentorDocumentUpsertWithWhereUniqueWithoutMentorInput | MentorDocumentUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: MentorDocumentCreateManyMentorInputEnvelope
+    set?: MentorDocumentWhereUniqueInput | MentorDocumentWhereUniqueInput[]
+    disconnect?: MentorDocumentWhereUniqueInput | MentorDocumentWhereUniqueInput[]
+    delete?: MentorDocumentWhereUniqueInput | MentorDocumentWhereUniqueInput[]
+    connect?: MentorDocumentWhereUniqueInput | MentorDocumentWhereUniqueInput[]
+    update?: MentorDocumentUpdateWithWhereUniqueWithoutMentorInput | MentorDocumentUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: MentorDocumentUpdateManyWithWhereWithoutMentorInput | MentorDocumentUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: MentorDocumentScalarWhereInput | MentorDocumentScalarWhereInput[]
+  }
+
+  export type MentorSessionUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<MentorSessionCreateWithoutMentorInput, MentorSessionUncheckedCreateWithoutMentorInput> | MentorSessionCreateWithoutMentorInput[] | MentorSessionUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorSessionCreateOrConnectWithoutMentorInput | MentorSessionCreateOrConnectWithoutMentorInput[]
+    upsert?: MentorSessionUpsertWithWhereUniqueWithoutMentorInput | MentorSessionUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: MentorSessionCreateManyMentorInputEnvelope
+    set?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    disconnect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    delete?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    connect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    update?: MentorSessionUpdateWithWhereUniqueWithoutMentorInput | MentorSessionUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: MentorSessionUpdateManyWithWhereWithoutMentorInput | MentorSessionUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: MentorSessionScalarWhereInput | MentorSessionScalarWhereInput[]
+  }
+
+  export type MentorConversationUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<MentorConversationCreateWithoutMentorInput, MentorConversationUncheckedCreateWithoutMentorInput> | MentorConversationCreateWithoutMentorInput[] | MentorConversationUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorConversationCreateOrConnectWithoutMentorInput | MentorConversationCreateOrConnectWithoutMentorInput[]
+    upsert?: MentorConversationUpsertWithWhereUniqueWithoutMentorInput | MentorConversationUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: MentorConversationCreateManyMentorInputEnvelope
+    set?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    disconnect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    delete?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    connect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    update?: MentorConversationUpdateWithWhereUniqueWithoutMentorInput | MentorConversationUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: MentorConversationUpdateManyWithWhereWithoutMentorInput | MentorConversationUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: MentorConversationScalarWhereInput | MentorConversationScalarWhereInput[]
+  }
+
+  export type MentorRecommendationUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<MentorRecommendationCreateWithoutMentorInput, MentorRecommendationUncheckedCreateWithoutMentorInput> | MentorRecommendationCreateWithoutMentorInput[] | MentorRecommendationUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutMentorInput | MentorRecommendationCreateOrConnectWithoutMentorInput[]
+    upsert?: MentorRecommendationUpsertWithWhereUniqueWithoutMentorInput | MentorRecommendationUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: MentorRecommendationCreateManyMentorInputEnvelope
+    set?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    disconnect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    delete?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    update?: MentorRecommendationUpdateWithWhereUniqueWithoutMentorInput | MentorRecommendationUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: MentorRecommendationUpdateManyWithWhereWithoutMentorInput | MentorRecommendationUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: MentorRecommendationScalarWhereInput | MentorRecommendationScalarWhereInput[]
+  }
+
+  export type RealtimeEventUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<RealtimeEventCreateWithoutMentorInput, RealtimeEventUncheckedCreateWithoutMentorInput> | RealtimeEventCreateWithoutMentorInput[] | RealtimeEventUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: RealtimeEventCreateOrConnectWithoutMentorInput | RealtimeEventCreateOrConnectWithoutMentorInput[]
+    upsert?: RealtimeEventUpsertWithWhereUniqueWithoutMentorInput | RealtimeEventUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: RealtimeEventCreateManyMentorInputEnvelope
+    set?: RealtimeEventWhereUniqueInput | RealtimeEventWhereUniqueInput[]
+    disconnect?: RealtimeEventWhereUniqueInput | RealtimeEventWhereUniqueInput[]
+    delete?: RealtimeEventWhereUniqueInput | RealtimeEventWhereUniqueInput[]
+    connect?: RealtimeEventWhereUniqueInput | RealtimeEventWhereUniqueInput[]
+    update?: RealtimeEventUpdateWithWhereUniqueWithoutMentorInput | RealtimeEventUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: RealtimeEventUpdateManyWithWhereWithoutMentorInput | RealtimeEventUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: RealtimeEventScalarWhereInput | RealtimeEventScalarWhereInput[]
+  }
+
+  export type MentorDocumentUncheckedUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<MentorDocumentCreateWithoutMentorInput, MentorDocumentUncheckedCreateWithoutMentorInput> | MentorDocumentCreateWithoutMentorInput[] | MentorDocumentUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorDocumentCreateOrConnectWithoutMentorInput | MentorDocumentCreateOrConnectWithoutMentorInput[]
+    upsert?: MentorDocumentUpsertWithWhereUniqueWithoutMentorInput | MentorDocumentUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: MentorDocumentCreateManyMentorInputEnvelope
+    set?: MentorDocumentWhereUniqueInput | MentorDocumentWhereUniqueInput[]
+    disconnect?: MentorDocumentWhereUniqueInput | MentorDocumentWhereUniqueInput[]
+    delete?: MentorDocumentWhereUniqueInput | MentorDocumentWhereUniqueInput[]
+    connect?: MentorDocumentWhereUniqueInput | MentorDocumentWhereUniqueInput[]
+    update?: MentorDocumentUpdateWithWhereUniqueWithoutMentorInput | MentorDocumentUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: MentorDocumentUpdateManyWithWhereWithoutMentorInput | MentorDocumentUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: MentorDocumentScalarWhereInput | MentorDocumentScalarWhereInput[]
+  }
+
+  export type MentorSessionUncheckedUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<MentorSessionCreateWithoutMentorInput, MentorSessionUncheckedCreateWithoutMentorInput> | MentorSessionCreateWithoutMentorInput[] | MentorSessionUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorSessionCreateOrConnectWithoutMentorInput | MentorSessionCreateOrConnectWithoutMentorInput[]
+    upsert?: MentorSessionUpsertWithWhereUniqueWithoutMentorInput | MentorSessionUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: MentorSessionCreateManyMentorInputEnvelope
+    set?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    disconnect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    delete?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    connect?: MentorSessionWhereUniqueInput | MentorSessionWhereUniqueInput[]
+    update?: MentorSessionUpdateWithWhereUniqueWithoutMentorInput | MentorSessionUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: MentorSessionUpdateManyWithWhereWithoutMentorInput | MentorSessionUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: MentorSessionScalarWhereInput | MentorSessionScalarWhereInput[]
+  }
+
+  export type MentorConversationUncheckedUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<MentorConversationCreateWithoutMentorInput, MentorConversationUncheckedCreateWithoutMentorInput> | MentorConversationCreateWithoutMentorInput[] | MentorConversationUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorConversationCreateOrConnectWithoutMentorInput | MentorConversationCreateOrConnectWithoutMentorInput[]
+    upsert?: MentorConversationUpsertWithWhereUniqueWithoutMentorInput | MentorConversationUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: MentorConversationCreateManyMentorInputEnvelope
+    set?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    disconnect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    delete?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    connect?: MentorConversationWhereUniqueInput | MentorConversationWhereUniqueInput[]
+    update?: MentorConversationUpdateWithWhereUniqueWithoutMentorInput | MentorConversationUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: MentorConversationUpdateManyWithWhereWithoutMentorInput | MentorConversationUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: MentorConversationScalarWhereInput | MentorConversationScalarWhereInput[]
+  }
+
+  export type MentorRecommendationUncheckedUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<MentorRecommendationCreateWithoutMentorInput, MentorRecommendationUncheckedCreateWithoutMentorInput> | MentorRecommendationCreateWithoutMentorInput[] | MentorRecommendationUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutMentorInput | MentorRecommendationCreateOrConnectWithoutMentorInput[]
+    upsert?: MentorRecommendationUpsertWithWhereUniqueWithoutMentorInput | MentorRecommendationUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: MentorRecommendationCreateManyMentorInputEnvelope
+    set?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    disconnect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    delete?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    update?: MentorRecommendationUpdateWithWhereUniqueWithoutMentorInput | MentorRecommendationUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: MentorRecommendationUpdateManyWithWhereWithoutMentorInput | MentorRecommendationUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: MentorRecommendationScalarWhereInput | MentorRecommendationScalarWhereInput[]
+  }
+
+  export type RealtimeEventUncheckedUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<RealtimeEventCreateWithoutMentorInput, RealtimeEventUncheckedCreateWithoutMentorInput> | RealtimeEventCreateWithoutMentorInput[] | RealtimeEventUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: RealtimeEventCreateOrConnectWithoutMentorInput | RealtimeEventCreateOrConnectWithoutMentorInput[]
+    upsert?: RealtimeEventUpsertWithWhereUniqueWithoutMentorInput | RealtimeEventUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: RealtimeEventCreateManyMentorInputEnvelope
+    set?: RealtimeEventWhereUniqueInput | RealtimeEventWhereUniqueInput[]
+    disconnect?: RealtimeEventWhereUniqueInput | RealtimeEventWhereUniqueInput[]
+    delete?: RealtimeEventWhereUniqueInput | RealtimeEventWhereUniqueInput[]
+    connect?: RealtimeEventWhereUniqueInput | RealtimeEventWhereUniqueInput[]
+    update?: RealtimeEventUpdateWithWhereUniqueWithoutMentorInput | RealtimeEventUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: RealtimeEventUpdateManyWithWhereWithoutMentorInput | RealtimeEventUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: RealtimeEventScalarWhereInput | RealtimeEventScalarWhereInput[]
+  }
+
+  export type MentorProfileCreateNestedOneWithoutProofDocumentsInput = {
+    create?: XOR<MentorProfileCreateWithoutProofDocumentsInput, MentorProfileUncheckedCreateWithoutProofDocumentsInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutProofDocumentsInput
+    connect?: MentorProfileWhereUniqueInput
+  }
+
+  export type EnumMentorDocumentStatusFieldUpdateOperationsInput = {
+    set?: $Enums.MentorDocumentStatus
+  }
+
+  export type MentorProfileUpdateOneRequiredWithoutProofDocumentsNestedInput = {
+    create?: XOR<MentorProfileCreateWithoutProofDocumentsInput, MentorProfileUncheckedCreateWithoutProofDocumentsInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutProofDocumentsInput
+    upsert?: MentorProfileUpsertWithoutProofDocumentsInput
+    connect?: MentorProfileWhereUniqueInput
+    update?: XOR<XOR<MentorProfileUpdateToOneWithWhereWithoutProofDocumentsInput, MentorProfileUpdateWithoutProofDocumentsInput>, MentorProfileUncheckedUpdateWithoutProofDocumentsInput>
+  }
+
+  export type MentorProfileCreateNestedOneWithoutSessionsInput = {
+    create?: XOR<MentorProfileCreateWithoutSessionsInput, MentorProfileUncheckedCreateWithoutSessionsInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutSessionsInput
+    connect?: MentorProfileWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutMentorSessionsInput = {
+    create?: XOR<UserCreateWithoutMentorSessionsInput, UserUncheckedCreateWithoutMentorSessionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMentorSessionsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type MentorRecommendationCreateNestedManyWithoutSessionInput = {
+    create?: XOR<MentorRecommendationCreateWithoutSessionInput, MentorRecommendationUncheckedCreateWithoutSessionInput> | MentorRecommendationCreateWithoutSessionInput[] | MentorRecommendationUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutSessionInput | MentorRecommendationCreateOrConnectWithoutSessionInput[]
+    createMany?: MentorRecommendationCreateManySessionInputEnvelope
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+  }
+
+  export type MentorRecommendationUncheckedCreateNestedManyWithoutSessionInput = {
+    create?: XOR<MentorRecommendationCreateWithoutSessionInput, MentorRecommendationUncheckedCreateWithoutSessionInput> | MentorRecommendationCreateWithoutSessionInput[] | MentorRecommendationUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutSessionInput | MentorRecommendationCreateOrConnectWithoutSessionInput[]
+    createMany?: MentorRecommendationCreateManySessionInputEnvelope
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+  }
+
+  export type EnumMentorSessionStatusFieldUpdateOperationsInput = {
+    set?: $Enums.MentorSessionStatus
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type MentorProfileUpdateOneRequiredWithoutSessionsNestedInput = {
+    create?: XOR<MentorProfileCreateWithoutSessionsInput, MentorProfileUncheckedCreateWithoutSessionsInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutSessionsInput
+    upsert?: MentorProfileUpsertWithoutSessionsInput
+    connect?: MentorProfileWhereUniqueInput
+    update?: XOR<XOR<MentorProfileUpdateToOneWithWhereWithoutSessionsInput, MentorProfileUpdateWithoutSessionsInput>, MentorProfileUncheckedUpdateWithoutSessionsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutMentorSessionsNestedInput = {
+    create?: XOR<UserCreateWithoutMentorSessionsInput, UserUncheckedCreateWithoutMentorSessionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMentorSessionsInput
+    upsert?: UserUpsertWithoutMentorSessionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMentorSessionsInput, UserUpdateWithoutMentorSessionsInput>, UserUncheckedUpdateWithoutMentorSessionsInput>
+  }
+
+  export type MentorRecommendationUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<MentorRecommendationCreateWithoutSessionInput, MentorRecommendationUncheckedCreateWithoutSessionInput> | MentorRecommendationCreateWithoutSessionInput[] | MentorRecommendationUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutSessionInput | MentorRecommendationCreateOrConnectWithoutSessionInput[]
+    upsert?: MentorRecommendationUpsertWithWhereUniqueWithoutSessionInput | MentorRecommendationUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: MentorRecommendationCreateManySessionInputEnvelope
+    set?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    disconnect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    delete?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    update?: MentorRecommendationUpdateWithWhereUniqueWithoutSessionInput | MentorRecommendationUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: MentorRecommendationUpdateManyWithWhereWithoutSessionInput | MentorRecommendationUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: MentorRecommendationScalarWhereInput | MentorRecommendationScalarWhereInput[]
+  }
+
+  export type MentorRecommendationUncheckedUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<MentorRecommendationCreateWithoutSessionInput, MentorRecommendationUncheckedCreateWithoutSessionInput> | MentorRecommendationCreateWithoutSessionInput[] | MentorRecommendationUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: MentorRecommendationCreateOrConnectWithoutSessionInput | MentorRecommendationCreateOrConnectWithoutSessionInput[]
+    upsert?: MentorRecommendationUpsertWithWhereUniqueWithoutSessionInput | MentorRecommendationUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: MentorRecommendationCreateManySessionInputEnvelope
+    set?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    disconnect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    delete?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    connect?: MentorRecommendationWhereUniqueInput | MentorRecommendationWhereUniqueInput[]
+    update?: MentorRecommendationUpdateWithWhereUniqueWithoutSessionInput | MentorRecommendationUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: MentorRecommendationUpdateManyWithWhereWithoutSessionInput | MentorRecommendationUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: MentorRecommendationScalarWhereInput | MentorRecommendationScalarWhereInput[]
+  }
+
+  export type MentorProfileCreateNestedOneWithoutConversationsInput = {
+    create?: XOR<MentorProfileCreateWithoutConversationsInput, MentorProfileUncheckedCreateWithoutConversationsInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutConversationsInput
+    connect?: MentorProfileWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutConversationsInput = {
+    create?: XOR<UserCreateWithoutConversationsInput, UserUncheckedCreateWithoutConversationsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutConversationsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type MentorMessageCreateNestedManyWithoutConversationInput = {
+    create?: XOR<MentorMessageCreateWithoutConversationInput, MentorMessageUncheckedCreateWithoutConversationInput> | MentorMessageCreateWithoutConversationInput[] | MentorMessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MentorMessageCreateOrConnectWithoutConversationInput | MentorMessageCreateOrConnectWithoutConversationInput[]
+    createMany?: MentorMessageCreateManyConversationInputEnvelope
+    connect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+  }
+
+  export type MentorMessageUncheckedCreateNestedManyWithoutConversationInput = {
+    create?: XOR<MentorMessageCreateWithoutConversationInput, MentorMessageUncheckedCreateWithoutConversationInput> | MentorMessageCreateWithoutConversationInput[] | MentorMessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MentorMessageCreateOrConnectWithoutConversationInput | MentorMessageCreateOrConnectWithoutConversationInput[]
+    createMany?: MentorMessageCreateManyConversationInputEnvelope
+    connect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+  }
+
+  export type MentorProfileUpdateOneRequiredWithoutConversationsNestedInput = {
+    create?: XOR<MentorProfileCreateWithoutConversationsInput, MentorProfileUncheckedCreateWithoutConversationsInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutConversationsInput
+    upsert?: MentorProfileUpsertWithoutConversationsInput
+    connect?: MentorProfileWhereUniqueInput
+    update?: XOR<XOR<MentorProfileUpdateToOneWithWhereWithoutConversationsInput, MentorProfileUpdateWithoutConversationsInput>, MentorProfileUncheckedUpdateWithoutConversationsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutConversationsNestedInput = {
+    create?: XOR<UserCreateWithoutConversationsInput, UserUncheckedCreateWithoutConversationsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutConversationsInput
+    upsert?: UserUpsertWithoutConversationsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutConversationsInput, UserUpdateWithoutConversationsInput>, UserUncheckedUpdateWithoutConversationsInput>
+  }
+
+  export type MentorMessageUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<MentorMessageCreateWithoutConversationInput, MentorMessageUncheckedCreateWithoutConversationInput> | MentorMessageCreateWithoutConversationInput[] | MentorMessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MentorMessageCreateOrConnectWithoutConversationInput | MentorMessageCreateOrConnectWithoutConversationInput[]
+    upsert?: MentorMessageUpsertWithWhereUniqueWithoutConversationInput | MentorMessageUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: MentorMessageCreateManyConversationInputEnvelope
+    set?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    disconnect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    delete?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    connect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    update?: MentorMessageUpdateWithWhereUniqueWithoutConversationInput | MentorMessageUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: MentorMessageUpdateManyWithWhereWithoutConversationInput | MentorMessageUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: MentorMessageScalarWhereInput | MentorMessageScalarWhereInput[]
+  }
+
+  export type MentorMessageUncheckedUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<MentorMessageCreateWithoutConversationInput, MentorMessageUncheckedCreateWithoutConversationInput> | MentorMessageCreateWithoutConversationInput[] | MentorMessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MentorMessageCreateOrConnectWithoutConversationInput | MentorMessageCreateOrConnectWithoutConversationInput[]
+    upsert?: MentorMessageUpsertWithWhereUniqueWithoutConversationInput | MentorMessageUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: MentorMessageCreateManyConversationInputEnvelope
+    set?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    disconnect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    delete?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    connect?: MentorMessageWhereUniqueInput | MentorMessageWhereUniqueInput[]
+    update?: MentorMessageUpdateWithWhereUniqueWithoutConversationInput | MentorMessageUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: MentorMessageUpdateManyWithWhereWithoutConversationInput | MentorMessageUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: MentorMessageScalarWhereInput | MentorMessageScalarWhereInput[]
+  }
+
+  export type MentorConversationCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<MentorConversationCreateWithoutMessagesInput, MentorConversationUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: MentorConversationCreateOrConnectWithoutMessagesInput
+    connect?: MentorConversationWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMessagesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type MentorConversationUpdateOneRequiredWithoutMessagesNestedInput = {
+    create?: XOR<MentorConversationCreateWithoutMessagesInput, MentorConversationUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: MentorConversationCreateOrConnectWithoutMessagesInput
+    upsert?: MentorConversationUpsertWithoutMessagesInput
+    connect?: MentorConversationWhereUniqueInput
+    update?: XOR<XOR<MentorConversationUpdateToOneWithWhereWithoutMessagesInput, MentorConversationUpdateWithoutMessagesInput>, MentorConversationUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutMessagesNestedInput = {
+    create?: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMessagesInput
+    upsert?: UserUpsertWithoutMessagesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMessagesInput, UserUpdateWithoutMessagesInput>, UserUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type MentorProfileCreateNestedOneWithoutRecommendationsInput = {
+    create?: XOR<MentorProfileCreateWithoutRecommendationsInput, MentorProfileUncheckedCreateWithoutRecommendationsInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutRecommendationsInput
+    connect?: MentorProfileWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutRecommendationsInput = {
+    create?: XOR<UserCreateWithoutRecommendationsInput, UserUncheckedCreateWithoutRecommendationsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRecommendationsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type MentorSessionCreateNestedOneWithoutRecommendationsInput = {
+    create?: XOR<MentorSessionCreateWithoutRecommendationsInput, MentorSessionUncheckedCreateWithoutRecommendationsInput>
+    connectOrCreate?: MentorSessionCreateOrConnectWithoutRecommendationsInput
+    connect?: MentorSessionWhereUniqueInput
+  }
+
+  export type EnumRecommendationVisibilityFieldUpdateOperationsInput = {
+    set?: $Enums.RecommendationVisibility
+  }
+
+  export type MentorProfileUpdateOneRequiredWithoutRecommendationsNestedInput = {
+    create?: XOR<MentorProfileCreateWithoutRecommendationsInput, MentorProfileUncheckedCreateWithoutRecommendationsInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutRecommendationsInput
+    upsert?: MentorProfileUpsertWithoutRecommendationsInput
+    connect?: MentorProfileWhereUniqueInput
+    update?: XOR<XOR<MentorProfileUpdateToOneWithWhereWithoutRecommendationsInput, MentorProfileUpdateWithoutRecommendationsInput>, MentorProfileUncheckedUpdateWithoutRecommendationsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutRecommendationsNestedInput = {
+    create?: XOR<UserCreateWithoutRecommendationsInput, UserUncheckedCreateWithoutRecommendationsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRecommendationsInput
+    upsert?: UserUpsertWithoutRecommendationsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRecommendationsInput, UserUpdateWithoutRecommendationsInput>, UserUncheckedUpdateWithoutRecommendationsInput>
+  }
+
+  export type MentorSessionUpdateOneWithoutRecommendationsNestedInput = {
+    create?: XOR<MentorSessionCreateWithoutRecommendationsInput, MentorSessionUncheckedCreateWithoutRecommendationsInput>
+    connectOrCreate?: MentorSessionCreateOrConnectWithoutRecommendationsInput
+    upsert?: MentorSessionUpsertWithoutRecommendationsInput
+    disconnect?: MentorSessionWhereInput | boolean
+    delete?: MentorSessionWhereInput | boolean
+    connect?: MentorSessionWhereUniqueInput
+    update?: XOR<XOR<MentorSessionUpdateToOneWithWhereWithoutRecommendationsInput, MentorSessionUpdateWithoutRecommendationsInput>, MentorSessionUncheckedUpdateWithoutRecommendationsInput>
+  }
+
+  export type UserCreateNestedOneWithoutNotificationsInput = {
+    create?: XOR<UserCreateWithoutNotificationsInput, UserUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNotificationsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumNotificationTypeFieldUpdateOperationsInput = {
+    set?: $Enums.NotificationType
+  }
+
+  export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
+    create?: XOR<UserCreateWithoutNotificationsInput, UserUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNotificationsInput
+    upsert?: UserUpsertWithoutNotificationsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotificationsInput, UserUpdateWithoutNotificationsInput>, UserUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type MentorProfileCreateNestedOneWithoutRealtimeEventsInput = {
+    create?: XOR<MentorProfileCreateWithoutRealtimeEventsInput, MentorProfileUncheckedCreateWithoutRealtimeEventsInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutRealtimeEventsInput
+    connect?: MentorProfileWhereUniqueInput
+  }
+
+  export type MentorProfileUpdateOneWithoutRealtimeEventsNestedInput = {
+    create?: XOR<MentorProfileCreateWithoutRealtimeEventsInput, MentorProfileUncheckedCreateWithoutRealtimeEventsInput>
+    connectOrCreate?: MentorProfileCreateOrConnectWithoutRealtimeEventsInput
+    upsert?: MentorProfileUpsertWithoutRealtimeEventsInput
+    disconnect?: MentorProfileWhereInput | boolean
+    delete?: MentorProfileWhereInput | boolean
+    connect?: MentorProfileWhereUniqueInput
+    update?: XOR<XOR<MentorProfileUpdateToOneWithWhereWithoutRealtimeEventsInput, MentorProfileUpdateWithoutRealtimeEventsInput>, MentorProfileUncheckedUpdateWithoutRealtimeEventsInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -8919,6 +22570,24 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumMentorStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorStatus | EnumMentorStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorStatus[] | ListEnumMentorStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorStatus[] | ListEnumMentorStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorStatusFilter<$PrismaModel> | $Enums.MentorStatus
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -9007,6 +22676,30 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumMentorStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorStatus | EnumMentorStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorStatus[] | ListEnumMentorStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorStatus[] | ListEnumMentorStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorStatusWithAggregatesFilter<$PrismaModel> | $Enums.MentorStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMentorStatusFilter<$PrismaModel>
+    _max?: NestedEnumMentorStatusFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -9048,6 +22741,140 @@ export namespace Prisma {
     _sum?: NestedFloatNullableFilter<$PrismaModel>
     _min?: NestedFloatNullableFilter<$PrismaModel>
     _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedEnumMentorDocumentStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorDocumentStatus | EnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorDocumentStatus[] | ListEnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorDocumentStatus[] | ListEnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorDocumentStatusFilter<$PrismaModel> | $Enums.MentorDocumentStatus
+  }
+
+  export type NestedEnumMentorDocumentStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorDocumentStatus | EnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorDocumentStatus[] | ListEnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorDocumentStatus[] | ListEnumMentorDocumentStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorDocumentStatusWithAggregatesFilter<$PrismaModel> | $Enums.MentorDocumentStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMentorDocumentStatusFilter<$PrismaModel>
+    _max?: NestedEnumMentorDocumentStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumMentorSessionStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorSessionStatus | EnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorSessionStatus[] | ListEnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorSessionStatus[] | ListEnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorSessionStatusFilter<$PrismaModel> | $Enums.MentorSessionStatus
+  }
+
+  export type NestedEnumMentorSessionStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MentorSessionStatus | EnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MentorSessionStatus[] | ListEnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MentorSessionStatus[] | ListEnumMentorSessionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMentorSessionStatusWithAggregatesFilter<$PrismaModel> | $Enums.MentorSessionStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMentorSessionStatusFilter<$PrismaModel>
+    _max?: NestedEnumMentorSessionStatusFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedEnumRecommendationVisibilityFilter<$PrismaModel = never> = {
+    equals?: $Enums.RecommendationVisibility | EnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    in?: $Enums.RecommendationVisibility[] | ListEnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RecommendationVisibility[] | ListEnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    not?: NestedEnumRecommendationVisibilityFilter<$PrismaModel> | $Enums.RecommendationVisibility
+  }
+
+  export type NestedEnumRecommendationVisibilityWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RecommendationVisibility | EnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    in?: $Enums.RecommendationVisibility[] | ListEnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RecommendationVisibility[] | ListEnumRecommendationVisibilityFieldRefInput<$PrismaModel>
+    not?: NestedEnumRecommendationVisibilityWithAggregatesFilter<$PrismaModel> | $Enums.RecommendationVisibility
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRecommendationVisibilityFilter<$PrismaModel>
+    _max?: NestedEnumRecommendationVisibilityFilter<$PrismaModel>
+  }
+
+  export type NestedEnumNotificationTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumNotificationTypeFilter<$PrismaModel> | $Enums.NotificationType
+  }
+
+  export type NestedEnumNotificationTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumNotificationTypeWithAggregatesFilter<$PrismaModel> | $Enums.NotificationType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumNotificationTypeFilter<$PrismaModel>
+    _max?: NestedEnumNotificationTypeFilter<$PrismaModel>
   }
 
   export type IndustryInsightCreateWithoutUsersInput = {
@@ -9165,6 +22992,229 @@ export namespace Prisma {
 
   export type CoverLetterCreateManyUserInputEnvelope = {
     data: CoverLetterCreateManyUserInput | CoverLetterCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MentorProfileCreateWithoutUserInput = {
+    id?: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    proofDocuments?: MentorDocumentCreateNestedManyWithoutMentorInput
+    sessions?: MentorSessionCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileUncheckedCreateWithoutUserInput = {
+    id?: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    proofDocuments?: MentorDocumentUncheckedCreateNestedManyWithoutMentorInput
+    sessions?: MentorSessionUncheckedCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventUncheckedCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileCreateOrConnectWithoutUserInput = {
+    where: MentorProfileWhereUniqueInput
+    create: XOR<MentorProfileCreateWithoutUserInput, MentorProfileUncheckedCreateWithoutUserInput>
+  }
+
+  export type MentorSessionCreateWithoutMenteeInput = {
+    id?: string
+    status?: $Enums.MentorSessionStatus
+    scheduledAt: Date | string
+    durationMinutes: number
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    notes?: string | null
+    meetingUrl?: string | null
+    cancelledAt?: Date | string | null
+    cancellationReason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentor: MentorProfileCreateNestedOneWithoutSessionsInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutSessionInput
+  }
+
+  export type MentorSessionUncheckedCreateWithoutMenteeInput = {
+    id?: string
+    mentorId: string
+    status?: $Enums.MentorSessionStatus
+    scheduledAt: Date | string
+    durationMinutes: number
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    notes?: string | null
+    meetingUrl?: string | null
+    cancelledAt?: Date | string | null
+    cancellationReason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type MentorSessionCreateOrConnectWithoutMenteeInput = {
+    where: MentorSessionWhereUniqueInput
+    create: XOR<MentorSessionCreateWithoutMenteeInput, MentorSessionUncheckedCreateWithoutMenteeInput>
+  }
+
+  export type MentorSessionCreateManyMenteeInputEnvelope = {
+    data: MentorSessionCreateManyMenteeInput | MentorSessionCreateManyMenteeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MentorConversationCreateWithoutMenteeInput = {
+    id?: string
+    lastMessageAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentor: MentorProfileCreateNestedOneWithoutConversationsInput
+    messages?: MentorMessageCreateNestedManyWithoutConversationInput
+  }
+
+  export type MentorConversationUncheckedCreateWithoutMenteeInput = {
+    id?: string
+    mentorId: string
+    lastMessageAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type MentorConversationCreateOrConnectWithoutMenteeInput = {
+    where: MentorConversationWhereUniqueInput
+    create: XOR<MentorConversationCreateWithoutMenteeInput, MentorConversationUncheckedCreateWithoutMenteeInput>
+  }
+
+  export type MentorConversationCreateManyMenteeInputEnvelope = {
+    data: MentorConversationCreateManyMenteeInput | MentorConversationCreateManyMenteeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MentorMessageCreateWithoutSenderInput = {
+    id?: string
+    body: string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+    conversation: MentorConversationCreateNestedOneWithoutMessagesInput
+  }
+
+  export type MentorMessageUncheckedCreateWithoutSenderInput = {
+    id?: string
+    conversationId: string
+    body: string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type MentorMessageCreateOrConnectWithoutSenderInput = {
+    where: MentorMessageWhereUniqueInput
+    create: XOR<MentorMessageCreateWithoutSenderInput, MentorMessageUncheckedCreateWithoutSenderInput>
+  }
+
+  export type MentorMessageCreateManySenderInputEnvelope = {
+    data: MentorMessageCreateManySenderInput | MentorMessageCreateManySenderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MentorRecommendationCreateWithoutMenteeInput = {
+    id?: string
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentor: MentorProfileCreateNestedOneWithoutRecommendationsInput
+    session?: MentorSessionCreateNestedOneWithoutRecommendationsInput
+  }
+
+  export type MentorRecommendationUncheckedCreateWithoutMenteeInput = {
+    id?: string
+    mentorId: string
+    sessionId?: string | null
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorRecommendationCreateOrConnectWithoutMenteeInput = {
+    where: MentorRecommendationWhereUniqueInput
+    create: XOR<MentorRecommendationCreateWithoutMenteeInput, MentorRecommendationUncheckedCreateWithoutMenteeInput>
+  }
+
+  export type MentorRecommendationCreateManyMenteeInputEnvelope = {
+    data: MentorRecommendationCreateManyMenteeInput | MentorRecommendationCreateManyMenteeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type NotificationCreateWithoutUserInput = {
+    id?: string
+    type: $Enums.NotificationType
+    title: string
+    body?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NotificationUncheckedCreateWithoutUserInput = {
+    id?: string
+    type: $Enums.NotificationType
+    title: string
+    body?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NotificationCreateOrConnectWithoutUserInput = {
+    where: NotificationWhereUniqueInput
+    create: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput>
+  }
+
+  export type NotificationCreateManyUserInputEnvelope = {
+    data: NotificationCreateManyUserInput | NotificationCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -9297,6 +23347,225 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"CoverLetter"> | Date | string
   }
 
+  export type MentorProfileUpsertWithoutUserInput = {
+    update: XOR<MentorProfileUpdateWithoutUserInput, MentorProfileUncheckedUpdateWithoutUserInput>
+    create: XOR<MentorProfileCreateWithoutUserInput, MentorProfileUncheckedCreateWithoutUserInput>
+    where?: MentorProfileWhereInput
+  }
+
+  export type MentorProfileUpdateToOneWithWhereWithoutUserInput = {
+    where?: MentorProfileWhereInput
+    data: XOR<MentorProfileUpdateWithoutUserInput, MentorProfileUncheckedUpdateWithoutUserInput>
+  }
+
+  export type MentorProfileUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proofDocuments?: MentorDocumentUpdateManyWithoutMentorNestedInput
+    sessions?: MentorSessionUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUpdateManyWithoutMentorNestedInput
+  }
+
+  export type MentorProfileUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proofDocuments?: MentorDocumentUncheckedUpdateManyWithoutMentorNestedInput
+    sessions?: MentorSessionUncheckedUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUncheckedUpdateManyWithoutMentorNestedInput
+  }
+
+  export type MentorSessionUpsertWithWhereUniqueWithoutMenteeInput = {
+    where: MentorSessionWhereUniqueInput
+    update: XOR<MentorSessionUpdateWithoutMenteeInput, MentorSessionUncheckedUpdateWithoutMenteeInput>
+    create: XOR<MentorSessionCreateWithoutMenteeInput, MentorSessionUncheckedCreateWithoutMenteeInput>
+  }
+
+  export type MentorSessionUpdateWithWhereUniqueWithoutMenteeInput = {
+    where: MentorSessionWhereUniqueInput
+    data: XOR<MentorSessionUpdateWithoutMenteeInput, MentorSessionUncheckedUpdateWithoutMenteeInput>
+  }
+
+  export type MentorSessionUpdateManyWithWhereWithoutMenteeInput = {
+    where: MentorSessionScalarWhereInput
+    data: XOR<MentorSessionUpdateManyMutationInput, MentorSessionUncheckedUpdateManyWithoutMenteeInput>
+  }
+
+  export type MentorSessionScalarWhereInput = {
+    AND?: MentorSessionScalarWhereInput | MentorSessionScalarWhereInput[]
+    OR?: MentorSessionScalarWhereInput[]
+    NOT?: MentorSessionScalarWhereInput | MentorSessionScalarWhereInput[]
+    id?: StringFilter<"MentorSession"> | string
+    mentorId?: StringFilter<"MentorSession"> | string
+    menteeId?: StringFilter<"MentorSession"> | string
+    status?: EnumMentorSessionStatusFilter<"MentorSession"> | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFilter<"MentorSession"> | Date | string
+    durationMinutes?: IntFilter<"MentorSession"> | number
+    price?: DecimalNullableFilter<"MentorSession"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringNullableFilter<"MentorSession"> | string | null
+    notes?: StringNullableFilter<"MentorSession"> | string | null
+    meetingUrl?: StringNullableFilter<"MentorSession"> | string | null
+    cancelledAt?: DateTimeNullableFilter<"MentorSession"> | Date | string | null
+    cancellationReason?: StringNullableFilter<"MentorSession"> | string | null
+    createdAt?: DateTimeFilter<"MentorSession"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorSession"> | Date | string
+  }
+
+  export type MentorConversationUpsertWithWhereUniqueWithoutMenteeInput = {
+    where: MentorConversationWhereUniqueInput
+    update: XOR<MentorConversationUpdateWithoutMenteeInput, MentorConversationUncheckedUpdateWithoutMenteeInput>
+    create: XOR<MentorConversationCreateWithoutMenteeInput, MentorConversationUncheckedCreateWithoutMenteeInput>
+  }
+
+  export type MentorConversationUpdateWithWhereUniqueWithoutMenteeInput = {
+    where: MentorConversationWhereUniqueInput
+    data: XOR<MentorConversationUpdateWithoutMenteeInput, MentorConversationUncheckedUpdateWithoutMenteeInput>
+  }
+
+  export type MentorConversationUpdateManyWithWhereWithoutMenteeInput = {
+    where: MentorConversationScalarWhereInput
+    data: XOR<MentorConversationUpdateManyMutationInput, MentorConversationUncheckedUpdateManyWithoutMenteeInput>
+  }
+
+  export type MentorConversationScalarWhereInput = {
+    AND?: MentorConversationScalarWhereInput | MentorConversationScalarWhereInput[]
+    OR?: MentorConversationScalarWhereInput[]
+    NOT?: MentorConversationScalarWhereInput | MentorConversationScalarWhereInput[]
+    id?: StringFilter<"MentorConversation"> | string
+    mentorId?: StringFilter<"MentorConversation"> | string
+    menteeId?: StringFilter<"MentorConversation"> | string
+    lastMessageAt?: DateTimeNullableFilter<"MentorConversation"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorConversation"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorConversation"> | Date | string
+  }
+
+  export type MentorMessageUpsertWithWhereUniqueWithoutSenderInput = {
+    where: MentorMessageWhereUniqueInput
+    update: XOR<MentorMessageUpdateWithoutSenderInput, MentorMessageUncheckedUpdateWithoutSenderInput>
+    create: XOR<MentorMessageCreateWithoutSenderInput, MentorMessageUncheckedCreateWithoutSenderInput>
+  }
+
+  export type MentorMessageUpdateWithWhereUniqueWithoutSenderInput = {
+    where: MentorMessageWhereUniqueInput
+    data: XOR<MentorMessageUpdateWithoutSenderInput, MentorMessageUncheckedUpdateWithoutSenderInput>
+  }
+
+  export type MentorMessageUpdateManyWithWhereWithoutSenderInput = {
+    where: MentorMessageScalarWhereInput
+    data: XOR<MentorMessageUpdateManyMutationInput, MentorMessageUncheckedUpdateManyWithoutSenderInput>
+  }
+
+  export type MentorMessageScalarWhereInput = {
+    AND?: MentorMessageScalarWhereInput | MentorMessageScalarWhereInput[]
+    OR?: MentorMessageScalarWhereInput[]
+    NOT?: MentorMessageScalarWhereInput | MentorMessageScalarWhereInput[]
+    id?: StringFilter<"MentorMessage"> | string
+    conversationId?: StringFilter<"MentorMessage"> | string
+    senderId?: StringFilter<"MentorMessage"> | string
+    body?: StringFilter<"MentorMessage"> | string
+    attachments?: JsonNullableFilter<"MentorMessage">
+    readAt?: DateTimeNullableFilter<"MentorMessage"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorMessage"> | Date | string
+  }
+
+  export type MentorRecommendationUpsertWithWhereUniqueWithoutMenteeInput = {
+    where: MentorRecommendationWhereUniqueInput
+    update: XOR<MentorRecommendationUpdateWithoutMenteeInput, MentorRecommendationUncheckedUpdateWithoutMenteeInput>
+    create: XOR<MentorRecommendationCreateWithoutMenteeInput, MentorRecommendationUncheckedCreateWithoutMenteeInput>
+  }
+
+  export type MentorRecommendationUpdateWithWhereUniqueWithoutMenteeInput = {
+    where: MentorRecommendationWhereUniqueInput
+    data: XOR<MentorRecommendationUpdateWithoutMenteeInput, MentorRecommendationUncheckedUpdateWithoutMenteeInput>
+  }
+
+  export type MentorRecommendationUpdateManyWithWhereWithoutMenteeInput = {
+    where: MentorRecommendationScalarWhereInput
+    data: XOR<MentorRecommendationUpdateManyMutationInput, MentorRecommendationUncheckedUpdateManyWithoutMenteeInput>
+  }
+
+  export type MentorRecommendationScalarWhereInput = {
+    AND?: MentorRecommendationScalarWhereInput | MentorRecommendationScalarWhereInput[]
+    OR?: MentorRecommendationScalarWhereInput[]
+    NOT?: MentorRecommendationScalarWhereInput | MentorRecommendationScalarWhereInput[]
+    id?: StringFilter<"MentorRecommendation"> | string
+    mentorId?: StringFilter<"MentorRecommendation"> | string
+    menteeId?: StringFilter<"MentorRecommendation"> | string
+    sessionId?: StringNullableFilter<"MentorRecommendation"> | string | null
+    title?: StringFilter<"MentorRecommendation"> | string
+    body?: StringFilter<"MentorRecommendation"> | string
+    visibility?: EnumRecommendationVisibilityFilter<"MentorRecommendation"> | $Enums.RecommendationVisibility
+    publishedAt?: DateTimeNullableFilter<"MentorRecommendation"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorRecommendation"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorRecommendation"> | Date | string
+  }
+
+  export type NotificationUpsertWithWhereUniqueWithoutUserInput = {
+    where: NotificationWhereUniqueInput
+    update: XOR<NotificationUpdateWithoutUserInput, NotificationUncheckedUpdateWithoutUserInput>
+    create: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput>
+  }
+
+  export type NotificationUpdateWithWhereUniqueWithoutUserInput = {
+    where: NotificationWhereUniqueInput
+    data: XOR<NotificationUpdateWithoutUserInput, NotificationUncheckedUpdateWithoutUserInput>
+  }
+
+  export type NotificationUpdateManyWithWhereWithoutUserInput = {
+    where: NotificationScalarWhereInput
+    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type NotificationScalarWhereInput = {
+    AND?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+    OR?: NotificationScalarWhereInput[]
+    NOT?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+    id?: StringFilter<"Notification"> | string
+    userId?: StringFilter<"Notification"> | string
+    type?: EnumNotificationTypeFilter<"Notification"> | $Enums.NotificationType
+    title?: StringFilter<"Notification"> | string
+    body?: StringNullableFilter<"Notification"> | string | null
+    metadata?: JsonNullableFilter<"Notification">
+    readAt?: DateTimeNullableFilter<"Notification"> | Date | string | null
+    createdAt?: DateTimeFilter<"Notification"> | Date | string
+    updatedAt?: DateTimeFilter<"Notification"> | Date | string
+  }
+
   export type UserCreateWithoutAssessmentsInput = {
     id?: string
     clerkUserId: string
@@ -9308,9 +23577,18 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
     industryInsight?: IndustryInsightCreateNestedOneWithoutUsersInput
     resume?: ResumeCreateNestedOneWithoutUserInput
     coverLetter?: CoverLetterCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAssessmentsInput = {
@@ -9325,8 +23603,17 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
     resume?: ResumeUncheckedCreateNestedOneWithoutUserInput
     coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileUncheckedCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionUncheckedCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAssessmentsInput = {
@@ -9356,9 +23643,18 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     industryInsight?: IndustryInsightUpdateOneWithoutUsersNestedInput
     resume?: ResumeUpdateOneWithoutUserNestedInput
     coverLetter?: CoverLetterUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAssessmentsInput = {
@@ -9373,8 +23669,17 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     resume?: ResumeUncheckedUpdateOneWithoutUserNestedInput
     coverLetter?: CoverLetterUncheckedUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUncheckedUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUncheckedUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUncheckedUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutResumeInput = {
@@ -9388,9 +23693,18 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
     industryInsight?: IndustryInsightCreateNestedOneWithoutUsersInput
     assessments?: AssessmentCreateNestedManyWithoutUserInput
     coverLetter?: CoverLetterCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutResumeInput = {
@@ -9405,8 +23719,17 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
     assessments?: AssessmentUncheckedCreateNestedManyWithoutUserInput
     coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileUncheckedCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionUncheckedCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutResumeInput = {
@@ -9436,9 +23759,18 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     industryInsight?: IndustryInsightUpdateOneWithoutUsersNestedInput
     assessments?: AssessmentUpdateManyWithoutUserNestedInput
     coverLetter?: CoverLetterUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutResumeInput = {
@@ -9453,8 +23785,17 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     assessments?: AssessmentUncheckedUpdateManyWithoutUserNestedInput
     coverLetter?: CoverLetterUncheckedUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUncheckedUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUncheckedUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUncheckedUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutCoverLetterInput = {
@@ -9468,9 +23809,18 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
     industryInsight?: IndustryInsightCreateNestedOneWithoutUsersInput
     assessments?: AssessmentCreateNestedManyWithoutUserInput
     resume?: ResumeCreateNestedOneWithoutUserInput
+    mentorProfile?: MentorProfileCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCoverLetterInput = {
@@ -9485,8 +23835,17 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
     assessments?: AssessmentUncheckedCreateNestedManyWithoutUserInput
     resume?: ResumeUncheckedCreateNestedOneWithoutUserInput
+    mentorProfile?: MentorProfileUncheckedCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionUncheckedCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCoverLetterInput = {
@@ -9516,9 +23875,18 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     industryInsight?: IndustryInsightUpdateOneWithoutUsersNestedInput
     assessments?: AssessmentUpdateManyWithoutUserNestedInput
     resume?: ResumeUpdateOneWithoutUserNestedInput
+    mentorProfile?: MentorProfileUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCoverLetterInput = {
@@ -9533,8 +23901,17 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     assessments?: AssessmentUncheckedUpdateManyWithoutUserNestedInput
     resume?: ResumeUncheckedUpdateOneWithoutUserNestedInput
+    mentorProfile?: MentorProfileUncheckedUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUncheckedUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUncheckedUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutIndustryInsightInput = {
@@ -9548,9 +23925,18 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
     assessments?: AssessmentCreateNestedManyWithoutUserInput
     resume?: ResumeCreateNestedOneWithoutUserInput
     coverLetter?: CoverLetterCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutIndustryInsightInput = {
@@ -9564,9 +23950,18 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
     assessments?: AssessmentUncheckedCreateNestedManyWithoutUserInput
     resume?: ResumeUncheckedCreateNestedOneWithoutUserInput
     coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileUncheckedCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionUncheckedCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutIndustryInsightInput = {
@@ -9610,6 +24005,1806 @@ export namespace Prisma {
     bio?: StringNullableFilter<"User"> | string | null
     experience?: IntNullableFilter<"User"> | number | null
     skills?: StringNullableListFilter<"User">
+    mentorStatus?: EnumMentorStatusFilter<"User"> | $Enums.MentorStatus
+    mentorStatusReason?: StringNullableFilter<"User"> | string | null
+    mentorStatusUpdatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+  }
+
+  export type UserCreateWithoutMentorProfileInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    industryInsight?: IndustryInsightCreateNestedOneWithoutUsersInput
+    assessments?: AssessmentCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutUserInput
+    mentorSessions?: MentorSessionCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutMentorProfileInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    industry?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutUserInput
+    mentorSessions?: MentorSessionUncheckedCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutMentorProfileInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutMentorProfileInput, UserUncheckedCreateWithoutMentorProfileInput>
+  }
+
+  export type MentorDocumentCreateWithoutMentorInput = {
+    id?: string
+    type: string
+    url: string
+    status?: $Enums.MentorDocumentStatus
+    description?: string | null
+    verifiedBy?: string | null
+    verifiedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorDocumentUncheckedCreateWithoutMentorInput = {
+    id?: string
+    type: string
+    url: string
+    status?: $Enums.MentorDocumentStatus
+    description?: string | null
+    verifiedBy?: string | null
+    verifiedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorDocumentCreateOrConnectWithoutMentorInput = {
+    where: MentorDocumentWhereUniqueInput
+    create: XOR<MentorDocumentCreateWithoutMentorInput, MentorDocumentUncheckedCreateWithoutMentorInput>
+  }
+
+  export type MentorDocumentCreateManyMentorInputEnvelope = {
+    data: MentorDocumentCreateManyMentorInput | MentorDocumentCreateManyMentorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MentorSessionCreateWithoutMentorInput = {
+    id?: string
+    status?: $Enums.MentorSessionStatus
+    scheduledAt: Date | string
+    durationMinutes: number
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    notes?: string | null
+    meetingUrl?: string | null
+    cancelledAt?: Date | string | null
+    cancellationReason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentee: UserCreateNestedOneWithoutMentorSessionsInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutSessionInput
+  }
+
+  export type MentorSessionUncheckedCreateWithoutMentorInput = {
+    id?: string
+    menteeId: string
+    status?: $Enums.MentorSessionStatus
+    scheduledAt: Date | string
+    durationMinutes: number
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    notes?: string | null
+    meetingUrl?: string | null
+    cancelledAt?: Date | string | null
+    cancellationReason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type MentorSessionCreateOrConnectWithoutMentorInput = {
+    where: MentorSessionWhereUniqueInput
+    create: XOR<MentorSessionCreateWithoutMentorInput, MentorSessionUncheckedCreateWithoutMentorInput>
+  }
+
+  export type MentorSessionCreateManyMentorInputEnvelope = {
+    data: MentorSessionCreateManyMentorInput | MentorSessionCreateManyMentorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MentorConversationCreateWithoutMentorInput = {
+    id?: string
+    lastMessageAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentee: UserCreateNestedOneWithoutConversationsInput
+    messages?: MentorMessageCreateNestedManyWithoutConversationInput
+  }
+
+  export type MentorConversationUncheckedCreateWithoutMentorInput = {
+    id?: string
+    menteeId: string
+    lastMessageAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type MentorConversationCreateOrConnectWithoutMentorInput = {
+    where: MentorConversationWhereUniqueInput
+    create: XOR<MentorConversationCreateWithoutMentorInput, MentorConversationUncheckedCreateWithoutMentorInput>
+  }
+
+  export type MentorConversationCreateManyMentorInputEnvelope = {
+    data: MentorConversationCreateManyMentorInput | MentorConversationCreateManyMentorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MentorRecommendationCreateWithoutMentorInput = {
+    id?: string
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentee: UserCreateNestedOneWithoutRecommendationsInput
+    session?: MentorSessionCreateNestedOneWithoutRecommendationsInput
+  }
+
+  export type MentorRecommendationUncheckedCreateWithoutMentorInput = {
+    id?: string
+    menteeId: string
+    sessionId?: string | null
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorRecommendationCreateOrConnectWithoutMentorInput = {
+    where: MentorRecommendationWhereUniqueInput
+    create: XOR<MentorRecommendationCreateWithoutMentorInput, MentorRecommendationUncheckedCreateWithoutMentorInput>
+  }
+
+  export type MentorRecommendationCreateManyMentorInputEnvelope = {
+    data: MentorRecommendationCreateManyMentorInput | MentorRecommendationCreateManyMentorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RealtimeEventCreateWithoutMentorInput = {
+    id?: string
+    type: string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type RealtimeEventUncheckedCreateWithoutMentorInput = {
+    id?: string
+    type: string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type RealtimeEventCreateOrConnectWithoutMentorInput = {
+    where: RealtimeEventWhereUniqueInput
+    create: XOR<RealtimeEventCreateWithoutMentorInput, RealtimeEventUncheckedCreateWithoutMentorInput>
+  }
+
+  export type RealtimeEventCreateManyMentorInputEnvelope = {
+    data: RealtimeEventCreateManyMentorInput | RealtimeEventCreateManyMentorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutMentorProfileInput = {
+    update: XOR<UserUpdateWithoutMentorProfileInput, UserUncheckedUpdateWithoutMentorProfileInput>
+    create: XOR<UserCreateWithoutMentorProfileInput, UserUncheckedCreateWithoutMentorProfileInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutMentorProfileInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutMentorProfileInput, UserUncheckedUpdateWithoutMentorProfileInput>
+  }
+
+  export type UserUpdateWithoutMentorProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    industryInsight?: IndustryInsightUpdateOneWithoutUsersNestedInput
+    assessments?: AssessmentUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutUserNestedInput
+    mentorSessions?: MentorSessionUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutMentorProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    assessments?: AssessmentUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutUserNestedInput
+    mentorSessions?: MentorSessionUncheckedUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUncheckedUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type MentorDocumentUpsertWithWhereUniqueWithoutMentorInput = {
+    where: MentorDocumentWhereUniqueInput
+    update: XOR<MentorDocumentUpdateWithoutMentorInput, MentorDocumentUncheckedUpdateWithoutMentorInput>
+    create: XOR<MentorDocumentCreateWithoutMentorInput, MentorDocumentUncheckedCreateWithoutMentorInput>
+  }
+
+  export type MentorDocumentUpdateWithWhereUniqueWithoutMentorInput = {
+    where: MentorDocumentWhereUniqueInput
+    data: XOR<MentorDocumentUpdateWithoutMentorInput, MentorDocumentUncheckedUpdateWithoutMentorInput>
+  }
+
+  export type MentorDocumentUpdateManyWithWhereWithoutMentorInput = {
+    where: MentorDocumentScalarWhereInput
+    data: XOR<MentorDocumentUpdateManyMutationInput, MentorDocumentUncheckedUpdateManyWithoutMentorInput>
+  }
+
+  export type MentorDocumentScalarWhereInput = {
+    AND?: MentorDocumentScalarWhereInput | MentorDocumentScalarWhereInput[]
+    OR?: MentorDocumentScalarWhereInput[]
+    NOT?: MentorDocumentScalarWhereInput | MentorDocumentScalarWhereInput[]
+    id?: StringFilter<"MentorDocument"> | string
+    mentorId?: StringFilter<"MentorDocument"> | string
+    type?: StringFilter<"MentorDocument"> | string
+    url?: StringFilter<"MentorDocument"> | string
+    status?: EnumMentorDocumentStatusFilter<"MentorDocument"> | $Enums.MentorDocumentStatus
+    description?: StringNullableFilter<"MentorDocument"> | string | null
+    verifiedBy?: StringNullableFilter<"MentorDocument"> | string | null
+    verifiedAt?: DateTimeNullableFilter<"MentorDocument"> | Date | string | null
+    createdAt?: DateTimeFilter<"MentorDocument"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorDocument"> | Date | string
+  }
+
+  export type MentorSessionUpsertWithWhereUniqueWithoutMentorInput = {
+    where: MentorSessionWhereUniqueInput
+    update: XOR<MentorSessionUpdateWithoutMentorInput, MentorSessionUncheckedUpdateWithoutMentorInput>
+    create: XOR<MentorSessionCreateWithoutMentorInput, MentorSessionUncheckedCreateWithoutMentorInput>
+  }
+
+  export type MentorSessionUpdateWithWhereUniqueWithoutMentorInput = {
+    where: MentorSessionWhereUniqueInput
+    data: XOR<MentorSessionUpdateWithoutMentorInput, MentorSessionUncheckedUpdateWithoutMentorInput>
+  }
+
+  export type MentorSessionUpdateManyWithWhereWithoutMentorInput = {
+    where: MentorSessionScalarWhereInput
+    data: XOR<MentorSessionUpdateManyMutationInput, MentorSessionUncheckedUpdateManyWithoutMentorInput>
+  }
+
+  export type MentorConversationUpsertWithWhereUniqueWithoutMentorInput = {
+    where: MentorConversationWhereUniqueInput
+    update: XOR<MentorConversationUpdateWithoutMentorInput, MentorConversationUncheckedUpdateWithoutMentorInput>
+    create: XOR<MentorConversationCreateWithoutMentorInput, MentorConversationUncheckedCreateWithoutMentorInput>
+  }
+
+  export type MentorConversationUpdateWithWhereUniqueWithoutMentorInput = {
+    where: MentorConversationWhereUniqueInput
+    data: XOR<MentorConversationUpdateWithoutMentorInput, MentorConversationUncheckedUpdateWithoutMentorInput>
+  }
+
+  export type MentorConversationUpdateManyWithWhereWithoutMentorInput = {
+    where: MentorConversationScalarWhereInput
+    data: XOR<MentorConversationUpdateManyMutationInput, MentorConversationUncheckedUpdateManyWithoutMentorInput>
+  }
+
+  export type MentorRecommendationUpsertWithWhereUniqueWithoutMentorInput = {
+    where: MentorRecommendationWhereUniqueInput
+    update: XOR<MentorRecommendationUpdateWithoutMentorInput, MentorRecommendationUncheckedUpdateWithoutMentorInput>
+    create: XOR<MentorRecommendationCreateWithoutMentorInput, MentorRecommendationUncheckedCreateWithoutMentorInput>
+  }
+
+  export type MentorRecommendationUpdateWithWhereUniqueWithoutMentorInput = {
+    where: MentorRecommendationWhereUniqueInput
+    data: XOR<MentorRecommendationUpdateWithoutMentorInput, MentorRecommendationUncheckedUpdateWithoutMentorInput>
+  }
+
+  export type MentorRecommendationUpdateManyWithWhereWithoutMentorInput = {
+    where: MentorRecommendationScalarWhereInput
+    data: XOR<MentorRecommendationUpdateManyMutationInput, MentorRecommendationUncheckedUpdateManyWithoutMentorInput>
+  }
+
+  export type RealtimeEventUpsertWithWhereUniqueWithoutMentorInput = {
+    where: RealtimeEventWhereUniqueInput
+    update: XOR<RealtimeEventUpdateWithoutMentorInput, RealtimeEventUncheckedUpdateWithoutMentorInput>
+    create: XOR<RealtimeEventCreateWithoutMentorInput, RealtimeEventUncheckedCreateWithoutMentorInput>
+  }
+
+  export type RealtimeEventUpdateWithWhereUniqueWithoutMentorInput = {
+    where: RealtimeEventWhereUniqueInput
+    data: XOR<RealtimeEventUpdateWithoutMentorInput, RealtimeEventUncheckedUpdateWithoutMentorInput>
+  }
+
+  export type RealtimeEventUpdateManyWithWhereWithoutMentorInput = {
+    where: RealtimeEventScalarWhereInput
+    data: XOR<RealtimeEventUpdateManyMutationInput, RealtimeEventUncheckedUpdateManyWithoutMentorInput>
+  }
+
+  export type RealtimeEventScalarWhereInput = {
+    AND?: RealtimeEventScalarWhereInput | RealtimeEventScalarWhereInput[]
+    OR?: RealtimeEventScalarWhereInput[]
+    NOT?: RealtimeEventScalarWhereInput | RealtimeEventScalarWhereInput[]
+    id?: StringFilter<"RealtimeEvent"> | string
+    type?: StringFilter<"RealtimeEvent"> | string
+    payload?: JsonNullableFilter<"RealtimeEvent">
+    mentorId?: StringNullableFilter<"RealtimeEvent"> | string | null
+    createdAt?: DateTimeFilter<"RealtimeEvent"> | Date | string
+  }
+
+  export type MentorProfileCreateWithoutProofDocumentsInput = {
+    id?: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutMentorProfileInput
+    sessions?: MentorSessionCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileUncheckedCreateWithoutProofDocumentsInput = {
+    id?: string
+    userId: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: MentorSessionUncheckedCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventUncheckedCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileCreateOrConnectWithoutProofDocumentsInput = {
+    where: MentorProfileWhereUniqueInput
+    create: XOR<MentorProfileCreateWithoutProofDocumentsInput, MentorProfileUncheckedCreateWithoutProofDocumentsInput>
+  }
+
+  export type MentorProfileUpsertWithoutProofDocumentsInput = {
+    update: XOR<MentorProfileUpdateWithoutProofDocumentsInput, MentorProfileUncheckedUpdateWithoutProofDocumentsInput>
+    create: XOR<MentorProfileCreateWithoutProofDocumentsInput, MentorProfileUncheckedCreateWithoutProofDocumentsInput>
+    where?: MentorProfileWhereInput
+  }
+
+  export type MentorProfileUpdateToOneWithWhereWithoutProofDocumentsInput = {
+    where?: MentorProfileWhereInput
+    data: XOR<MentorProfileUpdateWithoutProofDocumentsInput, MentorProfileUncheckedUpdateWithoutProofDocumentsInput>
+  }
+
+  export type MentorProfileUpdateWithoutProofDocumentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMentorProfileNestedInput
+    sessions?: MentorSessionUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUpdateManyWithoutMentorNestedInput
+  }
+
+  export type MentorProfileUncheckedUpdateWithoutProofDocumentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: MentorSessionUncheckedUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUncheckedUpdateManyWithoutMentorNestedInput
+  }
+
+  export type MentorProfileCreateWithoutSessionsInput = {
+    id?: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutMentorProfileInput
+    proofDocuments?: MentorDocumentCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileUncheckedCreateWithoutSessionsInput = {
+    id?: string
+    userId: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    proofDocuments?: MentorDocumentUncheckedCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventUncheckedCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileCreateOrConnectWithoutSessionsInput = {
+    where: MentorProfileWhereUniqueInput
+    create: XOR<MentorProfileCreateWithoutSessionsInput, MentorProfileUncheckedCreateWithoutSessionsInput>
+  }
+
+  export type UserCreateWithoutMentorSessionsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    industryInsight?: IndustryInsightCreateNestedOneWithoutUsersInput
+    assessments?: AssessmentCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileCreateNestedOneWithoutUserInput
+    conversations?: MentorConversationCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutMentorSessionsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    industry?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileUncheckedCreateNestedOneWithoutUserInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutMentorSessionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutMentorSessionsInput, UserUncheckedCreateWithoutMentorSessionsInput>
+  }
+
+  export type MentorRecommendationCreateWithoutSessionInput = {
+    id?: string
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentor: MentorProfileCreateNestedOneWithoutRecommendationsInput
+    mentee: UserCreateNestedOneWithoutRecommendationsInput
+  }
+
+  export type MentorRecommendationUncheckedCreateWithoutSessionInput = {
+    id?: string
+    mentorId: string
+    menteeId: string
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorRecommendationCreateOrConnectWithoutSessionInput = {
+    where: MentorRecommendationWhereUniqueInput
+    create: XOR<MentorRecommendationCreateWithoutSessionInput, MentorRecommendationUncheckedCreateWithoutSessionInput>
+  }
+
+  export type MentorRecommendationCreateManySessionInputEnvelope = {
+    data: MentorRecommendationCreateManySessionInput | MentorRecommendationCreateManySessionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MentorProfileUpsertWithoutSessionsInput = {
+    update: XOR<MentorProfileUpdateWithoutSessionsInput, MentorProfileUncheckedUpdateWithoutSessionsInput>
+    create: XOR<MentorProfileCreateWithoutSessionsInput, MentorProfileUncheckedCreateWithoutSessionsInput>
+    where?: MentorProfileWhereInput
+  }
+
+  export type MentorProfileUpdateToOneWithWhereWithoutSessionsInput = {
+    where?: MentorProfileWhereInput
+    data: XOR<MentorProfileUpdateWithoutSessionsInput, MentorProfileUncheckedUpdateWithoutSessionsInput>
+  }
+
+  export type MentorProfileUpdateWithoutSessionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMentorProfileNestedInput
+    proofDocuments?: MentorDocumentUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUpdateManyWithoutMentorNestedInput
+  }
+
+  export type MentorProfileUncheckedUpdateWithoutSessionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proofDocuments?: MentorDocumentUncheckedUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUncheckedUpdateManyWithoutMentorNestedInput
+  }
+
+  export type UserUpsertWithoutMentorSessionsInput = {
+    update: XOR<UserUpdateWithoutMentorSessionsInput, UserUncheckedUpdateWithoutMentorSessionsInput>
+    create: XOR<UserCreateWithoutMentorSessionsInput, UserUncheckedCreateWithoutMentorSessionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutMentorSessionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutMentorSessionsInput, UserUncheckedUpdateWithoutMentorSessionsInput>
+  }
+
+  export type UserUpdateWithoutMentorSessionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    industryInsight?: IndustryInsightUpdateOneWithoutUsersNestedInput
+    assessments?: AssessmentUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUpdateOneWithoutUserNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutMentorSessionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    assessments?: AssessmentUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUncheckedUpdateOneWithoutUserNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUncheckedUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type MentorRecommendationUpsertWithWhereUniqueWithoutSessionInput = {
+    where: MentorRecommendationWhereUniqueInput
+    update: XOR<MentorRecommendationUpdateWithoutSessionInput, MentorRecommendationUncheckedUpdateWithoutSessionInput>
+    create: XOR<MentorRecommendationCreateWithoutSessionInput, MentorRecommendationUncheckedCreateWithoutSessionInput>
+  }
+
+  export type MentorRecommendationUpdateWithWhereUniqueWithoutSessionInput = {
+    where: MentorRecommendationWhereUniqueInput
+    data: XOR<MentorRecommendationUpdateWithoutSessionInput, MentorRecommendationUncheckedUpdateWithoutSessionInput>
+  }
+
+  export type MentorRecommendationUpdateManyWithWhereWithoutSessionInput = {
+    where: MentorRecommendationScalarWhereInput
+    data: XOR<MentorRecommendationUpdateManyMutationInput, MentorRecommendationUncheckedUpdateManyWithoutSessionInput>
+  }
+
+  export type MentorProfileCreateWithoutConversationsInput = {
+    id?: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutMentorProfileInput
+    proofDocuments?: MentorDocumentCreateNestedManyWithoutMentorInput
+    sessions?: MentorSessionCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileUncheckedCreateWithoutConversationsInput = {
+    id?: string
+    userId: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    proofDocuments?: MentorDocumentUncheckedCreateNestedManyWithoutMentorInput
+    sessions?: MentorSessionUncheckedCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventUncheckedCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileCreateOrConnectWithoutConversationsInput = {
+    where: MentorProfileWhereUniqueInput
+    create: XOR<MentorProfileCreateWithoutConversationsInput, MentorProfileUncheckedCreateWithoutConversationsInput>
+  }
+
+  export type UserCreateWithoutConversationsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    industryInsight?: IndustryInsightCreateNestedOneWithoutUsersInput
+    assessments?: AssessmentCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutConversationsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    industry?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileUncheckedCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionUncheckedCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutConversationsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutConversationsInput, UserUncheckedCreateWithoutConversationsInput>
+  }
+
+  export type MentorMessageCreateWithoutConversationInput = {
+    id?: string
+    body: string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+    sender: UserCreateNestedOneWithoutMessagesInput
+  }
+
+  export type MentorMessageUncheckedCreateWithoutConversationInput = {
+    id?: string
+    senderId: string
+    body: string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type MentorMessageCreateOrConnectWithoutConversationInput = {
+    where: MentorMessageWhereUniqueInput
+    create: XOR<MentorMessageCreateWithoutConversationInput, MentorMessageUncheckedCreateWithoutConversationInput>
+  }
+
+  export type MentorMessageCreateManyConversationInputEnvelope = {
+    data: MentorMessageCreateManyConversationInput | MentorMessageCreateManyConversationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MentorProfileUpsertWithoutConversationsInput = {
+    update: XOR<MentorProfileUpdateWithoutConversationsInput, MentorProfileUncheckedUpdateWithoutConversationsInput>
+    create: XOR<MentorProfileCreateWithoutConversationsInput, MentorProfileUncheckedCreateWithoutConversationsInput>
+    where?: MentorProfileWhereInput
+  }
+
+  export type MentorProfileUpdateToOneWithWhereWithoutConversationsInput = {
+    where?: MentorProfileWhereInput
+    data: XOR<MentorProfileUpdateWithoutConversationsInput, MentorProfileUncheckedUpdateWithoutConversationsInput>
+  }
+
+  export type MentorProfileUpdateWithoutConversationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMentorProfileNestedInput
+    proofDocuments?: MentorDocumentUpdateManyWithoutMentorNestedInput
+    sessions?: MentorSessionUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUpdateManyWithoutMentorNestedInput
+  }
+
+  export type MentorProfileUncheckedUpdateWithoutConversationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proofDocuments?: MentorDocumentUncheckedUpdateManyWithoutMentorNestedInput
+    sessions?: MentorSessionUncheckedUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUncheckedUpdateManyWithoutMentorNestedInput
+  }
+
+  export type UserUpsertWithoutConversationsInput = {
+    update: XOR<UserUpdateWithoutConversationsInput, UserUncheckedUpdateWithoutConversationsInput>
+    create: XOR<UserCreateWithoutConversationsInput, UserUncheckedCreateWithoutConversationsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutConversationsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutConversationsInput, UserUncheckedUpdateWithoutConversationsInput>
+  }
+
+  export type UserUpdateWithoutConversationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    industryInsight?: IndustryInsightUpdateOneWithoutUsersNestedInput
+    assessments?: AssessmentUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutConversationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    assessments?: AssessmentUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUncheckedUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUncheckedUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUncheckedUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type MentorMessageUpsertWithWhereUniqueWithoutConversationInput = {
+    where: MentorMessageWhereUniqueInput
+    update: XOR<MentorMessageUpdateWithoutConversationInput, MentorMessageUncheckedUpdateWithoutConversationInput>
+    create: XOR<MentorMessageCreateWithoutConversationInput, MentorMessageUncheckedCreateWithoutConversationInput>
+  }
+
+  export type MentorMessageUpdateWithWhereUniqueWithoutConversationInput = {
+    where: MentorMessageWhereUniqueInput
+    data: XOR<MentorMessageUpdateWithoutConversationInput, MentorMessageUncheckedUpdateWithoutConversationInput>
+  }
+
+  export type MentorMessageUpdateManyWithWhereWithoutConversationInput = {
+    where: MentorMessageScalarWhereInput
+    data: XOR<MentorMessageUpdateManyMutationInput, MentorMessageUncheckedUpdateManyWithoutConversationInput>
+  }
+
+  export type MentorConversationCreateWithoutMessagesInput = {
+    id?: string
+    lastMessageAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentor: MentorProfileCreateNestedOneWithoutConversationsInput
+    mentee: UserCreateNestedOneWithoutConversationsInput
+  }
+
+  export type MentorConversationUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    mentorId: string
+    menteeId: string
+    lastMessageAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorConversationCreateOrConnectWithoutMessagesInput = {
+    where: MentorConversationWhereUniqueInput
+    create: XOR<MentorConversationCreateWithoutMessagesInput, MentorConversationUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type UserCreateWithoutMessagesInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    industryInsight?: IndustryInsightCreateNestedOneWithoutUsersInput
+    assessments?: AssessmentCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationCreateNestedManyWithoutMenteeInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    industry?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileUncheckedCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionUncheckedCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMenteeInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMenteeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutMessagesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type MentorConversationUpsertWithoutMessagesInput = {
+    update: XOR<MentorConversationUpdateWithoutMessagesInput, MentorConversationUncheckedUpdateWithoutMessagesInput>
+    create: XOR<MentorConversationCreateWithoutMessagesInput, MentorConversationUncheckedCreateWithoutMessagesInput>
+    where?: MentorConversationWhereInput
+  }
+
+  export type MentorConversationUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: MentorConversationWhereInput
+    data: XOR<MentorConversationUpdateWithoutMessagesInput, MentorConversationUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type MentorConversationUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentor?: MentorProfileUpdateOneRequiredWithoutConversationsNestedInput
+    mentee?: UserUpdateOneRequiredWithoutConversationsNestedInput
+  }
+
+  export type MentorConversationUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutMessagesInput = {
+    update: XOR<UserUpdateWithoutMessagesInput, UserUncheckedUpdateWithoutMessagesInput>
+    create: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutMessagesInput, UserUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type UserUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    industryInsight?: IndustryInsightUpdateOneWithoutUsersNestedInput
+    assessments?: AssessmentUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMenteeNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    assessments?: AssessmentUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUncheckedUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUncheckedUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMenteeNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type MentorProfileCreateWithoutRecommendationsInput = {
+    id?: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutMentorProfileInput
+    proofDocuments?: MentorDocumentCreateNestedManyWithoutMentorInput
+    sessions?: MentorSessionCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileUncheckedCreateWithoutRecommendationsInput = {
+    id?: string
+    userId: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    proofDocuments?: MentorDocumentUncheckedCreateNestedManyWithoutMentorInput
+    sessions?: MentorSessionUncheckedCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMentorInput
+    realtimeEvents?: RealtimeEventUncheckedCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileCreateOrConnectWithoutRecommendationsInput = {
+    where: MentorProfileWhereUniqueInput
+    create: XOR<MentorProfileCreateWithoutRecommendationsInput, MentorProfileUncheckedCreateWithoutRecommendationsInput>
+  }
+
+  export type UserCreateWithoutRecommendationsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    industryInsight?: IndustryInsightCreateNestedOneWithoutUsersInput
+    assessments?: AssessmentCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageCreateNestedManyWithoutSenderInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutRecommendationsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    industry?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileUncheckedCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionUncheckedCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutSenderInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRecommendationsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRecommendationsInput, UserUncheckedCreateWithoutRecommendationsInput>
+  }
+
+  export type MentorSessionCreateWithoutRecommendationsInput = {
+    id?: string
+    status?: $Enums.MentorSessionStatus
+    scheduledAt: Date | string
+    durationMinutes: number
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    notes?: string | null
+    meetingUrl?: string | null
+    cancelledAt?: Date | string | null
+    cancellationReason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mentor: MentorProfileCreateNestedOneWithoutSessionsInput
+    mentee: UserCreateNestedOneWithoutMentorSessionsInput
+  }
+
+  export type MentorSessionUncheckedCreateWithoutRecommendationsInput = {
+    id?: string
+    mentorId: string
+    menteeId: string
+    status?: $Enums.MentorSessionStatus
+    scheduledAt: Date | string
+    durationMinutes: number
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    notes?: string | null
+    meetingUrl?: string | null
+    cancelledAt?: Date | string | null
+    cancellationReason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorSessionCreateOrConnectWithoutRecommendationsInput = {
+    where: MentorSessionWhereUniqueInput
+    create: XOR<MentorSessionCreateWithoutRecommendationsInput, MentorSessionUncheckedCreateWithoutRecommendationsInput>
+  }
+
+  export type MentorProfileUpsertWithoutRecommendationsInput = {
+    update: XOR<MentorProfileUpdateWithoutRecommendationsInput, MentorProfileUncheckedUpdateWithoutRecommendationsInput>
+    create: XOR<MentorProfileCreateWithoutRecommendationsInput, MentorProfileUncheckedCreateWithoutRecommendationsInput>
+    where?: MentorProfileWhereInput
+  }
+
+  export type MentorProfileUpdateToOneWithWhereWithoutRecommendationsInput = {
+    where?: MentorProfileWhereInput
+    data: XOR<MentorProfileUpdateWithoutRecommendationsInput, MentorProfileUncheckedUpdateWithoutRecommendationsInput>
+  }
+
+  export type MentorProfileUpdateWithoutRecommendationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMentorProfileNestedInput
+    proofDocuments?: MentorDocumentUpdateManyWithoutMentorNestedInput
+    sessions?: MentorSessionUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUpdateManyWithoutMentorNestedInput
+  }
+
+  export type MentorProfileUncheckedUpdateWithoutRecommendationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proofDocuments?: MentorDocumentUncheckedUpdateManyWithoutMentorNestedInput
+    sessions?: MentorSessionUncheckedUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMentorNestedInput
+    realtimeEvents?: RealtimeEventUncheckedUpdateManyWithoutMentorNestedInput
+  }
+
+  export type UserUpsertWithoutRecommendationsInput = {
+    update: XOR<UserUpdateWithoutRecommendationsInput, UserUncheckedUpdateWithoutRecommendationsInput>
+    create: XOR<UserCreateWithoutRecommendationsInput, UserUncheckedCreateWithoutRecommendationsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRecommendationsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRecommendationsInput, UserUncheckedUpdateWithoutRecommendationsInput>
+  }
+
+  export type UserUpdateWithoutRecommendationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    industryInsight?: IndustryInsightUpdateOneWithoutUsersNestedInput
+    assessments?: AssessmentUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUpdateManyWithoutSenderNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRecommendationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    assessments?: AssessmentUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUncheckedUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUncheckedUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUncheckedUpdateManyWithoutSenderNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type MentorSessionUpsertWithoutRecommendationsInput = {
+    update: XOR<MentorSessionUpdateWithoutRecommendationsInput, MentorSessionUncheckedUpdateWithoutRecommendationsInput>
+    create: XOR<MentorSessionCreateWithoutRecommendationsInput, MentorSessionUncheckedCreateWithoutRecommendationsInput>
+    where?: MentorSessionWhereInput
+  }
+
+  export type MentorSessionUpdateToOneWithWhereWithoutRecommendationsInput = {
+    where?: MentorSessionWhereInput
+    data: XOR<MentorSessionUpdateWithoutRecommendationsInput, MentorSessionUncheckedUpdateWithoutRecommendationsInput>
+  }
+
+  export type MentorSessionUpdateWithoutRecommendationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentor?: MentorProfileUpdateOneRequiredWithoutSessionsNestedInput
+    mentee?: UserUpdateOneRequiredWithoutMentorSessionsNestedInput
+  }
+
+  export type MentorSessionUncheckedUpdateWithoutRecommendationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCreateWithoutNotificationsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    industryInsight?: IndustryInsightCreateNestedOneWithoutUsersInput
+    assessments?: AssessmentCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMenteeInput
+  }
+
+  export type UserUncheckedCreateWithoutNotificationsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    industry?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bio?: string | null
+    experience?: number | null
+    skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedOneWithoutUserInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutUserInput
+    mentorProfile?: MentorProfileUncheckedCreateNestedOneWithoutUserInput
+    mentorSessions?: MentorSessionUncheckedCreateNestedManyWithoutMenteeInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMenteeInput
+    messages?: MentorMessageUncheckedCreateNestedManyWithoutSenderInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMenteeInput
+  }
+
+  export type UserCreateOrConnectWithoutNotificationsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutNotificationsInput, UserUncheckedCreateWithoutNotificationsInput>
+  }
+
+  export type UserUpsertWithoutNotificationsInput = {
+    update: XOR<UserUpdateWithoutNotificationsInput, UserUncheckedUpdateWithoutNotificationsInput>
+    create: XOR<UserCreateWithoutNotificationsInput, UserUncheckedCreateWithoutNotificationsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutNotificationsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutNotificationsInput, UserUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type UserUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    industryInsight?: IndustryInsightUpdateOneWithoutUsersNestedInput
+    assessments?: AssessmentUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMenteeNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    experience?: NullableIntFieldUpdateOperationsInput | number | null
+    skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    assessments?: AssessmentUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateOneWithoutUserNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUncheckedUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUncheckedUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUncheckedUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMenteeNestedInput
+  }
+
+  export type MentorProfileCreateWithoutRealtimeEventsInput = {
+    id?: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutMentorProfileInput
+    proofDocuments?: MentorDocumentCreateNestedManyWithoutMentorInput
+    sessions?: MentorSessionCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileUncheckedCreateWithoutRealtimeEventsInput = {
+    id?: string
+    userId: string
+    status?: $Enums.MentorStatus
+    headline?: string | null
+    bio?: string | null
+    yearsExperience?: number | null
+    industries?: MentorProfileCreateindustriesInput | string[]
+    skills?: MentorProfileCreateskillsInput | string[]
+    hourlyRate?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: number | null
+    submittedAt?: Date | string
+    approvedAt?: Date | string | null
+    rejectedAt?: Date | string | null
+    rejectionReason?: string | null
+    lastEventAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    proofDocuments?: MentorDocumentUncheckedCreateNestedManyWithoutMentorInput
+    sessions?: MentorSessionUncheckedCreateNestedManyWithoutMentorInput
+    conversations?: MentorConversationUncheckedCreateNestedManyWithoutMentorInput
+    recommendations?: MentorRecommendationUncheckedCreateNestedManyWithoutMentorInput
+  }
+
+  export type MentorProfileCreateOrConnectWithoutRealtimeEventsInput = {
+    where: MentorProfileWhereUniqueInput
+    create: XOR<MentorProfileCreateWithoutRealtimeEventsInput, MentorProfileUncheckedCreateWithoutRealtimeEventsInput>
+  }
+
+  export type MentorProfileUpsertWithoutRealtimeEventsInput = {
+    update: XOR<MentorProfileUpdateWithoutRealtimeEventsInput, MentorProfileUncheckedUpdateWithoutRealtimeEventsInput>
+    create: XOR<MentorProfileCreateWithoutRealtimeEventsInput, MentorProfileUncheckedCreateWithoutRealtimeEventsInput>
+    where?: MentorProfileWhereInput
+  }
+
+  export type MentorProfileUpdateToOneWithWhereWithoutRealtimeEventsInput = {
+    where?: MentorProfileWhereInput
+    data: XOR<MentorProfileUpdateWithoutRealtimeEventsInput, MentorProfileUncheckedUpdateWithoutRealtimeEventsInput>
+  }
+
+  export type MentorProfileUpdateWithoutRealtimeEventsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMentorProfileNestedInput
+    proofDocuments?: MentorDocumentUpdateManyWithoutMentorNestedInput
+    sessions?: MentorSessionUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMentorNestedInput
+  }
+
+  export type MentorProfileUncheckedUpdateWithoutRealtimeEventsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    industries?: MentorProfileUpdateindustriesInput | string[]
+    skills?: MentorProfileUpdateskillsInput | string[]
+    hourlyRate?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    availability?: NullableJsonNullValueInput | InputJsonValue
+    ratingAverage?: NullableFloatFieldUpdateOperationsInput | number | null
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    lastEventAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proofDocuments?: MentorDocumentUncheckedUpdateManyWithoutMentorNestedInput
+    sessions?: MentorSessionUncheckedUpdateManyWithoutMentorNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMentorNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMentorNestedInput
   }
 
   export type AssessmentCreateManyUserInput = {
@@ -9629,6 +25824,62 @@ export namespace Prisma {
     companyName: string
     jobTitle: string
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorSessionCreateManyMenteeInput = {
+    id?: string
+    mentorId: string
+    status?: $Enums.MentorSessionStatus
+    scheduledAt: Date | string
+    durationMinutes: number
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    notes?: string | null
+    meetingUrl?: string | null
+    cancelledAt?: Date | string | null
+    cancellationReason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorConversationCreateManyMenteeInput = {
+    id?: string
+    mentorId: string
+    lastMessageAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorMessageCreateManySenderInput = {
+    id?: string
+    conversationId: string
+    body: string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type MentorRecommendationCreateManyMenteeInput = {
+    id?: string
+    mentorId: string
+    sessionId?: string | null
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NotificationCreateManyUserInput = {
+    id?: string
+    type: $Enums.NotificationType
+    title: string
+    body?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9696,6 +25947,178 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type MentorSessionUpdateWithoutMenteeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentor?: MentorProfileUpdateOneRequiredWithoutSessionsNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutSessionNestedInput
+  }
+
+  export type MentorSessionUncheckedUpdateWithoutMenteeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type MentorSessionUncheckedUpdateManyWithoutMenteeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorConversationUpdateWithoutMenteeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentor?: MentorProfileUpdateOneRequiredWithoutConversationsNestedInput
+    messages?: MentorMessageUpdateManyWithoutConversationNestedInput
+  }
+
+  export type MentorConversationUncheckedUpdateWithoutMenteeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MentorMessageUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type MentorConversationUncheckedUpdateManyWithoutMenteeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorMessageUpdateWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: MentorConversationUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type MentorMessageUncheckedUpdateWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorMessageUncheckedUpdateManyWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorRecommendationUpdateWithoutMenteeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentor?: MentorProfileUpdateOneRequiredWithoutRecommendationsNestedInput
+    session?: MentorSessionUpdateOneWithoutRecommendationsNestedInput
+  }
+
+  export type MentorRecommendationUncheckedUpdateWithoutMenteeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    sessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorRecommendationUncheckedUpdateManyWithoutMenteeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    sessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    title?: StringFieldUpdateOperationsInput | string
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    title?: StringFieldUpdateOperationsInput | string
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    title?: StringFieldUpdateOperationsInput | string
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateManyIndustryInsightInput = {
     id?: string
     clerkUserId: string
@@ -9707,6 +26130,9 @@ export namespace Prisma {
     bio?: string | null
     experience?: number | null
     skills?: UserCreateskillsInput | string[]
+    mentorStatus?: $Enums.MentorStatus
+    mentorStatusReason?: string | null
+    mentorStatusUpdatedAt?: Date | string | null
   }
 
   export type UserUpdateWithoutIndustryInsightInput = {
@@ -9720,9 +26146,18 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     assessments?: AssessmentUpdateManyWithoutUserNestedInput
     resume?: ResumeUpdateOneWithoutUserNestedInput
     coverLetter?: CoverLetterUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutIndustryInsightInput = {
@@ -9736,9 +26171,18 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     assessments?: AssessmentUncheckedUpdateManyWithoutUserNestedInput
     resume?: ResumeUncheckedUpdateOneWithoutUserNestedInput
     coverLetter?: CoverLetterUncheckedUpdateManyWithoutUserNestedInput
+    mentorProfile?: MentorProfileUncheckedUpdateOneWithoutUserNestedInput
+    mentorSessions?: MentorSessionUncheckedUpdateManyWithoutMenteeNestedInput
+    conversations?: MentorConversationUncheckedUpdateManyWithoutMenteeNestedInput
+    messages?: MentorMessageUncheckedUpdateManyWithoutSenderNestedInput
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutMenteeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutIndustryInsightInput = {
@@ -9752,6 +26196,317 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
+    mentorStatus?: EnumMentorStatusFieldUpdateOperationsInput | $Enums.MentorStatus
+    mentorStatusReason?: NullableStringFieldUpdateOperationsInput | string | null
+    mentorStatusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MentorDocumentCreateManyMentorInput = {
+    id?: string
+    type: string
+    url: string
+    status?: $Enums.MentorDocumentStatus
+    description?: string | null
+    verifiedBy?: string | null
+    verifiedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorSessionCreateManyMentorInput = {
+    id?: string
+    menteeId: string
+    status?: $Enums.MentorSessionStatus
+    scheduledAt: Date | string
+    durationMinutes: number
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    notes?: string | null
+    meetingUrl?: string | null
+    cancelledAt?: Date | string | null
+    cancellationReason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorConversationCreateManyMentorInput = {
+    id?: string
+    menteeId: string
+    lastMessageAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorRecommendationCreateManyMentorInput = {
+    id?: string
+    menteeId: string
+    sessionId?: string | null
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RealtimeEventCreateManyMentorInput = {
+    id?: string
+    type: string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type MentorDocumentUpdateWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorDocumentStatusFieldUpdateOperationsInput | $Enums.MentorDocumentStatus
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorDocumentUncheckedUpdateWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorDocumentStatusFieldUpdateOperationsInput | $Enums.MentorDocumentStatus
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorDocumentUncheckedUpdateManyWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorDocumentStatusFieldUpdateOperationsInput | $Enums.MentorDocumentStatus
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorSessionUpdateWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentee?: UserUpdateOneRequiredWithoutMentorSessionsNestedInput
+    recommendations?: MentorRecommendationUpdateManyWithoutSessionNestedInput
+  }
+
+  export type MentorSessionUncheckedUpdateWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recommendations?: MentorRecommendationUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type MentorSessionUncheckedUpdateManyWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMentorSessionStatusFieldUpdateOperationsInput | $Enums.MentorSessionStatus
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    durationMinutes?: IntFieldUpdateOperationsInput | number
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    meetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorConversationUpdateWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentee?: UserUpdateOneRequiredWithoutConversationsNestedInput
+    messages?: MentorMessageUpdateManyWithoutConversationNestedInput
+  }
+
+  export type MentorConversationUncheckedUpdateWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MentorMessageUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type MentorConversationUncheckedUpdateManyWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    lastMessageAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorRecommendationUpdateWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentee?: UserUpdateOneRequiredWithoutRecommendationsNestedInput
+    session?: MentorSessionUpdateOneWithoutRecommendationsNestedInput
+  }
+
+  export type MentorRecommendationUncheckedUpdateWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    sessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorRecommendationUncheckedUpdateManyWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    sessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RealtimeEventUpdateWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RealtimeEventUncheckedUpdateWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RealtimeEventUncheckedUpdateManyWithoutMentorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorRecommendationCreateManySessionInput = {
+    id?: string
+    mentorId: string
+    menteeId: string
+    title: string
+    body: string
+    visibility?: $Enums.RecommendationVisibility
+    publishedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorRecommendationUpdateWithoutSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mentor?: MentorProfileUpdateOneRequiredWithoutRecommendationsNestedInput
+    mentee?: UserUpdateOneRequiredWithoutRecommendationsNestedInput
+  }
+
+  export type MentorRecommendationUncheckedUpdateWithoutSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorRecommendationUncheckedUpdateManyWithoutSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mentorId?: StringFieldUpdateOperationsInput | string
+    menteeId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    visibility?: EnumRecommendationVisibilityFieldUpdateOperationsInput | $Enums.RecommendationVisibility
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorMessageCreateManyConversationInput = {
+    id?: string
+    senderId: string
+    body: string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type MentorMessageUpdateWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UserUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type MentorMessageUncheckedUpdateWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorMessageUncheckedUpdateManyWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    attachments?: NullableJsonNullValueInput | InputJsonValue
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

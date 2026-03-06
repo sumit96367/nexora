@@ -1,0 +1,146 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Logo" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Logo" [ref=e5]
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - link "Industry Insights" [ref=e8] [cursor=pointer]:
+            - /url: /dashboard
+            - button "Industry Insights" [ref=e9]:
+              - img
+              - text: Industry Insights
+          - link "Find Mentors" [ref=e10] [cursor=pointer]:
+            - /url: /mentors
+            - button "Find Mentors" [ref=e11]
+          - link "Admin" [ref=e12] [cursor=pointer]:
+            - /url: /admin/mentors
+            - button "Admin" [ref=e13]:
+              - img
+              - text: Admin
+          - link [ref=e14] [cursor=pointer]:
+            - /url: /notifications
+            - button [ref=e15]:
+              - img
+        - button "Growth Tools" [ref=e16]:
+          - img
+          - text: Growth Tools
+          - img
+        - button "Open user menu" [ref=e18] [cursor=pointer]:
+          - img "Sumit Sen's logo" [ref=e21]
+  - main [ref=e23]:
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - heading "Mentor Applications" [level=1] [ref=e27]
+        - paragraph [ref=e28]: Review new mentor submissions, verify credentials, and approve the best experts to join the Sensai mentor network.
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e32]: Pending applications
+            - paragraph [ref=e34]: "0"
+          - generic [ref=e35]:
+            - generic [ref=e37]: Reviewed
+            - paragraph [ref=e39]: "1"
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - generic [ref=e43]: Approved mentors
+          - generic [ref=e44]:
+            - paragraph [ref=e45]: "1"
+            - paragraph [ref=e46]: Already live in the marketplace
+        - generic [ref=e47]:
+          - generic [ref=e49]: Rejected
+          - generic [ref=e50]:
+            - paragraph [ref=e51]: "0"
+            - paragraph [ref=e52]: Sent back to applicants
+        - generic [ref=e53]:
+          - generic [ref=e55]: Pending queue
+          - generic [ref=e56]:
+            - paragraph [ref=e57]: "0"
+            - paragraph [ref=e58]: Ready for review
+        - generic [ref=e59]:
+          - generic [ref=e61]: Avg approval time
+          - generic [ref=e62]:
+            - paragraph [ref=e63]: 0.5h
+            - paragraph [ref=e64]: From submission to approval
+      - generic [ref=e65]:
+        - generic [ref=e67]:
+          - tablist [ref=e69]:
+            - tab "All 1" [selected] [ref=e70]:
+              - text: All
+              - generic [ref=e71]: "1"
+            - tab "Pending 0" [ref=e72]:
+              - text: Pending
+              - generic [ref=e73]: "0"
+            - tab "Approved 1" [ref=e74]:
+              - text: Approved
+              - generic [ref=e75]: "1"
+            - tab "Rejected 0" [ref=e76]:
+              - text: Rejected
+              - generic [ref=e77]: "0"
+          - generic [ref=e78]:
+            - textbox "Search by name, email, industry, or skill" [ref=e79]
+            - button "Export CSV" [ref=e80]:
+              - img
+              - text: Export CSV
+        - generic [ref=e81]:
+          - generic [ref=e83]: No pending applications right now.
+          - generic [ref=e84]:
+            - paragraph [ref=e86]: Reviewed
+            - generic [ref=e88]:
+              - generic [ref=e89]:
+                - generic [ref=e90]:
+                  - img "Sumit Sen" [ref=e91]
+                  - generic [ref=e92]:
+                    - generic [ref=e93]: Sumit Sen
+                    - paragraph [ref=e94]: sumit9636738205@gmail.com
+                    - paragraph [ref=e95]: Applied about 2 hours ago
+                - generic [ref=e97]:
+                  - img
+                  - text: approved
+              - generic [ref=e98]:
+                - generic [ref=e99]:
+                  - generic [ref=e100]:
+                    - heading "Headline" [level=3] [ref=e101]
+                    - paragraph [ref=e102]: Devops Engineer
+                  - generic [ref=e103]:
+                    - heading "Experience" [level=3] [ref=e104]
+                    - paragraph [ref=e105]: Not provided
+                - generic [ref=e106]:
+                  - heading "Bio" [level=3] [ref=e107]
+                  - paragraph [ref=e108]: I am a Devops Engineer.
+                - generic [ref=e109]:
+                  - generic [ref=e110]:
+                    - heading "Industries" [level=3] [ref=e111]
+                    - generic [ref=e113]: Technology
+                  - generic [ref=e114]:
+                    - heading "Skills" [level=3] [ref=e115]
+                    - generic [ref=e117]: Resume Review
+                - generic [ref=e118]:
+                  - heading "Proof documents" [level=3] [ref=e119]
+                  - generic [ref=e121]:
+                    - generic [ref=e123]: github
+                    - link "View" [ref=e124] [cursor=pointer]:
+                      - /url: https://github.com/sumit96367/
+                      - img
+                      - text: View
+  - region "Notifications alt+T"
+  - contentinfo [ref=e125]:
+    - paragraph [ref=e127]: Made by Sumit
+  - alert [ref=e128]
+  - generic [ref=e133] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e134]:
+      - img [ref=e135]
+    - generic [ref=e138]:
+      - button "Open issues overlay" [ref=e139]:
+        - generic [ref=e140]:
+          - generic [ref=e141]: "1"
+          - generic [ref=e142]: "2"
+        - generic [ref=e143]:
+          - text: Issue
+          - generic [ref=e144]: s
+      - button "Collapse issues badge" [ref=e145]:
+        - img [ref=e146]
+```

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "MentorProfile" ADD COLUMN     "lastEventAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

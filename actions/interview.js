@@ -1,11 +1,7 @@
 "use server";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/prisma";
-import { GoogleGenerativeAI } from "@google/generative-ai";
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash",
-});
+import { generateWithAI } from "@/lib/ai";
 
 export async function generateQuiz() {
   const { userId } = await auth();
@@ -24,12 +20,10 @@ export async function generateQuiz() {
     throw new Error("User not found");
   }
 
-  
-    const prompt = `
-        Generate 3 technical interview questions for a ${
-          user.industry
-        } professional${
-      user.skills?.length ? ` with expertise in ${user.skills.join(", ")}` : ""
+
+  const prompt = `
+        Generate 3 technical interview questions for a ${user.industry
+    } professional${user.skills?.length ? ` with expertise in ${user.skills.join(", ")}` : ""
     }.
                 
                 Each question should be multiple choice with 4 options.
@@ -47,7 +41,7 @@ export async function generateQuiz() {
                             }
                             `;
   try {
-    const result = await model.generateContent(prompt);
+    const { result } = await generateWithAI(prompt);
     const response = result.response;
     const text = response.text();
     const cleanedText = text.replace(/```(?:json)?\n?/g, "").trim();
@@ -60,13 +54,17 @@ export async function generateQuiz() {
   }
 }
 
-export async function saveQuizResult(questions, answers, score) { 
+export async function saveQuizResult(questions, answers, score) {
   const { userId } = await auth();
   if (!userId) {
     throw new Error("User not authenticated");
   }
   const user = await db.user.findUnique({
     where: { clerkUserId: userId },
+    select: {
+      id: true,
+      industry: true,
+    }
   });
 
   if (!user) {
@@ -89,9 +87,9 @@ export async function saveQuizResult(questions, answers, score) {
     const wrongQuestionsText = wrongAnswers
       .map(
         (q) => `Question: ${q.question}"\nCorrect Answer: "${q.answer}"\nUser Answer: "${q.userAnswer}"`
-    )
+      )
       .join("\n\n");
-    
+
     const improvementPrompt = `
         The user got the following ${user.industry} technical interview questions wrong:
         ${wrongQuestionsText}
@@ -101,9 +99,9 @@ export async function saveQuizResult(questions, answers, score) {
         Keep the response under 2 sentences and make it encouraging.
         Don't explicitly mention the mistakes, instead focus on what to learn/practice.
         `;
-    
+
     try {
-      const tipResult = await model.generateContent(improvementPrompt);
+      const { result: tipResult } = await generateWithAI(improvementPrompt);
       improvementTip = tipResult.response.text().trim();
       console.log(improvementTip);
 
